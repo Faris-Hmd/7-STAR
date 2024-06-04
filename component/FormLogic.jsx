@@ -15,6 +15,8 @@ import {
 } from "react-bootstrap";
 import { deleteRequest } from "../helper/requests";
 import { BsCameraFill, BsCheckLg, BsTrashFill } from "react-icons/bs";
+import { addDoc, collection } from "firebase/firestore";
+import { db } from "../firebase/firebase";
 
 function FormLogic({
   feilds,
@@ -129,6 +131,7 @@ function FormLogic({
   const uploadData = async () => {
     try {
       console.log("upload");
+
       const res = await fetch(baseUrl + "/api/" + route, {
         method: method,
         headers: {

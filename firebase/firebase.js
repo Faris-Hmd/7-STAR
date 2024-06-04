@@ -19,12 +19,12 @@ export const auth = getAuth(app);
 export const storage = getStorage(app);
 export const db = getFirestore(app);
 
-export const articleRef = (db, "Articles");
-export const productsRef = (db, "Products");
-export const usersRef = (db, "Users");
+export const articleRef = (db, "articles");
+export const productsRef = (db, "products");
+export const usersRef = (db, "users");
 // export const articleRef = (db, "Articles");
 
-if (process.env.NODE_ENV === "development" || true) {
+if (process.env.NODE_ENV === "developmen") {
   // connectAuthEmulator(auth, "127.0.0.1:9099");
   if (!db._settingsFrozen) {
     connectStorageEmulator(storage, "localhost", 9199);

@@ -119,7 +119,7 @@ function Product(props) {
         <Col xs={12}>
           <h2 className="text-start p-2">خدمات ذات صلة</h2>
           <Container className="flex-r p-0 p-relative">
-            {props.productsBySameCat.map((product, index) => {
+            {props.productsBySameCat?.map((product, index) => {
               if (product.id === router.query.productId) return;
               else
                 return (
@@ -178,13 +178,13 @@ export async function getStaticProps(context) {
 }
 
 export async function getStaticPaths() {
-  const productsIds = await getDocsIds("Products");
+  const productsIds = await getDocsIds("products");
   const paths = productsIds.map((id) => ({
     params: { productId: id.toString() },
   }));
 
   return {
     paths,
-    fallback: false,
+    fallback: true,
   };
 }

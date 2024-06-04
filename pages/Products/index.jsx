@@ -137,12 +137,12 @@ export default Products;
 export async function getStaticProps() {
   console.log("ssg for Products");
   // const { collection, getDocs } = await import {"firebase/firestore"};
-  const querySnapShot = await getDocs(collection(db, "Products"));
+  const querySnapShot = await getDocs(collection(db, "products"));
   const products = querySnapShot.docs.map((product) => {
     return {
       name: product.data().name,
       cost: product.data().cost,
-      category: product.data()?.category,
+      category: product?.data()?.category,
       img: product.data().images[0]?.url,
       id: product.id,
     };

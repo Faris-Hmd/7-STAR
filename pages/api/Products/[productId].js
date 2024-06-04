@@ -25,7 +25,8 @@ export default async function handler(req, res) {
     case "POST":
       {
         const product = req.body;
-        querySnapShot = await addDoc(collection(db, "Products"), {
+        console.log(product);
+        querySnapShot = await addDoc(collection(db, "products"), {
           ...product,
           autherId: "0dM4MUr7GMs0PcRWNNJv",
         });
@@ -37,7 +38,7 @@ export default async function handler(req, res) {
       break;
     case "DELETE":
       {
-        await deleteDoc(doc(db, "Products", productId));
+        await deleteDoc(doc(db, "products", productId));
         res.status(200).json({ msg: "تم الحذف بنجاح" });
       }
       break;
@@ -45,7 +46,7 @@ export default async function handler(req, res) {
     case "PUT": {
       const product = req.body;
       // console.log(product);
-      await updateDoc(doc(db, "Products", product.id), {
+      await updateDoc(doc(db, "products", product.id), {
         ...product,
         autherId: "0dM4MUr7GMs0PcRWNNJv",
         keywords: [product.name, product.category, product.cost],
