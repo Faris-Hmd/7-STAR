@@ -1,0 +1,242 @@
+/** @format */
+
+.accounts {
+  transform: scale(0.9);
+  transition: all 300ms;
+}
+.accounts:hover {
+  transform: scale(1);
+}
+.active-link {
+  border-top: 10px solid #0000;
+  border-bottom: 5px solid var(--theme-clr);
+  border-radius: 0;
+}
+.bg-sec {
+  background-color: var(--sec-clr) !important;
+}
+.bg-liner {
+  background: linear-gradient(
+    160deg,
+    rgba(249, 108, 0, 0.2) 0%,
+    rgba(29, 184, 0, 0.2) 100%
+  );
+}
+a:hover {
+  color: #444 !important;
+}
+.border {
+  border: 1px solid var(--shadow-clr);
+  overflow: hidden;
+}
+.border-b {
+  border-bottom: 1px solid var(--shadow-clr);
+}
+.flex {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.flex-r {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.flex-rev {
+  flex-direction: row-reverse;
+}
+.space-btw {
+  justify-content: space-between;
+}
+.rtl {
+  direction: rtl;
+}
+.ltr {
+  direction: ltr !important;
+}
+.full {
+  min-height: 70%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.h-100 {
+  min-height: 90vh;
+}
+.fc-w {
+  color: #eee !important;
+}
+.fc-b {
+  color: #222 !important;
+}
+
+.w-100 {
+  max-width: 100%;
+}
+.w-50 {
+  min-width: 45%;
+  max-width: 45%;
+}
+.w-30 {
+  min-width: 30%;
+  max-width: 30%;
+}
+.m-auto {
+  margin: 0 auto;
+}
+
+.Link {
+  text-decoration: none;
+  color: #020202;
+  transition: all 300ms;
+  justify-content: start;
+  /* border-radius: 10px; */
+}
+
+.link-hover:hover {
+  border: 2px solid var(--theme-clr);
+  transition: all 100ms;
+}
+.hover {
+  transition: all 300ms;
+}
+.hover:hover {
+  background-color: #444;
+  color: #eee !important;
+}
+
+.bg-w {
+  color: #020202;
+  background-color: var(--sec-clr);
+}
+.bg-b {
+  background-color: black;
+  /* background-color: darkorange; */
+}
+.bg-theme {
+  background-color: var(--theme-clr) !important;
+  border-color: var(--theme-clr) !important;
+}
+.bg-clr {
+  color: #eee !important;
+  background-color: var(--theme-clr) !important;
+  border-color: var(--theme-clr) !important;
+}
+
+.bg-clr:hover {
+  background-color: var(--dark-theme-clr) !important;
+}
+.bg-clr-green {
+  color: #eee !important;
+  background-color: rgb(19, 111, 2) !important;
+  /* border: 2px solid rgb(19, 111, 2) !important; */
+}
+
+.bg-clr-green:hover {
+  background-color: rgb(16, 97, 1) !important;
+}
+.hidden {
+  display: none;
+}
+.disable {
+  opacity: 0.6;
+}
+.wave {
+  text-align: left;
+  color: #eee;
+  /* background-image: url("/Images/wave.svg"); */
+  background: rgb(255, 136, 0);
+  background: rgb(249, 108, 0);
+  background: linear-gradient(
+    160deg,
+    rgba(249, 108, 0, 1) 0%,
+    rgba(29, 184, 0, 1) 100%
+  );
+  background-size: cover;
+  /* min-height: 30vh; */
+  display: flex;
+}
+
+.post-img {
+  object-fit: fill;
+}
+.text {
+  background-color: #eee;
+  transform: translateY(-10%);
+  overflow: hidden;
+}
+.contact-us {
+  background-image: url("/images/map.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.dropdown-toggle::after {
+  display: none !important;
+}
+.offcanvas {
+  max-width: 320px !important;
+}
+.nav-tabs .nav-link {
+  color: #eee;
+}
+.taps {
+  /* overflow-x: scroll; */
+  overflow-y: hidden;
+  /* flex-wrap: nowrap !important; */
+  scrollbar-width: none !important;
+}
+/* .nav-link {
+  border-radius: 8px !important;
+  margin: 0 0.5em;
+  background-color: var(--theme-clr) !important;
+} */
+.fos-s {
+  font-size: small;
+}
+
+.product {
+  transform: scale(0.92);
+  box-shadow: 1px 1px 5px var(--shadow-clr);
+}
+
+.dropdown-toggle {
+  border: none !important;
+}
+.dropdown-toggle:hover {
+  background-color: var(--shadow-clr) !important;
+}
+
+.p-relative {
+  position: relative;
+}
+.fav-star {
+  position: absolute;
+  top: 150px;
+  left: 10px;
+  border-radius: 0 0 5px 5px;
+  padding: 1px 5px;
+  background: var(--theme-clr);
+  background: red;
+  color: #0000;
+  box-shadow: 5px 5px 5px var(--shadow-clr);
+  clip-path: polygon(
+    50% 0,
+    100% 0,
+    100% 35%,
+    100% 70%,
+    100% 100%,
+    50% 80%,
+    0 100%,
+    0 65%,
+    0 23%,
+    0 0
+  );
+}
+.clip {
+  /* clip-path: polygon(30% 50%, 100% 0%, 0% 100%, 0 0); */
+}

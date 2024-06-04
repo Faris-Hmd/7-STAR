@@ -1,0 +1,16 @@
+{
+  "name": "Dr Azza Clinc",
+  "short_name": "DAC",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#eeeeee",
+  "theme_color": "#eeeeee",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/icons/DrAzzaIcon.webp",
+      "type": "image/png",
+      "sizes": "72x72"
+    }
+  ]
+}
