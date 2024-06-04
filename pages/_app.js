@@ -10,7 +10,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { SSRProvider } from "react-bootstrap";
 const internetUrl = "https://dr-azza-clinc.netlify.app";
 const localurl = " http://192.168.137.102:3005";
-export let baseUrl = localurl;
+export let baseUrl = "https://7-star-31x51fasm-farishmds-projects.vercel.app";
 // import { Inter, Arya } from "@next/font/google";
 // const font = Arya({ subsets: ["latin"], weight: ["700"] });
 // if (process && process.env.NODE_ENV === "development") {
