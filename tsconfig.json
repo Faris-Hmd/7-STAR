@@ -1,0 +1,32 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": false,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "incremental": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve"
+  },
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "pages/api/genrandomProd.js",
+    "pages/Products/index.jsx",
+    "component/PageLayout.jsx",
+    "data/dates.js",
+    "lib/getStaticteis.js",
+    "data/dates.js",
+    "pages/Dashboard/[year].jsx",
+    "pages/Products/MyProducts.jsx"
+  ],
+  "exclude": ["node_modules"]
+}
