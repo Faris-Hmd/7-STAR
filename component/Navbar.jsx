@@ -56,7 +56,7 @@ const Navbar = () => {
           <FaBars style={{ color: "white" }} />
         </Button>
         <div className={styles.logo}>
-          <img width={"30px"} src="/icons/DrAzzaIcon.webp" alt="drc" />
+          <img width={"30px"} src="/icons/7star.png" alt="drc" />
           <span className="p-2 fos-m text-nowrap">خدماتي</span>
         </div>
         {user && (
