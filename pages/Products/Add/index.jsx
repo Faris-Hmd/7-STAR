@@ -9,7 +9,11 @@ function AddProduct() {
   const [product, setProduct] = useState({});
 
   return (
-    <PageLayout title={"اضافة منتج "} role={"SHOP_ADMIN"}>
+    <PageLayout
+      title={"اضافة منتج"}
+      role={"SHOP_ADMIN"}
+      pageName={"اضافة خدمة"}
+    >
       <FormLogic
         formName={"Products"}
         redirect={true}

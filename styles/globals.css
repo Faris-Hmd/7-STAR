@@ -54,20 +54,26 @@ a {
 
 /** -------- MOBILE VIEW -----*/
 nav {
-  z-index: 100;
+  z-index: 10000000;
+  grid-area: nav;
 }
 .App {
+  /* display: grid; */
   color: var(--font-clr);
   background-color: var(--prime-clr);
   overflow-x: hidden;
   scrollbar-width: none;
   scroll-behavior: smooth;
   direction: rtl;
+  grid-template-columns: 1fr;
+  grid-template-rows: 0.9fr 9.1fr;
+  grid-template-areas: "nav" "main";
+  scrollbar-width: thin;
 }
 
 .main {
-  padding-top: 3.2em;
-  width: 100%;
+  padding-top: 55px;
+  min-width: 100%;
   overflow-x: hidden;
   grid-area: main;
   scrollbar-width: thin;

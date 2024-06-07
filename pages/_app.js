@@ -5,10 +5,10 @@ import "../styles/util.css";
 // import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap/dist/css/bootstrap.rtl.min.css";
 import { AuthProvider } from "../context/authContext";
-import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { SSRProvider } from "react-bootstrap";
-const internetUrl = "https://7-star-31x51fasm-farishmds-projects.vercel.app";
+import { SSRProvider, ToastContainer } from "react-bootstrap";
+import { SessionProvider } from "next-auth/react";
+const internetUrl = "https://7-star.vercel.app";
 const localurl = " http://localhost:3005";
 export let baseUrl = localurl;
 // import { Inter, Arya } from "@next/font/google";
@@ -17,22 +17,25 @@ export let baseUrl = localurl;
 //   baseUrl = localurl;
 // }
 
-function MyApp({ Component, pageProps }) {
+function MyApp({ Component, pageProps: { session, ...pageProps } }) {
   // console.log(Component);
   return (
     <>
       <SSRProvider>
         <AuthProvider>
-          <Layout>
-            <ToastContainer
-              autoClose={1500}
-              position={"top-center"}
-              rtl
-              closeOnClick
-              hideProgressBar
-            />
-            <Component {...pageProps} />
-          </Layout>
+          <SessionProvider session={session}>
+            <Layout>
+              <ToastContainer
+                limit={1}
+                autoClose={1500}
+                position={"top-center"}
+                rtl
+                closeOnClick
+                hideProgressBar
+              />
+              <Component {...pageProps} />
+            </Layout>
+          </SessionProvider>
         </AuthProvider>
       </SSRProvider>
     </>

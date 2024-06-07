@@ -28,7 +28,12 @@ function EditProduct() {
 
   return (
     <>
-      <PageLayout loading={loading} role={"SHOP_ADMIN"} title={"تعديل المنتج"}>
+      <PageLayout
+        loading={loading}
+        role={"SHOP_ADMIN"}
+        title={"تعديل المنتج"}
+        pageName={"تعديل الخدمة"}
+      >
         <FormLogic
           data={product}
           setData={setProduct}

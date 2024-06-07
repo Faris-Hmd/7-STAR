@@ -36,7 +36,7 @@ function FormUI({ feilds, handleChange, data, setData }) {
                 as={"textarea"}
                 name={feild.name}
                 placeholder={feild.placeholder}
-                rows={"5"}
+                rows={"3"}
                 type={feild.type}
                 value={data?.[feild.name] === null ? "" : data?.[feild.name]}
                 onChange={handleChange}

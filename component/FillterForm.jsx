@@ -86,7 +86,7 @@ export function FillterForm({ data, setFillterdData, fillterBy }) {
           <Form.Control
             type="text"
             name="keyword"
-            placeholder="اكتب ما تريد البحث عنه"
+            placeholder="البحث عن خدمة"
             className="p-2 rounded border-0"
             onChange={(e) => setKeyword(e.target.value)}
             value={keyword}

@@ -28,7 +28,7 @@ export default function PageLayout({
     <Container className="p-1">
       <Row className="bg-sec flex-r  shadow-sm border">
         <Col xs={5}>
-          <div className="p-2 fs-4"> {pageName}</div>
+          <div className="p-2 fs-4">{pageName}</div>
         </Col>
         <Col xs={7} className="flex-r">
           {navComp}

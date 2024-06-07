@@ -201,101 +201,110 @@ function FormLogic({
           </Button>
         </Modal.Footer>
       </Modal>
-      <Card className=" shadow-sm">
-        <Form id={formName} onSubmit={handleUploadImages}>
-          {images?.length > 0 && !singleImage && (
-            <Carousel>
-              {images.map((img, index) => {
-                return (
-                  <Carousel.Item
-                    onDoubleClick={() => removeImage(img.url)}
-                    key={index}
-                  >
-                    <img
-                      style={{ objectFit: "cover" }}
-                      height={"250px"}
-                      className="d-block w-100"
-                      src={img.url}
-                      alt="First slide"
-                    />
-                  </Carousel.Item>
-                );
-              })}
-            </Carousel>
-          )}
-
-          {images?.length === 0 && (
-            <Card.Img
-              width={"100%"}
-              variant="buttom"
-              src={`/images/imageHolder.jpg`}
-              height={"250px"}
-              style={{ objectFit: "cover" }}
-            />
-          )}
-          {images?.length > 0 && singleImage && (
-            <Card.Img
-              width={"100%"}
-              variant="buttom"
-              src={images[0].url}
-              height={"250px"}
-              onDoubleClick={() => removeImage(images[0].url)}
-              style={{ objectFit: "cover" }}
-            />
-          )}
-
-          <Card.Subtitle className="m-2 text-muted">
-            اضغط مرتين لازالة الصورة
-          </Card.Subtitle>
-          <Button variant="success" className="shadow mb-2">
-            <label htmlFor="productImg">
-              اضافة صورة
-              <BsCameraFill className="ms-3 mb-1" />
-            </label>
-          </Button>
-          <input
-            className="hidden"
-            accept="image/*"
-            multiple={!singleImage}
-            id="productImg"
-            type="file"
-            onChange={handleImgChange}
-          />
-        </Form>
-        <FormUI data={data} handleChange={handleChange} feilds={feilds} />
-      </Card>{" "}
-      <Container className="flex-r space-btw">
-        {router.query.productId && (
-          <Col xs={5}>
-            <Button
-              className="mt-1 shadow w-100 p-2 "
-              variant="danger"
-              onClick={() => {
-                setShowDeleteModal(true);
-              }}
-            >
-              حذف
-              <span className="ms-2">
-                <BsTrashFill />
-              </span>
-            </Button>
+      <Card className=" shadow-sm p-2 mt-2">
+        <Container className="flex-r">
+          {" "}
+          <Col xs={12} lg={6}>
+            <FormUI data={data} handleChange={handleChange} feilds={feilds} />
           </Col>
-        )}
-        <Col xs={router.query.productId ? 6 : 12}>
-          <Button
-            className="mt-2 shadow w-100 p-2 m"
-            variant="success"
-            disabled={isUploading || data?.password !== data?.passwordConfirm}
-            type="submit"
-            form={formName}
-          >
-            انهاء
-            <span className="ms-2">
-              <BsCheckLg />
-            </span>
-          </Button>
-        </Col>
-      </Container>
+          <Col xs={12} lg={5} className="m-auto">
+            {" "}
+            <Form id={formName} onSubmit={handleUploadImages} className="mt-2">
+              {" "}
+              {images?.length > 0 && !singleImage && (
+                <Carousel>
+                  {images.map((img, index) => {
+                    return (
+                      <Carousel.Item
+                        onDoubleClick={() => removeImage(img.url)}
+                        key={index}
+                      >
+                        <img
+                          style={{ objectFit: "cover", height: "100%" }}
+                          className="d-block w-100"
+                          src={img.url}
+                          alt="First slide"
+                        />
+                      </Carousel.Item>
+                    );
+                  })}
+                </Carousel>
+              )}
+              {images?.length === 0 && (
+                <Card.Img
+                  width={"100%"}
+                  variant="buttom"
+                  src={`/images/imageHolder.jpg`}
+                  height={"300px"}
+                  style={{ objectFit: "cover" }}
+                />
+              )}
+              {images?.length > 0 && singleImage && (
+                <Card.Img
+                  width={"100%"}
+                  variant="buttom"
+                  src={images[0].url}
+                  height={"100px"}
+                  onDoubleClick={() => removeImage(images[0].url)}
+                  style={{ objectFit: "cover" }}
+                />
+              )}
+              <Card.Subtitle className="m-2 text-muted">
+                اضغط مرتين لازالة الصورة
+              </Card.Subtitle>
+              <Button variant="success" className="shadow mb-2">
+                <label htmlFor="productImg">
+                  اضافة صورة
+                  <BsCameraFill className="ms-3 mb-1" />
+                </label>
+              </Button>
+              <input
+                className="hidden"
+                accept="image/*"
+                multiple={!singleImage}
+                id="productImg"
+                type="file"
+                onChange={handleImgChange}
+              />
+            </Form>{" "}
+            <>
+              <Container className="flex-r space-btw">
+                {true && (
+                  <Col xs={12}>
+                    {/* <Button
+                      className="mt-1 shadow w-100 p-2 "
+                      variant="danger"
+                      onClick={() => {
+                        setShowDeleteModal(true);
+                      }}
+                    >
+                      حذف
+                      <span className="ms-2">
+                        <BsTrashFill />
+                      </span>
+                    </Button> */}
+
+                    <Button
+                      className="mt-2 shadow w-100 p-2 m w-100"
+                      variant="success"
+                      disabled={
+                        isUploading || data?.password !== data?.passwordConfirm
+                      }
+                      type="submit"
+                      form={formName}
+                    >
+                      انهاء
+                      <span className="ms-2">
+                        <BsCheckLg />
+                      </span>
+                    </Button>
+                  </Col>
+                )}
+              </Container>
+            </>
+          </Col>
+        </Container>
+      </Card>{" "}
     </>
   );
 }

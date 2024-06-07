@@ -14,6 +14,8 @@ import {
 import { BiHome, BiLogIn, BiLogOut, BiNews, BiStats } from "react-icons/bi";
 import Link from "next/link";
 import { AuthContext } from "../context/authContext";
+import { useSession, signIn, signOut } from "next-auth/react";
+import Image from "next/image";
 
 const links = [
   {
@@ -21,11 +23,11 @@ const links = [
     href: "/",
     icon: <BiHome size={"20px"} className="me-3" />,
   },
-  {
-    name: "لوحة التحكم",
-    href: "/Dashboard/2024",
-    icon: <BiStats size={"20px"} className="me-3" />,
-  },
+  // {
+  //   name: "لوحة التحكم",
+  //   href: "/Dashboard/2024",
+  //   icon: <BiStats size={"20px"} className="me-3" />,
+  // },
   {
     name: "الخدمات",
     href: "/Products",
@@ -56,21 +58,22 @@ const Navbar = () => {
           <FaBars style={{ color: "white" }} />
         </Button>
         <div className={styles.logo}>
-          <img width={"30px"} src="/icons/7star.png" alt="drc" />
-          <span className="p-2 fos-m text-nowrap">خدماتي</span>
+          <img width={"100px"} src="/icons/7star.png" alt="drc" />
+          {/* <span className="p-2 fos-m text-nowrap">خدماتي</span> */}
         </div>
-        {user && (
-          <Link href={"/Users/" + user?.id} className="ms-auto me-2 Link">
+        <div></div>
+        {/* {!user && (
+          <Link href={"/"} className="ms-auto me-2 Link">
             <img
-              width={"35px"}
-              height={"35px"}
+              width={50}
+              height={50}
               style={{ objectFit: "cover" }}
-              src={user?.images[0].url}
+              src="/public/images/afocado.webp"
               alt="drc"
               className="rounded-circle shadow"
             />
           </Link>
-        )}
+        )} */}
       </nav>
       <Offcanvas
         show={show}
@@ -124,7 +127,9 @@ const Navbar = () => {
               <Link
                 href="/Login"
                 className="w-100 Link hover flex-r p-3 "
-                onClick={() => {}}
+                onClick={() => {
+                  signIn();
+                }}
               >
                 <BiLogIn size={"20px"} className="me-2" />
                 تسجيل الدخول
