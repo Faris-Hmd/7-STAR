@@ -114,7 +114,7 @@ function Products(props) {
                     <Card.Subtitle className="mb-1 fs-6  text-muted">
                       <small>
                         {" "}
-                        {product.category} |
+                        {product?.category} |
                         <span className="text-success text-bold fs-6  rounded ms-2">
                           {product.cost} ج.س
                         </span>
@@ -142,7 +142,7 @@ export async function getStaticProps() {
     return {
       name: product.data().name,
       cost: product.data().cost,
-      category: product?.data()?.category,
+      category: product?.data()?.category || "",
       img: product.data().images[0]?.url,
       id: product.id,
     };

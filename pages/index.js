@@ -49,14 +49,13 @@ function Homepage() {
         {/* <Col xs={5} className="p-0">
           <Image src={"/images/qman.jpg"} width={"100%"} height={"100%"} />
         </Col>{" "} */}
-        <Col className="m-auto greeting">
-          <Container>
-            <Col xs={12} lg={5}>
+        <Col className="m-auto greeting h-100 ">
+          <Container className="">
+            <Col xs={12} lg={5} className="wav  m-100">
               {" "}
-              <div className="w-100">
+              <div className="w-100 m-auto">
                 <h1>سلام عليكم ورحمة الله</h1>
                 <p> خدمات بيل قبل سبسيب ئؤري ئئيبق افاتغ تغفتغ تغيه</p>
-
                 <Form className="mt-1">
                   <InputGroup className="shadow-sm border rounded mb-2 ">
                     <Button
@@ -103,7 +102,7 @@ function Homepage() {
                     <p>{post.title}</p>
                   </Carousel.Caption>
                   <img
-                    height={"300px"}
+                    height={"500px"}
                     width={"100%"}
                     // className="d-block w-100 "
                     style={{ objectFit: "cover" }}
@@ -196,7 +195,7 @@ function Homepage() {
               className="margin-auto flex"
             >
               <img
-                src="/images/fruits.webp"
+                src="/images/qman2.jpg"
                 width={"100%"}
                 height={"100%"}
                 className="margin-auto"
@@ -265,9 +264,6 @@ function Homepage() {
             healthy weight and lifestyle.
           </p>
         </Col> */}
-      </Row>
-      <Row>
-        <h2 className="p-3 text-center ">HEALTH SERVICES</h2>
       </Row>
     </Container>
   );

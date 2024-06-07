@@ -163,10 +163,11 @@ a:hover {
 @media (min-width: 1000px) {
   .greeting {
     height: 92vh;
-    background-image: url("/images/qman.jpg");
+    background-image: url("/images/qmans.png");
     text-align: right;
     background-size: contain;
     background-repeat: no-repeat;
+    background-position-x: -170px;
   }
 }
 
@@ -181,7 +182,6 @@ a:hover {
   );
   background-size: cover;
   /* min-height: 30vh; */
-  display: flex;
 }
 .wave-b {
   color: #000000 !important;

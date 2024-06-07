@@ -44,9 +44,9 @@ function Product(props) {
       pageName={"تفاصيل الخدمة"}
     >
       <Container>
-        <Col xs={12} lg={10}>
+        <Col xs={12} lg={12}>
           <Card className="shadow-sm ">
-            <Card.Body className="p-0">
+            <Card.Body className="p-0 w-100">
               <Container className="flex-r flex-rev p-0">
                 <Col xs={12} lg={6}>
                   {product?.images?.length > 0 && (
@@ -66,6 +66,20 @@ function Product(props) {
                       })}
                     </Carousel>
                   )}
+                  <Container className="p-3">
+                    <Button variant="success" className="w-100 mb-2">
+                      تواصل
+                      <FaWhatsapp className="ms-2" />
+                    </Button>
+                    <Button
+                      variant="warning"
+                      className="w-100"
+                      href={"Edit/" + product.id}
+                    >
+                      تعديل
+                      <BsPencil className="ms-2" />
+                    </Button>
+                  </Container>
                 </Col>
                 <Col xs={12} lg={6} className="p-1">
                   <Card.Title>{product.name}</Card.Title>
@@ -84,19 +98,6 @@ function Product(props) {
                     <Card.Text>{product.details}</Card.Text>
                   </div>
                   <hr className="me-2 mt"></hr>
-
-                  <Button variant="success" className="w-100 mb-2">
-                    تواصل
-                    <FaWhatsapp className="ms-2" />
-                  </Button>
-                  <Button
-                    variant="warning"
-                    className="w-100"
-                    href={"Edit/" + product.id}
-                  >
-                    تعديل
-                    <BsPencil className="ms-2" />
-                  </Button>
                 </Col>{" "}
                 <Col xs={12} className="p-1">
                   {/* <CartButton
