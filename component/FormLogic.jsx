@@ -132,7 +132,7 @@ function FormLogic({
     try {
       console.log("upload");
 
-      const res = await fetch(baseUrl + "/api/" + route, {
+      const res = await fetch("/api/" + route, {
         method: method,
         headers: {
           "Content-Type": "application/json",
@@ -154,7 +154,7 @@ function FormLogic({
         redirect &&
           setTimeout(() => {
             router.push("/" + formName + "/" + data.docId);
-          }, 2000);
+          }, 1500);
       } else {
         const { msg } = await res.json();
         setIsUploading(false);

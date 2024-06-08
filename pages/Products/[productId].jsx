@@ -66,19 +66,35 @@ function Product(props) {
                       })}
                     </Carousel>
                   )}
-                  <Container className="p-3">
-                    <Button variant="success" className="w-100 mb-2">
-                      تواصل
-                      <FaWhatsapp className="ms-2" />
-                    </Button>
-                    <Button
-                      variant="warning"
-                      className="w-100"
-                      href={"Edit/" + product.id}
-                    >
-                      تعديل
-                      <BsPencil className="ms-2" />
-                    </Button>
+                  <Container className="p-3 flex-r gap-2">
+                    <Col xs={5}>
+                      <Button variant="success" className="w-100">
+                        تواصل
+                        <FaWhatsapp className="ms-2" />
+                      </Button>
+                    </Col>
+                    <Col xs={5}>
+                      <Button
+                        variant="warning"
+                        className="w-100"
+                        href={"Edit/" + product.id}
+                      >
+                        تعديل
+                        <BsPencil className="ms-2" />
+                      </Button>
+                    </Col>{" "}
+                    <Col>
+                      <RatingBox
+                        productId={
+                          router.query.productId && router.query.productId
+                        }
+                        productRating={
+                          props.rating
+                            ? props.rating
+                            : { likes: 0, dislikes: 0 }
+                        }
+                      />
+                    </Col>
                   </Container>
                 </Col>
                 <Col xs={12} lg={6} className="p-1">
@@ -104,14 +120,6 @@ function Product(props) {
                     product={product}
                     productId={router.query.productId && router.query.productId}
                   /> */}
-                </Col>
-                <Col xs={12}>
-                  <RatingBox
-                    productId={router.query.productId && router.query.productId}
-                    productRating={
-                      props.rating ? props.rating : { likes: 0, dislikes: 0 }
-                    }
-                  />
                 </Col>
               </Container>
             </Card.Body>

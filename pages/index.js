@@ -58,9 +58,6 @@ function Homepage() {
   return (
     <Container className="m-0 p-0 w-100">
       <Row className="greeting m-0">
-        {/* <Col xs={5} className="p-0">
-          <Image src={"/images/qman.jpg"} width={"100%"} height={"100%"} />
-        </Col>{" "} */}
         <Col className="h-100 m-0 p-0">
           <Container className="h-100 m-0 p-0">
             <Col xs={12} lg={5} className="flex blur ps-4 h-100">
@@ -79,7 +76,7 @@ function Homepage() {
                       type="text"
                       name="keyword"
                       placeholder="البحث عن خدمة"
-                      className="p-2 rounded border-0"
+                      className="p-2 rounded-0 border-0"
                     />
                   </InputGroup>
                 </Form>
@@ -91,10 +88,9 @@ function Homepage() {
           </Container>
         </Col>{" "}
       </Row>
-      <Row className="p- m-1">
+      <Row className="m-1">
         <Col lg={6}>
           <h2 className="pt-3 pb-3 text-center">العروض المميزة</h2>
-
           <Container className="flex-r p-0 shadow-lg ">
             <Carousel
               className="w-100 overflow-hidden rounded"
@@ -121,6 +117,7 @@ function Homepage() {
                       </span>
                     </Carousel.Caption>
                     <img
+                      loading="lazy"
                       height={"300px"}
                       width={"100%"}
                       // className="d-block w-100 "
@@ -162,6 +159,7 @@ function Homepage() {
                       <p>{post.title}</p>
                     </Carousel.Caption>
                     <img
+                      loading="lazy"
                       height={"300px"}
                       width={"100%"}
                       // className="d-block w-100 "
@@ -185,7 +183,7 @@ function Homepage() {
             style={{ flexWrap: "wrap", display: "flex" }}
             className="p-0 w-100"
           >
-            <Col xs={12} lg={6} className="p-3">
+            <Col xs={12} lg={6} className="p-4">
               <Container>
                 <Row className="flex-r">
                   {posts.map((post) => {
@@ -213,6 +211,7 @@ function Homepage() {
             </Col>
             <Col xs={12} lg={6} className="margin-auto flex">
               <img
+                loading="lazy"
                 src="/images/qman2.jpg"
                 width={"100%"}
                 height={"100%"}
@@ -267,21 +266,6 @@ function Homepage() {
             </Card>
           </Col>
         </Container>
-
-        {/* <Col xs={12} lg={6} className="pt-1 bg-sec">
-          <p>
-            There is often times a disconnect when it comes to living a healthy
-            lifestyle; we know what’s good for our bodies, but we don’t always
-            act accordingly. Dt. Azza Khalid aims to mend the gap between
-            knowing and doing, by catering to each individual's unique
-            circumstances. Whether it is weight loss or weight management,
-            managing a dietary condition, or developing a healthy relationship
-            with food, Dt. Azza Khalid offers a variety of services and packages
-            designed to meet your needs. <br />
-            Get a healthy diet plan according to your health status to get a
-            healthy weight and lifestyle.
-          </p>
-        </Col> */}
       </Row>
     </Container>
   );

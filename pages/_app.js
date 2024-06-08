@@ -6,11 +6,12 @@ import "../styles/util.css";
 import "bootstrap/dist/css/bootstrap.rtl.min.css";
 import { AuthProvider } from "../context/authContext";
 import "react-toastify/dist/ReactToastify.css";
-import { SSRProvider, ToastContainer } from "react-bootstrap";
+import { SSRProvider } from "react-bootstrap";
 import { SessionProvider } from "next-auth/react";
+import { ToastContainer } from "react-toastify";
 const internetUrl = "https://7-star.vercel.app";
 const localurl = " http://localhost:3005";
-export let baseUrl = internetUrl;
+export let baseUrl = localurl;
 // import { Inter, Arya } from "@next/font/google";
 // const font = Arya({ subsets: ["latin"], weight: ["700"] });
 // if (process && process.env.NODE_ENV === "development") {

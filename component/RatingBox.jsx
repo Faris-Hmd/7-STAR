@@ -64,14 +64,12 @@ function RatingBox({ productRating, productId }) {
   }, []);
 
   return (
-    <Container className="bg-sec shadow-sm  mt-3">
+    <Container className="bg-sec  mt-3">
       <Col>
         <h2 className="text-start p-1">قم بتقييم الخدمة</h2>
       </Col>
 
-      <Col>
-        <RatingBar productRating={productRating} />
-      </Col>
+      <Col>{/* <RatingBar productRating={productRating} /> */}</Col>
       <Col>
         <Button
           variant=""
@@ -80,8 +78,11 @@ function RatingBox({ productRating, productId }) {
           }`}
           onClick={handleLike}
         >
-          <span className="ms-1 me-2">اعجبني</span>
-          {myRating === "like" ? <FaThumbsUp /> : <FaRegThumbsUp />}
+          <div>
+            <span className="ms-1 me-2">اعجبني</span>
+            {myRating === "like" ? <FaThumbsUp /> : <FaRegThumbsUp />}
+            <div>42K</div>
+          </div>
         </Button>
         <span className="ms-2 me-2"> |</span>
         <Button
@@ -91,8 +92,11 @@ function RatingBox({ productRating, productId }) {
           }`}
           onClick={handleDislike}
         >
-          <span className="ms-1 me-2">لم يعجبني</span>
-          {myRating === "dislike" ? <FaThumbsDown /> : <FaRegThumbsDown />}
+          <div>
+            <span className="ms-1 me-2">لم يعجبني</span>
+            {myRating === "dislike" ? <FaThumbsDown /> : <FaRegThumbsDown />}
+            <div>2K</div>
+          </div>
         </Button>{" "}
       </Col>
     </Container>
