@@ -18,7 +18,7 @@
 .bg-liner {
   background: linear-gradient(
     160deg,
-    rgba(249, 108, 0, 0.2) 0%,
+    rgba(16, 12, 10, 0.2) 0%,
     rgba(29, 184, 0, 0.2) 100%
   );
 }
@@ -69,7 +69,7 @@ a:hover {
 }
 
 .h-100 {
-  min-height: 90vh;
+  min-height: 100%;
 }
 .fc-w {
   color: #eee !important;
@@ -151,6 +151,7 @@ a:hover {
 }
 .greeting {
   text-align: right;
+  color: #eee;
   height: 50svh;
   background-size: contain;
   background-repeat: no-repeat;
@@ -158,19 +159,33 @@ a:hover {
   /* justify-content: center; */
   align-items: center;
   flex-wrap: nowrap;
+  background-image: url("/images/qmans.png");
+  text-align: right;
+  background-size: contain;
+  background-repeat: no-repeat;
+  backdrop-filter: blur(10px);
+  overflow: hidden;
 }
 
-@media (min-width: 1000px) {
+@media (min-width: 700px) {
   .greeting {
-    height: 92vh;
+    height: 80vh;
     background-image: url("/images/qmans.png");
     text-align: right;
-    background-size: contain;
+    background-size: cover;
     background-repeat: no-repeat;
-    background-position-x: -170px;
+    background-position-y: -170px;
   }
 }
-
+.blur {
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  background: linear-gradient(
+    230deg,
+    rgba(255, 115, 9, 0.673) 0%,
+    rgba(29, 184, 0, 0.2) 100%
+  );
+}
 .wave {
   color: #eee;
   background: rgb(255, 136, 0);
@@ -183,13 +198,15 @@ a:hover {
   background-size: cover;
   /* min-height: 30vh; */
 }
-.wave-b {
-  color: #000000 !important;
+.wave-2 {
+  color: white !important;
   background: linear-gradient(
-    180deg,
-    rgba(185, 255, 168, 0.623) 0%,
-    rgba(255, 255, 255, 0.633) 100%
+    190deg,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(137, 117, 117, 0.875) 100%
   );
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
 .post-img {

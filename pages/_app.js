@@ -10,13 +10,7 @@ import { SSRProvider, ToastContainer } from "react-bootstrap";
 import { SessionProvider } from "next-auth/react";
 const internetUrl = "https://7-star.vercel.app";
 const localurl = " http://localhost:3005";
-<<<<<<< HEAD
 export let baseUrl = internetUrl;
-=======
-export let baseUrl = "http://7-star.vercel.app";
-
-
->>>>>>> f7eb35a2e96cc2f050622886febf39029e8c545d
 // import { Inter, Arya } from "@next/font/google";
 // const font = Arya({ subsets: ["latin"], weight: ["700"] });
 // if (process && process.env.NODE_ENV === "development") {

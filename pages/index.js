@@ -14,6 +14,8 @@ import { BiSearch } from "react-icons/bi";
 const posts = [
   {
     img: "sport.jpg",
+    logo: "logo-1.svg",
+    cat: "cat-2.webp",
     title: "العرض الاول",
     cost: 299,
     post: "Jumpstart your healthy habits today with an experienced and responsible Clinical Nutritionist. Whatever your current diet is, Dt. Azza Khalid carefully evaluates each client and formulates a personalized plan based on your specific needs. So if Sports Nutrition Education is what you’re looking for, schedule a session today",
@@ -21,19 +23,29 @@ const posts = [
   {
     img: "gain.webp",
     cost: 599,
+    cat: "cat-1.webp",
+
+    logo: "logo-2.svg",
 
     title: "العرض الثاني",
     post: "For years, Dt. Azza Khalid has been providing Weight gain Counseling with comprehensive plans that are catered to each individual’s needs. This specialized service puts individuals on the right track to healthy eating and living. Get in touch today and start taking control of your life with these great tools and technique.",
   },
   {
     img: "diet.jpg",
+    cat: "cat-3.webp",
+
     title: "العرض الثالث",
     cost: 299,
+    logo: "logo-3.svg",
 
     post: "Whatever your current healthy status and the diseases youhave, Dt. Azza Khalid carefully evaluates each client and formulates a personalized plan based on your specific needs. Send us your medical results and you will get a good diet plan according to your health status Whatever your current healthy status.",
   },
   {
     img: "loss.jpg",
+    cat: "cat-4.webp",
+
+    logo: "logo-4.svg",
+
     cost: 899,
     title: "العرض الرابع",
     post: "For years, Dt. Azza Khalid has been providing Weight Loss Counseling with comprehensive plans that are catered to each individual’s needs. This specialized service puts individuals on the right track to healthy eating and living. Get in touch today and start taking control of your life with these great tools and techniques.",
@@ -44,20 +56,19 @@ function Homepage() {
   // useEffect(() => window.scrollTo(0, 0), []);
 
   return (
-    <Container className="m-0 m-auto w-100">
-      <Row className="wave ">
+    <Container className="m-0 p-0 w-100">
+      <Row className="greeting m-0">
         {/* <Col xs={5} className="p-0">
           <Image src={"/images/qman.jpg"} width={"100%"} height={"100%"} />
         </Col>{" "} */}
-        <Col className="m-auto greeting h-100 ">
-          <Container className="">
-            <Col xs={12} lg={5} className="wav  m-100">
-              {" "}
-              <div className="w-100 m-auto">
+        <Col className="h-100 m-0 p-0">
+          <Container className="h-100 m-0 p-0">
+            <Col xs={12} lg={5} className="flex blur ps-4 h-100">
+              <div className="me-auto">
                 <h1>سلام عليكم ورحمة الله</h1>
                 <p> خدمات بيل قبل سبسيب ئؤري ئئيبق افاتغ تغفتغ تغيه</p>
-                <Form className="mt-1">
-                  <InputGroup className="shadow-sm border rounded mb-2 ">
+                <Form className="">
+                  <InputGroup className="shadow-sm border rounded mb-2">
                     <Button
                       variant="success"
                       className="bg-sec text-muted border-0"
@@ -72,7 +83,7 @@ function Homepage() {
                     />
                   </InputGroup>
                 </Form>
-                <Button href="/Products" className="bg-liner" variant="danger">
+                <Button href="/Products" variant="success">
                   تصفح الخدمات
                 </Button>
               </div>
@@ -80,89 +91,101 @@ function Homepage() {
           </Container>
         </Col>{" "}
       </Row>
-      <Row className="p-0 m-0">
-        <h2 className="pt-3 pb-3 text-center">التصنيفات و الاقسام</h2>
+      <Row className="p- m-1">
+        <Col lg={6}>
+          <h2 className="pt-3 pb-3 text-center">العروض المميزة</h2>
 
-        <Container className="flex-r p-0 shadow-lg ">
-          <Carousel className="w-100 overflow-hidden rounded">
-            {posts.map((post, index) => {
-              return (
-                <Carousel.Item key={index} className="rounded overflow-hidden">
-                  <Carousel.Caption
-                    className="p-1 ps-3"
-                    style={{
-                      bottom: "0",
-                      right: "0",
-                      minWidth: "100%",
-                      textAlign: "right",
-                      background: "gray",
-                      color: "white",
-                    }}
+          <Container className="flex-r p-0 shadow-lg ">
+            <Carousel
+              className="w-100 overflow-hidden rounded"
+              indicators={false}
+            >
+              {posts.map((post, index) => {
+                return (
+                  <Carousel.Item
+                    key={index}
+                    className="rounded overflow-hidden"
                   >
-                    <p>{post.title}</p>
-                  </Carousel.Caption>
-                  <img
-                    height={"500px"}
-                    width={"100%"}
-                    // className="d-block w-100 "
-                    style={{ objectFit: "cover" }}
-                    src={`/images/${post.img}`}
-                    alt={`${index + 1} slide`}
-                  />
-                </Carousel.Item>
-              );
-            })}
-          </Carousel>
-        </Container>
+                    <Carousel.Caption
+                      className="wave-2  p-0 ps-3 fs-5"
+                      style={{
+                        bottom: "0",
+                        right: "0",
+                        minWidth: "100%",
+                        textAlign: "right",
+                      }}
+                    >
+                      <span>
+                        {post.title}
+                        <pre className="text-success">{post.cost} RQ</pre>
+                      </span>
+                    </Carousel.Caption>
+                    <img
+                      height={"300px"}
+                      width={"100%"}
+                      // className="d-block w-100 "
+                      style={{ objectFit: "cover" }}
+                      src={`/images/${post.img}`}
+                      alt={`${index + 1} slide`}
+                    />
+                  </Carousel.Item>
+                );
+              })}
+            </Carousel>
+          </Container>
+        </Col>
+        <Col lg={6}>
+          {" "}
+          <h2 className="pt-3 pb-3 text-center">التصنيفات و الاقسام</h2>
+          <Container className="flex-r p-0 shadow-lg m-0">
+            <Carousel
+              className="w-100 overflow-hidden rounded"
+              indicators={false}
+            >
+              {posts.map((post, index) => {
+                return (
+                  <Carousel.Item
+                    key={index}
+                    className="rounded overflow-hidden"
+                  >
+                    <Carousel.Caption
+                      className="p-1 ps-3 blur fs-3"
+                      style={{
+                        bottom: "0",
+                        right: "0",
+                        minWidth: "100%",
+                        textAlign: "right",
+                        background: "",
+                        color: "white",
+                      }}
+                    >
+                      <p>{post.title}</p>
+                    </Carousel.Caption>
+                    <img
+                      height={"300px"}
+                      width={"100%"}
+                      // className="d-block w-100 "
+                      style={{ objectFit: "cover" }}
+                      src={`/images/${post.cat}`}
+                      alt={`${index + 1} slide`}
+                    />
+                  </Carousel.Item>
+                );
+              })}
+            </Carousel>
+          </Container>
+        </Col>
       </Row>
-      <Row className="p-0 m-0">
-        <h2 className="pt-3 pb-3 text-center">العروض المميزة</h2>
 
-        <Container className="flex-r p-0 shadow-lg ">
-          <Carousel
-            className="w-100 overflow-hidden rounded"
-            indicators={false}
-          >
-            {posts.map((post, index) => {
-              return (
-                <Carousel.Item key={index} className="rounded overflow-hidden">
-                  <Carousel.Caption
-                    className="wave-b p-1 ps-3"
-                    style={{
-                      bottom: "0",
-                      right: "0",
-                      minWidth: "100%",
-                      textAlign: "right",
-                    }}
-                  >
-                    <p>
-                      {post.title}
-                      <pre className="text-success">{post.cost} RQ</pre>
-                    </p>
-                  </Carousel.Caption>
-                  <img
-                    height={"300px"}
-                    width={"100%"}
-                    // className="d-block w-100 "
-                    style={{ objectFit: "cover" }}
-                    src={`/images/${post.img}`}
-                    alt={`${index + 1} slide`}
-                  />
-                </Carousel.Item>
-              );
-            })}
-          </Carousel>
-        </Container>
-      </Row>
-      <Row className="m-1 mt-2">
+      <Row className="mt-2 overflow-hidden m-2">
         <h2 className="pt-3 pb-3 text-center">نبذة عن خدمات</h2>
 
-        <Card className="p-0 shadow">
+        <Card className="p-0 shadow overflow-hidden">
           <Container
             style={{ flexWrap: "wrap", display: "flex" }}
-            className="p-0"
+            className="p-0 w-100"
           >
-            <Col xs={12} lg={6} style={{ background: "" }}>
+            <Col xs={12} lg={6} className="p-3">
               <Container>
                 <Row className="flex-r">
                   {posts.map((post) => {
@@ -171,12 +194,12 @@ function Homepage() {
                         <Card classname="border-0 " style={{ border: "none" }}>
                           <Card.Title>{post.title}</Card.Title>
                           <Card.Img
-                            height={"150px"}
-                            src={`/images/${post.img}`}
+                            height={"120px"}
+                            width={"100%"}
+                            src={`/images/${post.logo}`}
                           ></Card.Img>
                           <Card.Text>
                             <small>
-                              {" "}
                               سلام عليكم ورحمة الله نكشس مشعساي مخهايس خهعيس سما
                               يخكهسا
                             </small>
@@ -188,12 +211,7 @@ function Homepage() {
                 </Row>
               </Container>
             </Col>
-            <Col
-              xs={12}
-              lg={6}
-              style={{ background: "red", objectFit: "cover" }}
-              className="margin-auto flex"
-            >
+            <Col xs={12} lg={6} className="margin-auto flex">
               <img
                 src="/images/qman2.jpg"
                 width={"100%"}
