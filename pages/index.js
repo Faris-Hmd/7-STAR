@@ -85,7 +85,7 @@ function Homepage() {
                   </InputGroup>
                 </Form>
                 <Button href="/Products" variant="success">
-                  تصفح الخدمات
+                  تصفح
                 </Button>
               </div>
             </Col>
