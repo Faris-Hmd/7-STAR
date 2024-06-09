@@ -161,7 +161,7 @@ a:hover {
   flex-wrap: nowrap;
   background-image: url("/images/qmans.png");
   text-align: right;
-  background-size: contain;
+  background-size: cover;
   background-repeat: no-repeat;
   backdrop-filter: blur(10px);
   overflow: hidden;
