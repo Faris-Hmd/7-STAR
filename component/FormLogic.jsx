@@ -45,7 +45,7 @@ function FormLogic({
   }
 
   useEffect(() => {
-    data.images && setImgs(data.images);
+    // data.images[0].url && setImgs(data.images);
   }, [data]);
 
   const handleChange = (event) => {

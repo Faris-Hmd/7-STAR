@@ -16,12 +16,15 @@ const posts = [
     img: "sport.jpg",
     logo: "logo-1.svg",
     cat: "cat-2.webp",
+    levelLogo: "level-1.png",
     title: "العرض الاول",
     cost: 299,
     post: "Jumpstart your healthy habits today with an experienced and responsible Clinical Nutritionist. Whatever your current diet is, Dt. Azza Khalid carefully evaluates each client and formulates a personalized plan based on your specific needs. So if Sports Nutrition Education is what you’re looking for, schedule a session today",
   },
   {
     img: "gain.webp",
+    levelLogo: "level-2.png",
+
     cost: 599,
     cat: "cat-1.webp",
 
@@ -37,6 +40,7 @@ const posts = [
     title: "العرض الثالث",
     cost: 299,
     logo: "logo-3.svg",
+    levelLogo: "level-3.png",
 
     post: "Whatever your current healthy status and the diseases youhave, Dt. Azza Khalid carefully evaluates each client and formulates a personalized plan based on your specific needs. Send us your medical results and you will get a good diet plan according to your health status Whatever your current healthy status.",
   },
@@ -225,46 +229,29 @@ function Homepage() {
         <h2 className="pt-3 pb-3 text-center">العروض والاشتراكات</h2>
 
         <Container className="flex-r ">
-          {/* {post.} */}
-          <Col xs={12} lg={4} style={{ scale: "95%" }}>
-            <Card>
-              <Card.Title className="ms-3 pt-3 ">العرض الاول</Card.Title>
-              <Card.Body>
-                <Card.Img height={"200px"} src="/images/diet.jpg"></Card.Img>
-                <Card.Text>
-                  سلام عليكم كشس حثخق حلف قفغا للافس فايقب تغقسقل تسقثفا سقابتغ
-                  سليقات يقايتبي
-                </Card.Text>
-                <Button variant="success">تفاصيل اكثر</Button>
-              </Card.Body>
-            </Card>
-          </Col>
-          <Col xs={12} lg={4} style={{ scale: "95%" }}>
-            <Card>
-              <Card.Title className="ms-3 pt-3 ">العرض الثاني</Card.Title>
-              <Card.Body>
-                <Card.Img height={"200px"} src="/images/sport.jpg"></Card.Img>
-                <Card.Text>
-                  سلام عليكم كشس حثخق حلف قفغا للافس فايقب تغقسقل تسقثفا سقابتغ
-                  سليقات يقايتبي
-                </Card.Text>
-                <Button variant="success">تفاصيل اكثر</Button>
-              </Card.Body>
-            </Card>
-          </Col>
-          <Col xs={12} lg={4} style={{ scale: "95%" }}>
-            <Card>
-              <Card.Title className="ms-3 pt-3 ">العرض الثالث</Card.Title>
-              <Card.Body>
-                <Card.Img height={"200px"} src="/images/gain.webp"></Card.Img>
-                <Card.Text>
-                  سلام عليكم كشس حثخق حلف قفغا للافس فايقب تغقسقل تسقثفا سقابتغ
-                  سليقات يقايتبي
-                </Card.Text>
-                <Button variant="success">تفاصيل اكثر</Button>
-              </Card.Body>
-            </Card>
-          </Col>
+          {posts.slice(0, 3).map((post) => {
+            return (
+              <Col xs={12} lg={4} style={{ scale: "95%" }}>
+                <Card>
+                  <Card.Title className="ms-3 pt-3 ">{post.title}</Card.Title>
+                  <Card.Body className="flex">
+                    <Card.Img
+                      style={{ width: "200px" }}
+                      width={"500px"}
+                      src={`/icons/${post.levelLogo}`}
+                    ></Card.Img>
+                    <Card.Text>
+                      سلام عليكم كشس حثخق حلف قفغا للافس فايقب تغقسقل تسقثفا
+                      سقابتغ سليقات يقايتبي
+                    </Card.Text>
+                    <Button variant="success" className="me-auto">
+                      تفاصيل اكثر
+                    </Button>
+                  </Card.Body>
+                </Card>
+              </Col>
+            );
+          })}
         </Container>
       </Row>
     </Container>

@@ -83,18 +83,6 @@ function Product(props) {
                         <BsPencil className="ms-2" />
                       </Button>
                     </Col>{" "}
-                    <Col>
-                      <RatingBox
-                        productId={
-                          router.query.productId && router.query.productId
-                        }
-                        productRating={
-                          props.rating
-                            ? props.rating
-                            : { likes: 0, dislikes: 0 }
-                        }
-                      />
-                    </Col>
                   </Container>
                 </Col>
                 <Col xs={12} lg={6} className="p-1">
@@ -121,10 +109,19 @@ function Product(props) {
                     productId={router.query.productId && router.query.productId}
                   /> */}
                 </Col>
+                <Col>
+                  <RatingBox
+                    productId={router.query.productId && router.query.productId}
+                    productRating={
+                      props.rating ? props.rating : { likes: 0, dislikes: 0 }
+                    }
+                  />
+                </Col>
               </Container>
             </Card.Body>
           </Card>
         </Col>
+
         <Col xs={12}>
           <h2 className="text-start p-2">خدمات ذات صلة</h2>
           <Container className="flex-r p-0 p-relative">
