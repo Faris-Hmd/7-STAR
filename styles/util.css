@@ -136,7 +136,7 @@ a:hover {
 }
 .bg-clr-green {
   color: #eee !important;
-  background-color: rgb(19, 111, 2) !important;
+  background-color: rgb(82, 5, 81) !important;
   /* border: 2px solid rgb(19, 111, 2) !important; */
 }
 
@@ -161,7 +161,7 @@ a:hover {
   flex-wrap: nowrap;
   background-image: url("/images/qmans.png");
   text-align: right;
-  background-size: contain;
+  background-size: cover;
   background-repeat: no-repeat;
   backdrop-filter: blur(10px);
   overflow: hidden;

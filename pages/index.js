@@ -66,8 +66,8 @@ function Homepage() {
           <Container className="h-100 m-0 p-0">
             <Col xs={12} lg={5} className="flex blur ps-4 h-100">
               <div className="me-auto">
-                <h1>سلام عليكم ورحمة الله</h1>
-                <p> خدمات بيل قبل سبسيب ئؤري ئئيبق افاتغ تغفتغ تغيه</p>
+                <h1>سلام عليكم</h1>
+                <p>خدمات بيل قبل اتل تنلل نعا نعلان عناعلا تا </p>
                 <Form className="">
                   <InputGroup className="shadow-sm border rounded mb-2">
                     <Button
@@ -85,7 +85,7 @@ function Homepage() {
                   </InputGroup>
                 </Form>
                 <Button href="/Products" variant="success">
-                  تصفح الخدمات
+                  تصفح
                 </Button>
               </div>
             </Col>

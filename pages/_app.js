@@ -1,6 +1,14 @@
 /** @format */
+<<<<<<< HEAD
 import "../styles/globals.css";
 import "../styles/util.css";
+=======
+
+import "../styles/globals.css";
+import "../styles/util.css";
+import Layout from "../component/Layout";
+// import "bootstrap/dist/css/bootstrap.css";
+>>>>>>> a8093c2eb6189634df32ed8f6eddafccab3b473a
 import "bootstrap/dist/css/bootstrap.rtl.min.css";
 import "react-toastify/dist/ReactToastify.css";
 import Layout from "../component/Layout";
