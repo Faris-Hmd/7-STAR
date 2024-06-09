@@ -1,7 +1,8 @@
 /** @format */
-import Layout from "../component/Layout";
+
 import "../styles/globals.css";
 import "../styles/util.css";
+import Layout from "../component/Layout";
 // import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap/dist/css/bootstrap.rtl.min.css";
 import { AuthProvider } from "../context/authContext";
