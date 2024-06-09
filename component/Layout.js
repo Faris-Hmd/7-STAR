@@ -1,9 +1,10 @@
 /** @format */
 import Head from "next/head";
-import { ThemeProvider, ToastContainer } from "react-bootstrap";
+import { ThemeProvider } from "react-bootstrap";
 // import ButtomNav from "./ButtomNav";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
+import { ToastContainer } from "react-toastify";
 
 /** @format */
 const Layout = ({ children }) => {
@@ -36,8 +37,17 @@ const Layout = ({ children }) => {
           <div className="rightSide"></div>
           <div className="leftSide"></div>
           <Navbar />
-          {/* <ButtomNav /> */}
-          <main className="main">{children}</main>
+          <main className="main">
+            <ToastContainer
+              limit={1}
+              autoClose={1500}
+              position={"top-center"}
+              rtl
+              closeOnClick
+              hideProgressBar
+            />
+            {children}
+          </main>
           <footer>
             <Footer />
           </footer>

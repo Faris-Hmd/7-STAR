@@ -143,7 +143,7 @@ export async function getStaticProps() {
       name: product.data().name,
       cost: product.data().cost,
       category: product?.data()?.category || "",
-      img: product.data().images[0]?.url,
+      img: product?.data().images[0]?.url || "",
       id: product.id,
     };
   });

@@ -43,7 +43,7 @@ function Product(props) {
       title={"تفاصيل المنتج"}
       pageName={"تفاصيل الخدمة"}
     >
-      <Container>
+      <Container className="mt-2">
         <Col xs={12} lg={12}>
           <Card className="shadow-sm ">
             <Card.Body className="p-0 w-100">

@@ -1,14 +1,13 @@
 /** @format */
-import Layout from "../component/Layout";
 import "../styles/globals.css";
 import "../styles/util.css";
-// import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap/dist/css/bootstrap.rtl.min.css";
-import { AuthProvider } from "../context/authContext";
 import "react-toastify/dist/ReactToastify.css";
+import Layout from "../component/Layout";
+// import "bootstrap/dist/css/bootstrap.css";
+import { AuthProvider } from "../context/authContext";
 import { SSRProvider } from "react-bootstrap";
 import { SessionProvider } from "next-auth/react";
-import { ToastContainer } from "react-toastify";
 const internetUrl = "https://7-star.vercel.app";
 const localurl = " http://localhost:3005";
 export let baseUrl =
@@ -28,14 +27,6 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }) {
         <AuthProvider>
           <SessionProvider session={session}>
             <Layout>
-              <ToastContainer
-                limit={1}
-                autoClose={1500}
-                position={"top-center"}
-                rtl
-                closeOnClick
-                hideProgressBar
-              />
               <Component {...pageProps} />
             </Layout>
           </SessionProvider>

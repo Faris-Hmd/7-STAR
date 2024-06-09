@@ -195,11 +195,7 @@ function Homepage() {
                       <Col className="p-1" xs={6}>
                         <Card classname="border-0 " style={{ border: "none" }}>
                           <Card.Title>{post.title}</Card.Title>
-                          <Card.Img
-                            height={"120px"}
-                            width={"100%"}
-                            src={`/images/${post.logo}`}
-                          ></Card.Img>
+                          <img width={"80%"} src={`/images/${post.logo}`}></img>
                           <Card.Text>
                             <small>
                               سلام عليكم ورحمة الله نكشس مشعساي مخهايس خهعيس سما

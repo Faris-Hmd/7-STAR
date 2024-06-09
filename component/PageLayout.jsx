@@ -25,8 +25,8 @@ export default function PageLayout({
   }
   // if (user?.role === role || role === "ALL" || user?.role === "ADMIN") {
   return (
-    <Container className="p-1">
-      <Row className="bg-sec flex-r  shadow-sm border">
+    <Container className="p-0 m-0 w-100">
+      <Row className="bg-sec flex-r  shadow-sm border p-1">
         <Col xs={5}>
           <div className="p-2 fs-4">{pageName}</div>
         </Col>
@@ -34,7 +34,7 @@ export default function PageLayout({
           {navComp}
         </Col>
       </Row>
-      <Row> {children}</Row>
+      <Row className="m-1"> {children}</Row>
     </Container>
   );
   // } else {
