@@ -160,7 +160,7 @@ function Homepage() {
           </Container>        
         {/* <Col lg={6}> */}
           {/* {" "} */}
-          <h2 className="pt-3 pb-3 text-center">العروض المميزة</h2>
+          <h2 className="pt-3 pb-3 text-center">العروض</h2>
           <Container className="flex-r p-0 shadow-lg m-0">
           <Carousel responsive={responsive}>
           <div className="cards">
@@ -169,7 +169,7 @@ function Homepage() {
               src="https://lumiereclinic.co.uk/wp-content/uploads/2023/04/IMG_6414-scaled-e1684152957366.jpg"
             ></img>
             <h3>موعد طبيب في مركز سلمى الصحي</h3>
-            <p className="price">QAR100s</p>
+            <p className="price">QAR100</p>
             <button>أضف إلى السلة</button>
           </div>
           <div className="cards">
