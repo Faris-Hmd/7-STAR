@@ -111,10 +111,13 @@ function Homepage() {
           </Container>
         </Col>{" "}
       </Row>
+      <Container className="flex-r p-0 shadow-lg ">
       {/* <Row className="m-1"> */}
         {/* <Col lg={6}>
           <h2 className="pt-3 pb-3 text-center">العروض المميزة</h2>
           <Container className="flex-r p-0 shadow-lg ">
+
+          
             <Carousel
               className="w-100 overflow-hidden rounded"
               indicators={false}
@@ -154,6 +157,7 @@ function Homepage() {
             </Carousel>
           </Container>
         </Col> */}
+          </Container>        
         {/* <Col lg={6}> */}
           {/* {" "} */}
           <h2 className="pt-3 pb-3 text-center">العروض المميزة</h2>
