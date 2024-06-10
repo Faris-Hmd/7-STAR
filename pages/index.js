@@ -8,28 +8,10 @@ import {
   Row,
 } from "react-bootstrap";
 import { BiSearch } from "react-icons/bi";
-import Carousel from 'react-multi-carousel';
-import 'react-multi-carousel/lib/styles.css';
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
+
 //
-const responsive = {
-  superLargeDesktop: {
-    // the naming can be any, depends on you.
-    breakpoint: { max: 4000, min: 3000 },
-    items: 5,
-  },
-  desktop: {
-    breakpoint: { max: 3000, min: 1024 },
-    items: 4,
-  },
-  tablet: {
-    breakpoint: { max: 1024, min: 464 },
-    items: 2,
-  },
-  mobile: {
-    breakpoint: { max: 464, min: 0 },
-    items: 1,
-  },
-};
 const posts = [
   {
     img: "sport.jpg",
@@ -74,7 +56,25 @@ const posts = [
     post: "For years, Dt. Azza Khalid has been providing Weight Loss Counseling with comprehensive plans that are catered to each individual’s needs. This specialized service puts individuals on the right track to healthy eating and living. Get in touch today and start taking control of your life with these great tools and techniques.",
   },
 ];
-
+const responsive = {
+  superLargeDesktop: {
+    // the naming can be any, depends on you.
+    breakpoint: { max: 4000, min: 3000 },
+    items: 5,
+  },
+  desktop: {
+    breakpoint: { max: 3000, min: 1024 },
+    items: 4,
+  },
+  tablet: {
+    breakpoint: { max: 1024, min: 464 },
+    items: 2,
+  },
+  mobile: {
+    breakpoint: { max: 464, min: 0 },
+    items: 1,
+  },
+};
 function Homepage() {
   // useEffect(() => window.scrollTo(0, 0), []);
 
@@ -111,14 +111,11 @@ function Homepage() {
           </Container>
         </Col>{" "}
       </Row>
-      <Container className="flex-r p-0 shadow-lg ">
       {/* <Row className="m-1"> */}
-        {/* <Col lg={6}>
-          <h2 className="pt-3 pb-3 text-center">العروض المميزة</h2>
-          <Container className="flex-r p-0 shadow-lg ">
-
-          
-            <Carousel
+      {/* <Col lg={6}>
+          <h2 className="pt-3 pb-3 text-center">العروض المميزة</h2> */}
+      <Container className="flex-r p-0 shadow-lg ">
+        {/* <Carousel
               className="w-100 overflow-hidden rounded"
               indicators={false}
             >
@@ -154,22 +151,21 @@ function Homepage() {
                   </Carousel.Item>
                 );
               })}
-            </Carousel>
-          </Container>
-        </Col> */}
-          </Container>        
-        {/* <Col lg={6}> */}
-          {/* {" "} */}
-          <h2 className="pt-3 pb-3 text-center">العروض</h2>
-          <Container className="flex-r p-0 shadow-lg m-0">
-          <Carousel responsive={responsive}>
+            </Carousel> */}
+      </Container>
+      {/* </Col> */}
+      {/* <Col lg={6}>
+          {" "} */}
+      <h2 className="pt-3 pb-3 text-center">العروض المميزة</h2>
+      <Container>
+        <Carousel responsive={responsive}>
           <div className="cards">
             <img
               className="product--image"
               src="https://lumiereclinic.co.uk/wp-content/uploads/2023/04/IMG_6414-scaled-e1684152957366.jpg"
             ></img>
             <h3>موعد طبيب في مركز سلمى الصحي</h3>
-            <p className="price">QAR100</p>
+            <p className="price">QAR100s</p>
             <button>أضف إلى السلة</button>
           </div>
           <div className="cards">
@@ -237,7 +233,7 @@ function Homepage() {
           </div>
         </Carousel>
 
-            {/* <Carousel
+        {/* <Carousel
               className="w-100 overflow-hidden rounded"
               indicators={false}
             >
@@ -273,8 +269,8 @@ function Homepage() {
                 );
               })}
             </Carousel> */}
-          </Container>
-        {/* </Col>
+      </Container>
+      {/* </Col>
       </Row> */}
 
       <Row className="mt-2 overflow-hidden m-2">
