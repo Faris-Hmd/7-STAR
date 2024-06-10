@@ -155,7 +155,7 @@ function Homepage() {
           </Container>
         </Col> */}
         {/* <Col lg={6}> */}
-          {" "}
+          {/* {" "} */}
           <h2 className="pt-3 pb-3 text-center">العروض المميزة</h2>
           <Container className="flex-r p-0 shadow-lg m-0">
           <Carousel responsive={responsive}>
