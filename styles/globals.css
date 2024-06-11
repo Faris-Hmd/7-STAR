@@ -8,7 +8,8 @@ body {
   font-family: var(--bs-body-font-family) !important;
 }
 /* Some new CSS. This is the start: */
-/* html {
+/* 
+html {
   box-sizing: border-box;
 }
 
@@ -685,7 +686,7 @@ textarea {
   margin: 0 0 20px;
 }
 
-/* .testimonials-block {
+.testimonials-block {
   padding: 90px 0 70px;
   background-position: 50% 0;
   background-size: cover;
@@ -693,7 +694,7 @@ textarea {
   background-image: url('./assets/images/bg-testimonial.jpg');
   position: relative;
   color: #fff;
-} */
+}
 
 .testimonials-block:before {
   content: '';
