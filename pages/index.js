@@ -9,7 +9,6 @@ import {
 import {
   Button,
   Card,
-  Carousel,
   Col,
   Container,
   Form,
@@ -17,6 +16,9 @@ import {
   Row,
 } from "react-bootstrap";
 import { BiSearch } from "react-icons/bi";
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
+import AppServices from '../component/services';
 import { db } from "../firebase/firebase";
 
 //
@@ -65,7 +67,7 @@ const posts = [
   },
 ];
 
-function Homepage(props) {
+function Homepage() {
   // useEffect(() => window.scrollTo(0, 0), []);
 
   return (
@@ -103,10 +105,7 @@ function Homepage(props) {
       </Row>
       <Row className="m-1">
         <Col lg={6}>
-          {" "}
-          {props.products?.length && (
-            <h2 className="pt-3 pb-3 text-center">العروض المميزة</h2>
-          )}
+          <h2 className="pt-3 pb-3 text-center">العروض المميزة</h2>
           <Container className="flex-r p-0 shadow-lg ">
             <Carousel
               className="w-100 overflow-hidden rounded"
@@ -144,14 +143,89 @@ function Homepage(props) {
                   </Carousel.Item>
                 );
               })}
-            </Carousel>
-          </Container>
-        </Col>
-        <Col lg={6}>
-          {" "}
-          <h2 className="pt-3 pb-3 text-center">التصنيفات و الاقسام</h2>
-          <Container className="flex-r p-0 shadow-lg m-0">
-            <Carousel
+            </Carousel> */}
+      </Container>
+      {/* </Col> */}
+      {/* <Col lg={6}>
+          {" "} */}
+      <h2 className="pt-3 pb-3 text-center">العروض المميزة</h2>
+      <Container>
+        <Carousel responsive={responsive}>
+          <div className="cards">
+            <img
+              className="product--image"
+              src="https://lumiereclinic.co.uk/wp-content/uploads/2023/04/IMG_6414-scaled-e1684152957366.jpg"
+            ></img>
+            <h3>موعد طبيب في مركز سلمى الصحي</h3>
+            <p className="price">QAR100s</p>
+            <button>أضف إلى السلة</button>
+          </div>
+          <div className="cards">
+            <img
+              className="product--image"
+              src="https://lumiereclinic.co.uk/wp-content/uploads/2023/04/IMG_6414-scaled-e1684152957366.jpg"
+            ></img>
+            <h3>موعد طبيب في مركز سلمى الصحي</h3>
+            <p className="price">QAR100s</p>
+            <button>أضف إلى السلة</button>
+          </div>
+          <div className="cards">
+            <img
+              className="product--image"
+              src="https://lumiereclinic.co.uk/wp-content/uploads/2023/04/IMG_6414-scaled-e1684152957366.jpg"
+            ></img>
+            <h3>موعد طبيب في مركز سلمى الصحي</h3>
+            <p className="price">QAR100s</p>
+            <button>أضف إلى السلة</button>
+          </div>
+          <div className="cards">
+            <img
+              className="product--image"
+              src="https://lumiereclinic.co.uk/wp-content/uploads/2023/04/IMG_6414-scaled-e1684152957366.jpg"
+            ></img>
+            <h3>موعد طبيب في مركز سلمى الصحي</h3>
+            <p className="price">QAR100s</p>
+            <button>أضف إلى السلة</button>
+          </div>
+          <div className="cards">
+            <img
+              className="product--image"
+              src="https://lumiereclinic.co.uk/wp-content/uploads/2023/04/IMG_6414-scaled-e1684152957366.jpg"
+            ></img>
+            <h3>موعد طبيب في مركز سلمى الصحي</h3>
+            <p className="price">QAR100s</p>
+            <button>أضف إلى السلة</button>
+          </div>
+          <div className="cards">
+            <img
+              className="product--image"
+              src="https://lumiereclinic.co.uk/wp-content/uploads/2023/04/IMG_6414-scaled-e1684152957366.jpg"
+            ></img>
+            <h3>موعد طبيب في مركز سلمى الصحي</h3>
+            <p className="price">QAR100s</p>
+            <button>أضف إلى السلة</button>
+          </div>
+          <div className="cards">
+            <img
+              className="product--image"
+              src="https://lumiereclinic.co.uk/wp-content/uploads/2023/04/IMG_6414-scaled-e1684152957366.jpg"
+            ></img>
+            <h3>موعد طبيب في مركز سلمى الصحي</h3>
+            <p className="price">QAR100s</p>
+            <button>أضف إلى السلة</button>
+          </div>
+          <div className="cards">
+            <img
+              className="product--image"
+              src="https://lumiereclinic.co.uk/wp-content/uploads/2023/04/IMG_6414-scaled-e1684152957366.jpg"
+            ></img>
+            <h3>موعد طبيب في مركز سلمى الصحي</h3>
+            <p className="price">QAR100s</p>
+            <button>أضف إلى السلة</button>
+          </div>
+        </Carousel>
+
+        {/* <Carousel
               className="w-100 overflow-hidden rounded"
               indicators={false}
             >
@@ -186,11 +260,11 @@ function Homepage(props) {
                   </Carousel.Item>
                 );
               })}
-            </Carousel>
-          </Container>
-        </Col>
-      </Row>
-
+            </Carousel> */}
+      </Container>
+      {/* </Col>
+      </Row> */}
+<AppServices/>
       <Row className="mt-2 overflow-hidden m-2">
         <h2 className="pt-3 pb-3 text-center">نبذة عن خدمات</h2>
 
