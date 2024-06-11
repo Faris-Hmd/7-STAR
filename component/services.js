@@ -1,7 +1,7 @@
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-
+import 'services.css'
 const servicesData = [
   {
     id: 1,
@@ -43,6 +43,7 @@ const servicesData = [
 
 function AppServices() {
   return (
+    
     <section id="services" className="block services-block">
       <Container fluid>
         <div className="title-holder">
