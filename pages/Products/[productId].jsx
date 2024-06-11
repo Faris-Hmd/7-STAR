@@ -1,17 +1,30 @@
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
-import { Button, Card, Carousel, Col, Container } from "react-bootstrap";
+import { collection, doc, getDocs, updateDoc } from "firebase/firestore";
+
+import {
+  Button,
+  Card,
+  Carousel,
+  Col,
+  Container,
+  Form,
+  Row,
+} from "react-bootstrap";
 import { baseUrl } from "../_app";
 import PageLayout from "../../component/PageLayout";
 import Link from "next/link";
-import { BsPencil } from "react-icons/bs";
-import { BiCategory } from "react-icons/bi";
+import { BsCart, BsCart2, BsCartCheck, BsPencil } from "react-icons/bs";
+import { BiCategory, BiPaperPlane } from "react-icons/bi";
 import RatingBox from "../../component/RatingBox";
 import CartButton from "../../component/CartButton";
 import { getRating } from "../../lib/getRating";
 import { getProduct, getProductSameCat } from "../../lib/getProduct";
 import { getDocsIds } from "../../lib/getDocsIds";
 import { FaWhatsapp } from "react-icons/fa";
+import { db } from "../../firebase/firebase";
+import { toast } from "react-toastify";
+import { getUser } from "../../lib/getUser";
 
 function Product(props) {
   const router = useRouter();
@@ -28,6 +41,22 @@ function Product(props) {
         // console.log(data);
       });
   }
+  async function makeOffer(id, offerDegree) {
+    await updateDoc(doc(db, "products", id), {
+      offer: offerDegree,
+    }).then(() => {
+      toast.success("تم الاضافة بنجاح");
+      router.reload();
+    });
+  }
+  async function publish(id, isPublish) {
+    await updateDoc(doc(db, "products", id), {
+      isPublish: isPublish,
+    }).then(() => {
+      toast.success("تم الاضافة بنجاح");
+      router.reload();
+    });
+  }
 
   useEffect(() => {
     if (!router.query.productId) return;
@@ -43,12 +72,75 @@ function Product(props) {
       title={"تفاصيل المنتج"}
       pageName={"تفاصيل الخدمة"}
     >
-      <Container className="mt-2">
-        <Col xs={12} lg={12}>
-          <Card className="shadow-sm ">
-            <Card.Body className="p-0 w-100">
-              <Container className="flex-r flex-rev p-0">
-                <Col xs={12} lg={6}>
+      <Container
+        className="flex-r p-0"
+        style={{ justifyContent: "space-between", alignItems: "start" }}
+      >
+        <Col xs={12} md={7}>
+          <Card className="shadow-sm mb-2">
+            <Card.Body>
+              <Container className="flex-r  p-0">
+                <Col xs={12}>
+                  <Card.Title>{product.name}</Card.Title>
+                  <Card.Subtitle className="mb-1 text-muted">
+                    <BiCategory /> {product.category} |
+                    <span className="text-success text-bold fs-6 ms-2">
+                      {product.cost} QAR
+                    </span>
+                  </Card.Subtitle>
+                  <Container className="p-2 ps-0">
+                    {product.offer ? (
+                      <Button
+                        variant="danger"
+                        onClick={() => {
+                          makeOffer(product.id, false);
+                        }}
+                        className="me-1"
+                      >
+                        <small>ازالة التمييز</small>
+                      </Button>
+                    ) : (
+                      <Button
+                        variant="success"
+                        onClick={() => {
+                          makeOffer(product.id, true);
+                        }}
+                        className="me-1"
+                      >
+                        <small>تمييز</small>
+                      </Button>
+                    )}
+                    {!product.isPublish ? (
+                      <Button
+                        variant="success"
+                        onClick={() => {
+                          publish(product.id, true);
+                        }}
+                      >
+                        نشر
+                        <BiPaperPlane className="ms-1" />{" "}
+                      </Button>
+                    ) : (
+                      <Button
+                        variant="danger"
+                        onClick={() => {
+                          publish(product.id, false);
+                        }}
+                      >
+                        <small>عدم النشر</small>
+                      </Button>
+                    )}
+                    <Button
+                      variant="warning"
+                      className="ms-1"
+                      href={"Edit/" + product.id}
+                    >
+                      تعديل
+                      <BsPencil className="ms-2" />
+                    </Button>
+                  </Container>
+                </Col>
+                <Col xs={12}>
                   {product?.images?.length > 0 && (
                     <Carousel className="shadow">
                       {product.images.map((img, index) => {
@@ -66,33 +158,9 @@ function Product(props) {
                       })}
                     </Carousel>
                   )}
-                  <Container className="p-3 flex-r gap-2">
-                    <Col xs={5}>
-                      <Button variant="success" className="w-100">
-                        تواصل
-                        <FaWhatsapp className="ms-2" />
-                      </Button>
-                    </Col>
-                    <Col xs={5}>
-                      <Button
-                        variant="warning"
-                        className="w-100"
-                        href={"Edit/" + product.id}
-                      >
-                        تعديل
-                        <BsPencil className="ms-2" />
-                      </Button>
-                    </Col>{" "}
-                  </Container>
+                  <Container className="p-0 pt-2/"></Container>
                 </Col>
-                <Col xs={12} lg={6} className="p-1">
-                  <Card.Title>{product.name}</Card.Title>
-                  <Card.Subtitle className="mb-1 text-muted">
-                    <BiCategory /> {product.category} |
-                    <span className="text-success text-bold fs-6 ms-2">
-                      {product.cost} ج.س
-                    </span>
-                  </Card.Subtitle>
+                <Col xs={12} className="p-1">
                   <div className="p-2">
                     <Card.Title>نبذة</Card.Title>
                     <Card.Text>{product.breif}</Card.Text>
@@ -101,27 +169,57 @@ function Product(props) {
                     <Card.Title>التفاصيل</Card.Title>
                     <Card.Text>{product.details}</Card.Text>
                   </div>
-                  <hr className="me-2 mt"></hr>
                 </Col>{" "}
-                <Col xs={12} className="p-1">
-                  {/* <CartButton
-                    product={product}
-                    productId={router.query.productId && router.query.productId}
-                  /> */}
-                </Col>
-                <Col>
-                  <RatingBox
-                    productId={router.query.productId && router.query.productId}
-                    productRating={
-                      props.rating ? props.rating : { likes: 0, dislikes: 0 }
-                    }
-                  />
-                </Col>
+                <Col xs={12} className="p-1"></Col>
               </Container>
             </Card.Body>
           </Card>
         </Col>
-
+        <Col xs={12} md={5}>
+          {" "}
+          <CartButton
+            product={product}
+            productId={router.query.productId && router.query.productId}
+          ></CartButton>
+          <RatingBox
+            productId={router.query.productId && router.query.productId}
+            productRating={
+              props.rating ? props.rating : { likes: 0, dislikes: 0 }
+            }
+          />{" "}
+          <Container
+            className="bg-sec mt-2 shadow-sm p-0 flex-r rounded border"
+            style={{ width: "99%" }}
+          >
+            <Col xs={12} className="mt-2">
+              <Container className="flex-r">
+                <Col xs={4}>
+                  {" "}
+                  <img
+                    src={props.user?.photoUrl}
+                    width={"120"}
+                    height={"120"}
+                    style={{ borderRadius: "50%" }}
+                    className="m-2 shadow"
+                  />{" "}
+                </Col>
+                <Col xs={8}>
+                  <div>
+                    <p>{props.user.displayName}</p>
+                    <p>مطور تطبيقات ويب</p>
+                    <p>{product?.userId}</p>
+                  </div>
+                </Col>
+              </Container>
+            </Col>
+            <Col className=""></Col>
+            <Col xs={12} className="p-1">
+              <Button className="w-100 wave-2" variant="succss">
+                تواصل
+              </Button>
+            </Col>
+          </Container>
+        </Col>
         <Col xs={12}>
           <h2 className="text-start p-2">خدمات ذات صلة</h2>
           <Container className="flex-r p-0 p-relative">
@@ -136,7 +234,7 @@ function Product(props) {
                           className="rounded-0"
                           style={{ objectFit: "cover" }}
                           loading="lazy"
-                          src={product.img}
+                          src={product.images[0].url}
                           height={"150px"}
                         />
                         <Card.Body className="p-2">
@@ -149,7 +247,7 @@ function Product(props) {
                               {" "}
                               {product.category} |
                               <span className="text-success text-bold fs-6  rounded ms-2">
-                                {product.cost} ج.س
+                                {product.cost} QAR
                               </span>
                             </small>
                           </Card.Subtitle>
@@ -173,12 +271,14 @@ export async function getStaticProps(context) {
   const rating = await getRating(context.params.productId);
   const product = await getProduct(context.params.productId);
   const productsBySameCat_ = await getProductSameCat(product.category);
+  const getUserInfo = await getUser(product.userId);
   // console.log(productsBySameCat_);
   return {
     props: {
       rating: rating,
       product: product,
       productsBySameCat: productsBySameCat_,
+      user: getUserInfo,
     },
   };
 }

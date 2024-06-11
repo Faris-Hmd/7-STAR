@@ -64,9 +64,12 @@ function RatingBox({ productRating, productId }) {
   }, []);
 
   return (
-    <Container className="bg-sec  mt-3">
+    <Container
+      className="bg-sec border shadow-sm rounded mt-2"
+      style={{ width: "99%" }}
+    >
       <Col>
-        <h2 className="text-start p-1">قم بتقييم الخدمة</h2>
+        <h4 className="text-start p-1">قم بتقييم الخدمة</h4>
       </Col>
 
       <Col>{/* <RatingBar productRating={productRating} /> */}</Col>
@@ -109,7 +112,7 @@ function RatingBar({ productRating }) {
   // console.log((productRating.dislikes / allRating) * 100);
 
   return (
-    <div className="flex-r w-100 rounded overflow-hidden mb-2 shadow-sm ">
+    <div className="flex-r w-100 rounded overflow-hidden mt-2 shadow-sm ">
       {productRating?.likes ? (
         <Button
           variant="success"

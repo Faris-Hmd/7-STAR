@@ -95,22 +95,22 @@ function Dashboard(props) {
 }
 
 export default Dashboard;
-export async function getStaticProps(context) {
-  const staticties = await getStaticties(context.params.year);
-  console.log(staticties);
-  return {
-    props: {
-      staticties: staticties,
-    },
-  };
-}
+// export async function getStaticProps(context) {
+//   const staticties = await getStaticties(context.params.year);
+//   console.log(staticties);
+//   return {
+//     props: {
+//       staticties: staticties,
+//     },
+//   };
+// }
 
-export async function getStaticPaths() {
-  const paths = ["2023", "2024"].map((year) => ({
-    params: { year: year },
-  }));
-  return {
-    paths,
-    fallback: true,
-  };
-}
+// export async function getStaticPaths() {
+//   const paths = ["2023", "2024"].map((year) => ({
+//     params: { year: year },
+//   }));
+//   return {
+//     paths,
+//     fallback: true,
+//   };
+// }

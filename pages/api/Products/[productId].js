@@ -28,7 +28,6 @@ export default async function handler(req, res) {
         console.log(product);
         querySnapShot = await addDoc(collection(db, "products"), {
           ...product,
-          autherId: "0dM4MUr7GMs0PcRWNNJv",
         });
         res
           .status(200)

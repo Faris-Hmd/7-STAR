@@ -1,5 +1,5 @@
 /** @format */
-import { addDoc, collection, getDocs } from "firebase/firestore";
+import { addDoc, collection, doc, getDocs, setDoc } from "firebase/firestore";
 import { db } from "../../firebase/firebase";
 import { postRequest } from "../../helper/requests";
 import { categories } from "../../data/categories";
@@ -9,28 +9,34 @@ export default async function handler(req, res) {
   let querySnapShot;
   const ratingNum = 0;
   const prouctsNum = 10;
+  const userNum = 3;
   const orderNum = 3;
   const sliceDates = dates.slice(695, 740);
   const imgs = [
     {
-      url: "/images/sport.jpg",
+      url: "/images/cat-1.webp",
     },
-    { url: "/images/afocado.webp" },
-    { url: "/images/loss.jpg" },
+    { url: "/images/cat-2.webp" },
+    { url: "/images/cat-3.webp" },
+    { url: "/images/cat-4.webp" },
   ];
-
+  const users = [
+    { userId: "1", photoUrl: "/images/cat-1.webp", displayName: "Faris-Hamad" },
+    { userId: "2", photoUrl: "/images/cat-2.webp", displayName: "Mhmd-Hamad" },
+    { userId: "3", photoUrl: "/images/cat-3.webp", displayName: "AliHamad" },
+  ];
   const p = {
     images: [
       {
-        url: "/images/sport.jpg",
+        url: "/images/cat-1.webp",
       },
-      { url: "/images/afocado.webp" },
-      { url: "/images/loss.jpg" },
+      { url: "/images/cat-2.webp" },
+      { url: "/images/cat-3.webp" },
+      { url: "/images/cat-4.webp" },
     ],
     descreption:
       "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iste reprehenderit repellat corrupti ducimus id mollitia, magnam deserunt odio qui, iure pariatur tempore soluta. Explicabo aliquid fuga velit odio doloribus excepturi!",
     cost: "8999",
-    autherId: "0dM4MUr7GMs0PcRWNNJv",
     name: "سامسونج A11s",
     breif:
       "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iste reprehenderit repellat corrupti ducimus id mollitia, magnam deserunt odio qui, iure pariatur tempore soluta. Explicabo aliquid fuga velit odio doloribus excepturi!",
@@ -39,20 +45,20 @@ export default async function handler(req, res) {
     category: "زيادة الوزن",
   };
 
+  await genUsers();
   await genProducts();
 
-  const products = await getProducts();
+  // const products = await getProducts();
 
   //generating ratings for products/////////
   // await genRating();
   // generating orders////////////////////////
-  await genOrders();
+  // await genOrders();
 
   //////genretating sellings///////////////////////////
-  await startGenSelings();
+  // await startGenSelings();
 
   res.status(200).json("Done!");
-
   async function getProducts() {
     querySnapShot = await getDocs(collection(db, "Products"));
     const products = querySnapShot.docs.map((product) => {
@@ -89,9 +95,21 @@ export default async function handler(req, res) {
           ...p,
           name: `سامسونج A${index}`,
           cost: index * 99,
-          images: [{ url: `${imgs[index % 3].url}` }],
+          images: [{ url: `${imgs[index % 4].url}` }],
           category: categories[index % 3].value,
+          userId: users[index % 3].userId,
         },
+      });
+    }
+  }
+  async function genUsers() {
+    for (let index = 0; index < userNum; index++) {
+      console.log(index);
+      let userId = users[index % 3].userId;
+      await setDoc(doc(db, "users", userId), {
+        userId,
+        displayName: users[index % 3].displayName,
+        photoUrl: users[index % 3].photoUrl,
       });
     }
   }

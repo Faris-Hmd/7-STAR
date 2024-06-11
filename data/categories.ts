@@ -2,7 +2,7 @@ import { Categories } from "../types/types";
 
 export const categories: Categories = [
   {
-    value: "زيادة الوزن",
+    value: "التصنيف الاول",
   },
   {
     value: "نقصان الوزن",

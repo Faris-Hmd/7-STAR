@@ -1,4 +1,12 @@
 import {
+  collection,
+  doc,
+  getDoc,
+  getDocs,
+  query,
+  where,
+} from "firebase/firestore";
+import {
   Button,
   Card,
   Carousel,
@@ -9,6 +17,7 @@ import {
   Row,
 } from "react-bootstrap";
 import { BiSearch } from "react-icons/bi";
+import { db } from "../firebase/firebase";
 
 //
 const posts = [
@@ -56,7 +65,7 @@ const posts = [
   },
 ];
 
-function Homepage() {
+function Homepage(props) {
   // useEffect(() => window.scrollTo(0, 0), []);
 
   return (
@@ -94,13 +103,16 @@ function Homepage() {
       </Row>
       <Row className="m-1">
         <Col lg={6}>
-          <h2 className="pt-3 pb-3 text-center">العروض المميزة</h2>
+          {" "}
+          {props.products?.length && (
+            <h2 className="pt-3 pb-3 text-center">العروض المميزة</h2>
+          )}
           <Container className="flex-r p-0 shadow-lg ">
             <Carousel
               className="w-100 overflow-hidden rounded"
               indicators={false}
             >
-              {posts.map((post, index) => {
+              {props.products?.map((post, index) => {
                 return (
                   <Carousel.Item
                     key={index}
@@ -116,8 +128,8 @@ function Homepage() {
                       }}
                     >
                       <span>
-                        {post.title}
-                        <pre className="text-success">{post.cost} RQ</pre>
+                        {post.name}
+                        <pre className="text-success">{post.cost} QAR</pre>
                       </span>
                     </Carousel.Caption>
                     <img
@@ -126,7 +138,7 @@ function Homepage() {
                       width={"100%"}
                       // className="d-block w-100 "
                       style={{ objectFit: "cover" }}
-                      src={`/images/${post.img}`}
+                      src={`${post.img}`}
                       alt={`${index + 1} slide`}
                     />
                   </Carousel.Item>
@@ -192,10 +204,14 @@ function Homepage() {
                 <Row className="flex-r">
                   {posts.map((post) => {
                     return (
-                      <Col className="p-1" xs={6}>
+                      <Col className="p-6" xs={6}>
                         <Card classname="border-0 " style={{ border: "none" }}>
                           <Card.Title>{post.title}</Card.Title>
-                          <img width={"80%"} src={`/images/${post.logo}`}></img>
+                          <img
+                            width={"120"}
+                            src={`/images/${post.logo}`}
+                            className="m-auto"
+                          ></img>
                           <Card.Text>
                             <small>
                               سلام عليكم ورحمة الله نكشس مشعساي مخهايس خهعيس سما
@@ -255,3 +271,23 @@ function Homepage() {
 }
 
 export default Homepage;
+export async function getStaticProps() {
+  console.log("ssg for home");
+  // const { collection, getDocs } = await import {"firebase/firestore"};
+  const querySnapShot = await getDocs(
+    query(collection(db, "products"), where("offer", "==", true))
+  );
+  const products = querySnapShot.docs.map((product) => {
+    return {
+      name: product.data().name,
+      cost: product.data().cost,
+      category: product?.data()?.category || "",
+      img: product?.data().images[0]?.url || "",
+      id: product.id,
+    };
+  });
+  return {
+    props: { products },
+    revalidate: 10,
+  };
+}

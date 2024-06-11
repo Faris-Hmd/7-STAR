@@ -24,8 +24,8 @@ export const productsRef = (db, "products");
 export const usersRef = (db, "users");
 // export const articleRef = (db, "Articles");
 
-if (process.env.NODE_ENV === "development") {
-  // connectAuthEmulator(auth, "127.0.0.1:9099");
+if (process.env.NODE_ENV === "development" || true) {
+  // connectAuthEmulator(auth, "127.0.0.1:9099");v
   if (!db._settingsFrozen) {
     connectStorageEmulator(storage, "localhost", 9199);
     connectFirestoreEmulator(db, "localhost", 8080);

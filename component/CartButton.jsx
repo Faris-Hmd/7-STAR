@@ -105,7 +105,10 @@ function CartButton({ product, productId }) {
   }, [qu]);
 
   return (
-    <Container className="flex-r space-btw  pt-0">
+    <Container
+      className="flex-r space-btw bg-sec border shadow-sm border rounded overflow-hidden p-2 "
+      style={{ width: "99%" }}
+    >
       <Col xs={12}>
         <Button
           className="mb-1 shadow w-100"
@@ -117,7 +120,7 @@ function CartButton({ product, productId }) {
         </Button>
         <hr className="me-2 ms-2"></hr>
       </Col>{" "}
-      {/* <Col xs={6}>
+      <Col xs={6}>
         {isInCart ? (
           <Button
             disabled={cartLoading}
@@ -143,8 +146,8 @@ function CartButton({ product, productId }) {
             </span>
           </Button>
         )}{" "}
-      </Col> */}
-      {/* <Col xs={5} lg={3}>
+      </Col>
+      <Col xs={5}>
         {" "}
         <InputGroup className="overflow-hidden shadow-sm p-0 rounded border">
           <Button variant="success" className="bg-sec text-muted border-0">
@@ -164,7 +167,7 @@ function CartButton({ product, productId }) {
             <option value="4">4</option>
           </FormSelect>
         </InputGroup>
-      </Col> */}
+      </Col>
     </Container>
   );
 }
