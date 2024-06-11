@@ -10,6 +10,7 @@ import {
 import { BiSearch } from "react-icons/bi";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
+import AppServices from './component/services';
 
 //
 const posts = [
@@ -272,7 +273,7 @@ function Homepage() {
       </Container>
       {/* </Col>
       </Row> */}
-
+<AppServices/>
       <Row className="mt-2 overflow-hidden m-2">
         <h2 className="pt-3 pb-3 text-center">نبذة عن خدمات</h2>
 
