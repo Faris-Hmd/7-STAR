@@ -10,7 +10,7 @@ body {
 
 /* Some new CSS. This is the start: */
 
-html {
+/* html {
   box-sizing: border-box;
 }
 
@@ -34,7 +34,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-weight: 400;
-}
+} */
 
 /* img {
   max-width: 100%;
