@@ -91,7 +91,7 @@ body {
 }
 
 /* Some new CSS. This is the start: */
-/* 
+
 html {
   box-sizing: border-box;
 }
@@ -769,7 +769,7 @@ textarea {
   margin: 0 0 20px;
 }
 
-.testimonials-block {
+/* .testimonials-block {
   padding: 90px 0 70px;
   background-position: 50% 0;
   background-size: cover;
@@ -777,7 +777,7 @@ textarea {
   background-image: url('./assets/images/bg-testimonial.jpg');
   position: relative;
   color: #fff;
-}
+} */
 
 .testimonials-block:before {
   content: '';
@@ -1269,7 +1269,7 @@ textarea {
     font-size: 26px;
     margin: 0;
   }
-} */
+}
 /* And this is the end. */
 .product--image {
   width: 100%;
