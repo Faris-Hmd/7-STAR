@@ -18,7 +18,7 @@ import {
 import { BiSearch } from "react-icons/bi";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import AppServices from '../component/services';
+import AppServices from "../component/services";
 import { db } from "../firebase/firebase";
 
 //
@@ -67,7 +67,7 @@ const posts = [
   },
 ];
 
-function Homepage() {
+function Homepage(props) {
   // useEffect(() => window.scrollTo(0, 0), []);
 
   return (
@@ -143,89 +143,90 @@ function Homepage() {
                   </Carousel.Item>
                 );
               })}
-            </Carousel> */}
-      </Container>
-      {/* </Col> */}
-      {/* <Col lg={6}>
+            </Carousel>
+          </Container>
+        </Col>
+        {/* </Col> */}
+        {/* <Col lg={6}>
           {" "} */}
-      <h2 className="pt-3 pb-3 text-center">العروض المميزة</h2>
-      <Container>
-        <Carousel responsive={responsive}>
-          <div className="cards">
-            <img
-              className="product--image"
-              src="https://lumiereclinic.co.uk/wp-content/uploads/2023/04/IMG_6414-scaled-e1684152957366.jpg"
-            ></img>
-            <h3>موعد طبيب في مركز سلمى الصحي</h3>
-            <p className="price">QAR100s</p>
-            <button>أضف إلى السلة</button>
-          </div>
-          <div className="cards">
-            <img
-              className="product--image"
-              src="https://lumiereclinic.co.uk/wp-content/uploads/2023/04/IMG_6414-scaled-e1684152957366.jpg"
-            ></img>
-            <h3>موعد طبيب في مركز سلمى الصحي</h3>
-            <p className="price">QAR100s</p>
-            <button>أضف إلى السلة</button>
-          </div>
-          <div className="cards">
-            <img
-              className="product--image"
-              src="https://lumiereclinic.co.uk/wp-content/uploads/2023/04/IMG_6414-scaled-e1684152957366.jpg"
-            ></img>
-            <h3>موعد طبيب في مركز سلمى الصحي</h3>
-            <p className="price">QAR100s</p>
-            <button>أضف إلى السلة</button>
-          </div>
-          <div className="cards">
-            <img
-              className="product--image"
-              src="https://lumiereclinic.co.uk/wp-content/uploads/2023/04/IMG_6414-scaled-e1684152957366.jpg"
-            ></img>
-            <h3>موعد طبيب في مركز سلمى الصحي</h3>
-            <p className="price">QAR100s</p>
-            <button>أضف إلى السلة</button>
-          </div>
-          <div className="cards">
-            <img
-              className="product--image"
-              src="https://lumiereclinic.co.uk/wp-content/uploads/2023/04/IMG_6414-scaled-e1684152957366.jpg"
-            ></img>
-            <h3>موعد طبيب في مركز سلمى الصحي</h3>
-            <p className="price">QAR100s</p>
-            <button>أضف إلى السلة</button>
-          </div>
-          <div className="cards">
-            <img
-              className="product--image"
-              src="https://lumiereclinic.co.uk/wp-content/uploads/2023/04/IMG_6414-scaled-e1684152957366.jpg"
-            ></img>
-            <h3>موعد طبيب في مركز سلمى الصحي</h3>
-            <p className="price">QAR100s</p>
-            <button>أضف إلى السلة</button>
-          </div>
-          <div className="cards">
-            <img
-              className="product--image"
-              src="https://lumiereclinic.co.uk/wp-content/uploads/2023/04/IMG_6414-scaled-e1684152957366.jpg"
-            ></img>
-            <h3>موعد طبيب في مركز سلمى الصحي</h3>
-            <p className="price">QAR100s</p>
-            <button>أضف إلى السلة</button>
-          </div>
-          <div className="cards">
-            <img
-              className="product--image"
-              src="https://lumiereclinic.co.uk/wp-content/uploads/2023/04/IMG_6414-scaled-e1684152957366.jpg"
-            ></img>
-            <h3>موعد طبيب في مركز سلمى الصحي</h3>
-            <p className="price">QAR100s</p>
-            <button>أضف إلى السلة</button>
-          </div>
-        </Carousel>
+        <h2 className="pt-3 pb-3 text-center">العروض المميزة</h2>
+        <Container>
+          <Carousel responsive={responsive}>
+            <div className="cards">
+              <img
+                className="product--image"
+                src="https://lumiereclinic.co.uk/wp-content/uploads/2023/04/IMG_6414-scaled-e1684152957366.jpg"
+              ></img>
+              <h3>موعد طبيب في مركز سلمى الصحي</h3>
+              <p className="price">QAR100s</p>
+              <button>أضف إلى السلة</button>
+            </div>
+            <div className="cards">
+              <img
+                className="product--image"
+                src="https://lumiereclinic.co.uk/wp-content/uploads/2023/04/IMG_6414-scaled-e1684152957366.jpg"
+              ></img>
+              <h3>موعد طبيب في مركز سلمى الصحي</h3>
+              <p className="price">QAR100s</p>
+              <button>أضف إلى السلة</button>
+            </div>
+            <div className="cards">
+              <img
+                className="product--image"
+                src="https://lumiereclinic.co.uk/wp-content/uploads/2023/04/IMG_6414-scaled-e1684152957366.jpg"
+              ></img>
+              <h3>موعد طبيب في مركز سلمى الصحي</h3>
+              <p className="price">QAR100s</p>
+              <button>أضف إلى السلة</button>
+            </div>
+            <div className="cards">
+              <img
+                className="product--image"
+                src="https://lumiereclinic.co.uk/wp-content/uploads/2023/04/IMG_6414-scaled-e1684152957366.jpg"
+              ></img>
+              <h3>موعد طبيب في مركز سلمى الصحي</h3>
+              <p className="price">QAR100s</p>
+              <button>أضف إلى السلة</button>
+            </div>
+            <div className="cards">
+              <img
+                className="product--image"
+                src="https://lumiereclinic.co.uk/wp-content/uploads/2023/04/IMG_6414-scaled-e1684152957366.jpg"
+              ></img>
+              <h3>موعد طبيب في مركز سلمى الصحي</h3>
+              <p className="price">QAR100s</p>
+              <button>أضف إلى السلة</button>
+            </div>
+            <div className="cards">
+              <img
+                className="product--image"
+                src="https://lumiereclinic.co.uk/wp-content/uploads/2023/04/IMG_6414-scaled-e1684152957366.jpg"
+              ></img>
+              <h3>موعد طبيب في مركز سلمى الصحي</h3>
+              <p className="price">QAR100s</p>
+              <button>أضف إلى السلة</button>
+            </div>
+            <div className="cards">
+              <img
+                className="product--image"
+                src="https://lumiereclinic.co.uk/wp-content/uploads/2023/04/IMG_6414-scaled-e1684152957366.jpg"
+              ></img>
+              <h3>موعد طبيب في مركز سلمى الصحي</h3>
+              <p className="price">QAR100s</p>
+              <button>أضف إلى السلة</button>
+            </div>
+            <div className="cards">
+              <img
+                className="product--image"
+                src="https://lumiereclinic.co.uk/wp-content/uploads/2023/04/IMG_6414-scaled-e1684152957366.jpg"
+              ></img>
+              <h3>موعد طبيب في مركز سلمى الصحي</h3>
+              <p className="price">QAR100s</p>
+              <button>أضف إلى السلة</button>
+            </div>
+          </Carousel>
 
-        {/* <Carousel
+          {/* <Carousel
               className="w-100 overflow-hidden rounded"
               indicators={false}
             >
@@ -261,84 +262,88 @@ function Homepage() {
                 );
               })}
             </Carousel> */}
-      </Container>
-      {/* </Col>
-      </Row> */}
-<AppServices/>
-      <Row className="mt-2 overflow-hidden m-2">
-        <h2 className="pt-3 pb-3 text-center">نبذة عن خدمات</h2>
-
-        <Card className="p-0 shadow overflow-hidden">
-          <Container
-            style={{ flexWrap: "wrap", display: "flex" }}
-            className="p-0 w-100"
-          >
-            <Col xs={12} lg={6} className="p-4">
-              <Container>
-                <Row className="flex-r">
-                  {posts.map((post) => {
-                    return (
-                      <Col className="p-6" xs={6}>
-                        <Card classname="border-0 " style={{ border: "none" }}>
-                          <Card.Title>{post.title}</Card.Title>
-                          <img
-                            width={"120"}
-                            src={`/images/${post.logo}`}
-                            className="m-auto"
-                          ></img>
-                          <Card.Text>
-                            <small>
-                              سلام عليكم ورحمة الله نكشس مشعساي مخهايس خهعيس سما
-                              يخكهسا
-                            </small>
-                          </Card.Text>
-                        </Card>
-                      </Col>
-                    );
-                  })}
-                </Row>
-              </Container>
-            </Col>
-            <Col xs={12} lg={6} className="margin-auto flex">
-              <img
-                loading="lazy"
-                src="/images/qman2.jpg"
-                width={"100%"}
-                height={"100%"}
-                className="margin-auto"
-              />
-            </Col>
-          </Container>
-        </Card>
-      </Row>
-      <Row className="p-1 ">
-        <h2 className="pt-3 pb-3 text-center">العروض والاشتراكات</h2>
-
-        <Container className="flex-r ">
-          {posts.slice(0, 3).map((post) => {
-            return (
-              <Col xs={12} lg={4} style={{ scale: "95%" }}>
-                <Card>
-                  <Card.Title className="ms-3 pt-3 ">{post.title}</Card.Title>
-                  <Card.Body className="flex">
-                    <Card.Img
-                      style={{ width: "200px" }}
-                      width={"500px"}
-                      src={`/icons/${post.levelLogo}`}
-                    ></Card.Img>
-                    <Card.Text>
-                      سلام عليكم كشس حثخق حلف قفغا للافس فايقب تغقسقل تسقثفا
-                      سقابتغ سليقات يقايتبي
-                    </Card.Text>
-                    <Button variant="success" className="me-auto">
-                      تفاصيل اكثر
-                    </Button>
-                  </Card.Body>
-                </Card>
-              </Col>
-            );
-          })}
         </Container>
+        {/* </Col>
+      </Row> */}
+        <AppServices />
+        <Row className="mt-2 overflow-hidden m-2">
+          <h2 className="pt-3 pb-3 text-center">نبذة عن خدمات</h2>
+
+          <Card className="p-0 shadow overflow-hidden">
+            <Container
+              style={{ flexWrap: "wrap", display: "flex" }}
+              className="p-0 w-100"
+            >
+              <Col xs={12} lg={6} className="p-4">
+                <Container>
+                  <Row className="flex-r">
+                    {posts.map((post) => {
+                      return (
+                        <Col className="p-6" xs={6}>
+                          <Card
+                            classname="border-0 "
+                            style={{ border: "none" }}
+                          >
+                            <Card.Title>{post.title}</Card.Title>
+                            <img
+                              width={"120"}
+                              src={`/images/${post.logo}`}
+                              className="m-auto"
+                            ></img>
+                            <Card.Text>
+                              <small>
+                                سلام عليكم ورحمة الله نكشس مشعساي مخهايس خهعيس
+                                سما يخكهسا
+                              </small>
+                            </Card.Text>
+                          </Card>
+                        </Col>
+                      );
+                    })}
+                  </Row>
+                </Container>
+              </Col>
+              <Col xs={12} lg={6} className="margin-auto flex">
+                <img
+                  loading="lazy"
+                  src="/images/qman2.jpg"
+                  width={"100%"}
+                  height={"100%"}
+                  className="margin-auto"
+                />
+              </Col>
+            </Container>
+          </Card>
+        </Row>
+        <Row className="p-1 ">
+          <h2 className="pt-3 pb-3 text-center">العروض والاشتراكات</h2>
+
+          <Container className="flex-r ">
+            {posts.slice(0, 3).map((post) => {
+              return (
+                <Col xs={12} lg={4} style={{ scale: "95%" }}>
+                  <Card>
+                    <Card.Title className="ms-3 pt-3 ">{post.title}</Card.Title>
+                    <Card.Body className="flex">
+                      <Card.Img
+                        style={{ width: "200px" }}
+                        width={"500px"}
+                        src={`/icons/${post.levelLogo}`}
+                      ></Card.Img>
+                      <Card.Text>
+                        سلام عليكم كشس حثخق حلف قفغا للافس فايقب تغقسقل تسقثفا
+                        سقابتغ سليقات يقايتبي
+                      </Card.Text>
+                      <Button variant="success" className="me-auto">
+                        تفاصيل اكثر
+                      </Button>
+                    </Card.Body>
+                  </Card>
+                </Col>
+              );
+            })}
+          </Container>
+        </Row>
       </Row>
     </Container>
   );
