@@ -1,6 +1,12 @@
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
-import { collection, doc, getDocs, updateDoc } from "firebase/firestore";
+import {
+  collection,
+  deleteDoc,
+  doc,
+  getDocs,
+  updateDoc,
+} from "firebase/firestore";
 
 import {
   Button,
@@ -55,6 +61,12 @@ function Product(props) {
     }).then(() => {
       toast.success("تم الاضافة بنجاح");
       router.reload();
+    });
+  }
+  async function deletePro(id) {
+    await deleteDoc(doc(db, "products", id), {}).then(() => {
+      toast.success("تم الحذف بنجاح");
+      // router.reload();
     });
   }
 
@@ -137,6 +149,15 @@ function Product(props) {
                     >
                       تعديل
                       <BsPencil className="ms-2" />
+                    </Button>
+                    <Button
+                      className="ms-1"
+                      variant="danger"
+                      onClick={() => {
+                        deletePro(product.id);
+                      }}
+                    >
+                      حذف
                     </Button>
                   </Container>
                 </Col>

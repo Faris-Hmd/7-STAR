@@ -9,6 +9,7 @@ import {
 import {
   Button,
   Card,
+  Carousel,
   Col,
   Container,
   Form,
@@ -16,7 +17,6 @@ import {
   Row,
 } from "react-bootstrap";
 import { BiSearch } from "react-icons/bi";
-import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import AppServices from "../component/services";
 import { db } from "../firebase/firebase";
@@ -146,12 +146,10 @@ function Homepage(props) {
             </Carousel>
           </Container>
         </Col>
-        {/* </Col> */}
-        {/* <Col lg={6}>
-          {" "} */}
+
         <h2 className="pt-3 pb-3 text-center">العروض المميزة</h2>
         <Container>
-          <Carousel responsive={responsive}>
+          <Carousel responsive={true}>
             <div className="cards">
               <img
                 className="product--image"
@@ -226,42 +224,39 @@ function Homepage(props) {
             </div>
           </Carousel>
 
-          {/* <Carousel
-              className="w-100 overflow-hidden rounded"
-              indicators={false}
-            >
-              {posts.map((post, index) => {
-                return (
-                  <Carousel.Item
-                    key={index}
-                    className="rounded overflow-hidden"
+          <Carousel
+            className="w-100 overflow-hidden rounded"
+            indicators={false}
+          >
+            {posts.map((post, index) => {
+              return (
+                <Carousel.Item key={index} className="rounded overflow-hidden">
+                  <Carousel.Caption
+                    className="p-1 ps-3 blur fs-3"
+                    style={{
+                      bottom: "0",
+                      right: "0",
+                      minWidth: "100%",
+                      textAlign: "right",
+                      background: "",
+                      color: "white",
+                    }}
                   >
-                    <Carousel.Caption
-                      className="p-1 ps-3 blur fs-3"
-                      style={{
-                        bottom: "0",
-                        right: "0",
-                        minWidth: "100%",
-                        textAlign: "right",
-                        background: "",
-                        color: "white",
-                      }}
-                    >
-                      <p>{post.title}</p>
-                    </Carousel.Caption>
-                    <img
-                      loading="lazy"
-                      height={"300px"}
-                      width={"100%"}
-                      // className="d-block w-100 "
-                      style={{ objectFit: "cover" }}
-                      src={`/images/${post.cat}`}
-                      alt={`${index + 1} slide`}
-                    />
-                  </Carousel.Item>
-                );
-              })}
-            </Carousel> */}
+                    <p>{post.title}</p>
+                  </Carousel.Caption>
+                  <img
+                    loading="lazy"
+                    height={"300px"}
+                    width={"100%"}
+                    // className="d-block w-100 "
+                    style={{ objectFit: "cover" }}
+                    src={`/images/${post.cat}`}
+                    alt={`${index + 1} slide`}
+                  />
+                </Carousel.Item>
+              );
+            })}
+          </Carousel>
         </Container>
         {/* </Col>
       </Row> */}
