@@ -10,7 +10,7 @@ import {
 import { BiSearch } from "react-icons/bi";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import AppServices from './component/services';
+import AppServices from '../component/services';
 
 //
 const posts = [
