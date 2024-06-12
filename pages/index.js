@@ -11,7 +11,6 @@ import {
 } from "react-bootstrap";
 import { BiSearch } from "react-icons/bi";
 import "react-multi-carousel/lib/styles.css";
-import AppServices from "../component/services";
 import { db } from "../firebase/firebase";
 
 const posts = [
@@ -172,13 +171,11 @@ function Homepage(props) {
               );
             })}
           </Carousel>
-        </Col>
-      </Row>
-      <Row>
-        <AppServices />
-      </Row>
-      <Row className="mt-2 overflow-hidden m-2">
-        <h2 className="pt-3 pb-3 text-center">نبذة عن خدمات</h2>
+        </Container>
+        {/* </Col>
+      </Row> */}
+        <Row className="mt-2 overflow-hidden m-2">
+          <h2 className="pt-3 pb-3 text-center">نبذة عن خدمات</h2>
 
         <Card className="p-0 shadow overflow-hidden">
           <Container
