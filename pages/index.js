@@ -18,7 +18,6 @@ import {
 } from "react-bootstrap";
 import { BiSearch } from "react-icons/bi";
 import "react-multi-carousel/lib/styles.css";
-import AppServices from "../component/services";
 import { db } from "../firebase/firebase";
 
 //
@@ -260,7 +259,6 @@ function Homepage(props) {
         </Container>
         {/* </Col>
       </Row> */}
-        <AppServices />
         <Row className="mt-2 overflow-hidden m-2">
           <h2 className="pt-3 pb-3 text-center">نبذة عن خدمات</h2>
 
