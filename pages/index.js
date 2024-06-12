@@ -171,11 +171,13 @@ function Homepage(props) {
               );
             })}
           </Carousel>
-        </Container>
-        {/* </Col>
-      </Row> */}
-        <Row className="mt-2 overflow-hidden m-2">
-          <h2 className="pt-3 pb-3 text-center">نبذة عن خدمات</h2>
+        </Col>
+      </Row>
+      <Row>
+        <AppServices />
+      </Row>
+      <Row className="mt-2 overflow-hidden m-2">
+        <h2 className="pt-3 pb-3 text-center">نبذة عن خدمات</h2>
 
         <Card className="p-0 shadow overflow-hidden">
           <Container
