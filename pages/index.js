@@ -173,9 +173,7 @@ function Homepage(props) {
           </Carousel>
         </Col>
       </Row>
-      <Row>
-        <AppServices />
-      </Row>
+      <Row>{/* <AppServices /> */}</Row>
       <Row className="mt-2 overflow-hidden m-2">
         <h2 className="pt-3 pb-3 text-center">نبذة عن خدمات</h2>
 

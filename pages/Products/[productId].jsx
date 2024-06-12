@@ -100,7 +100,7 @@ function Product(props) {
                       {product.cost} QAR
                     </span>
                   </Card.Subtitle>
-                  {admins.find((user) => props.user.email === user.email) && (
+                  {admins.find((user) => props.user?.email === user?.email) && (
                     <Container className="p-2 ps-0">
                       {product.offer ? (
                         <Button
