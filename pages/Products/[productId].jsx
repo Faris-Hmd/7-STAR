@@ -31,7 +31,7 @@ import { FaWhatsapp } from "react-icons/fa";
 import { db } from "../../firebase/firebase";
 import { toast } from "react-toastify";
 import { getUser } from "../../lib/getUser";
-
+import { admins } from "../../data/admins";
 function Product(props) {
   const router = useRouter();
   const [product, setProduct] = useState(props.product || {});
@@ -100,66 +100,68 @@ function Product(props) {
                       {product.cost} QAR
                     </span>
                   </Card.Subtitle>
-                  <Container className="p-2 ps-0">
-                    {product.offer ? (
+                  {admins.find((user) => props.user.email === user.email) && (
+                    <Container className="p-2 ps-0">
+                      {product.offer ? (
+                        <Button
+                          variant="danger"
+                          onClick={() => {
+                            makeOffer(product.id, false);
+                          }}
+                          className="me-1"
+                        >
+                          <small>ازالة التمييز</small>
+                        </Button>
+                      ) : (
+                        <Button
+                          variant="success"
+                          onClick={() => {
+                            makeOffer(product.id, true);
+                          }}
+                          className="me-1"
+                        >
+                          <small>تمييز</small>
+                        </Button>
+                      )}
+                      {!product.isPublish ? (
+                        <Button
+                          variant="success"
+                          onClick={() => {
+                            publish(product.id, true);
+                          }}
+                        >
+                          نشر
+                          <BiPaperPlane className="ms-1" />{" "}
+                        </Button>
+                      ) : (
+                        <Button
+                          variant="danger"
+                          onClick={() => {
+                            publish(product.id, false);
+                          }}
+                        >
+                          <small>عدم النشر</small>
+                        </Button>
+                      )}
                       <Button
+                        variant="warning"
+                        className="ms-1"
+                        href={"Edit/" + product.id}
+                      >
+                        تعديل
+                        <BsPencil className="ms-2" />
+                      </Button>
+                      <Button
+                        className="ms-1"
                         variant="danger"
                         onClick={() => {
-                          makeOffer(product.id, false);
-                        }}
-                        className="me-1"
-                      >
-                        <small>ازالة التمييز</small>
-                      </Button>
-                    ) : (
-                      <Button
-                        variant="success"
-                        onClick={() => {
-                          makeOffer(product.id, true);
-                        }}
-                        className="me-1"
-                      >
-                        <small>تمييز</small>
-                      </Button>
-                    )}
-                    {!product.isPublish ? (
-                      <Button
-                        variant="success"
-                        onClick={() => {
-                          publish(product.id, true);
+                          deletePro(product.id);
                         }}
                       >
-                        نشر
-                        <BiPaperPlane className="ms-1" />{" "}
+                        حذف
                       </Button>
-                    ) : (
-                      <Button
-                        variant="danger"
-                        onClick={() => {
-                          publish(product.id, false);
-                        }}
-                      >
-                        <small>عدم النشر</small>
-                      </Button>
-                    )}
-                    <Button
-                      variant="warning"
-                      className="ms-1"
-                      href={"Edit/" + product.id}
-                    >
-                      تعديل
-                      <BsPencil className="ms-2" />
-                    </Button>
-                    <Button
-                      className="ms-1"
-                      variant="danger"
-                      onClick={() => {
-                        deletePro(product.id);
-                      }}
-                    >
-                      حذف
-                    </Button>
-                  </Container>
+                    </Container>
+                  )}
                 </Col>
                 <Col xs={12}>
                   {product?.images?.length > 0 && (
@@ -215,7 +217,6 @@ function Product(props) {
             <Col xs={12} className="mt-2">
               <Container className="flex-r">
                 <Col xs={4}>
-                  {" "}
                   <img
                     src={props.user?.photoUrl}
                     width={"120"}
@@ -226,14 +227,13 @@ function Product(props) {
                 </Col>
                 <Col xs={8}>
                   <div>
-                    <p>{props.user.displayName}</p>
+                    <p>{props.user?.displayName}</p>
                     <p>مطور تطبيقات ويب</p>
                     <p>{product?.userId}</p>
                   </div>
                 </Col>
               </Container>
             </Col>
-            <Col className=""></Col>
             <Col xs={12} className="p-1">
               <Button className="w-100 wave-2" variant="succss">
                 تواصل

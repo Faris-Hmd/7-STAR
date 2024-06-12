@@ -21,9 +21,24 @@ export default async function handler(req, res) {
     { url: "/images/cat-4.webp" },
   ];
   const users = [
-    { userId: "1", photoUrl: "/images/cat-1.webp", displayName: "Faris-Hamad" },
-    { userId: "2", photoUrl: "/images/cat-2.webp", displayName: "Mhmd-Hamad" },
-    { userId: "3", photoUrl: "/images/cat-3.webp", displayName: "AliHamad" },
+    {
+      userId: "1",
+      photoUrl: "/images/cat-1.webp",
+      displayName: "Faris-Hamad",
+      email: "farishmd93@gmail.com",
+    },
+    {
+      userId: "2",
+      photoUrl: "/images/cat-2.webp",
+      displayName: "Mhmd-Hamad",
+      email: "mhmd@gmail.com",
+    },
+    {
+      userId: "3",
+      photoUrl: "/images/cat-3.webp",
+      displayName: "AliHamad",
+      email: "bluocat4@gmail.com",
+    },
   ];
   const p = {
     images: [
@@ -110,6 +125,7 @@ export default async function handler(req, res) {
         userId,
         displayName: users[index % 3].displayName,
         photoUrl: users[index % 3].photoUrl,
+        email: users[index % 3].email,
       });
     }
   }
