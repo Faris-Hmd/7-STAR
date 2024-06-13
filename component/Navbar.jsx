@@ -72,6 +72,9 @@ const Navbar = () => {
         </div>
         {ss?.user ? (
           <Link href={"/"} className="ms-auto me-2 Link">
+            <span style={{ color: "white" }} className="me-2">
+              {ss.user.name}
+            </span>
             <img
               width={50}
               height={50}
