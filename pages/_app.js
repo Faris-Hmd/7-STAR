@@ -9,6 +9,7 @@ import { AuthProvider } from "../context/authContext";
 import { SSRProvider } from "react-bootstrap";
 import { SessionProvider } from "next-auth/react";
 import Head from "next/head";
+import { Inter, Arya } from "@next/font/google";
 const internetUrl = "https://7-star.vercel.app";
 const localurl = " http://localhost:3005";
 export const currentUser = {
@@ -19,11 +20,11 @@ export const currentUser = {
 export let baseUrl =
   process.env.NODE_ENV === "development" ? localurl : internetUrl;
 
-// import { Inter, Arya } from "@next/font/google";
 // const font = Arya({ subsets: ["latin"], weight: ["700"] });
 // if (process && process.env.NODE_ENV === "development") {
 //   baseUrl = localurl;
 // }
+const inter = Inter({ subsets: ["latin"] });
 
 function MyApp({ Component, pageProps: { session, ...pageProps } }) {
   // console.log(Component);
@@ -51,15 +52,19 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }) {
           href="/icons/DrAzzaIcon.ico"
         />
       </Head>
-      <SSRProvider>
-        <AuthProvider>
-          <SessionProvider session={session}>
-            <Layout>
-              <Component {...pageProps} />
-            </Layout>
-          </SessionProvider>
-        </AuthProvider>
-      </SSRProvider>
+      <SessionProvider>
+        <SSRProvider>
+          <AuthProvider>
+            <SessionProvider session={session}>
+              <div className={inter.className}>
+                <Layout>
+                  <Component {...pageProps} />
+                </Layout>
+              </div>
+            </SessionProvider>
+          </AuthProvider>
+        </SSRProvider>
+      </SessionProvider>
     </>
   );
 }

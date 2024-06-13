@@ -1,6 +1,6 @@
 import styles from "../styles/Navbar.module.css";
 import { Accordion, Button, Col, Container, Offcanvas } from "react-bootstrap";
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import { FaBars, FaUsersCog } from "react-icons/fa";
 import {
   BsBag,
@@ -46,11 +46,15 @@ const links = [
 ];
 
 const Navbar = () => {
+  const { data: ss } = useSession();
   const [show, setShow] = useState(false);
   const { user, handleSignOut } = useContext(AuthContext);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-
+  useEffect(() => {
+    console.log(ss?.user);
+  }, [ss?.user]);
+  console.log(ss?.user);
   return (
     <>
       <nav className={styles.nav}>
@@ -83,6 +87,7 @@ const Navbar = () => {
       >
         <Offcanvas.Header closeButton>
           <Offcanvas.Title>القائمة</Offcanvas.Title>
+          <Offcanvas.Title>{ss?.user.name}</Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body className="flex gap-3 justify-content-start">
           <Container className="p-0 rounded border">

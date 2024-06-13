@@ -16,7 +16,6 @@ import { getDocsIds } from "../../lib/getDocsIds";
 import { db } from "../../firebase/firebase";
 import { toast } from "react-toastify";
 import { getUser } from "../../lib/getUser";
-import { admins } from "../../data/admins";
 import { getAdmins } from "../../lib/getAdmins";
 function Product(props) {
   const router = useRouter();
