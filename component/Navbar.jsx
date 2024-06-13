@@ -53,7 +53,7 @@ const Navbar = () => {
   const handleShow = () => setShow(true);
   useEffect(() => {
     console.log(ss?.user);
-  }, [ss?.user]);
+  }, [ss]);
   console.log(ss?.user);
   return (
     <>
@@ -62,22 +62,37 @@ const Navbar = () => {
           <FaBars style={{ color: "white" }} />
         </Button>
         <div className={styles.logo}>
-          <img width={"100px"} src="/icons/7star.png" alt="drc" />
+          <img
+            width={"100px"}
+            src="/icons/7star.png"
+            alt="drc"
+            className="mb-2"
+          />
           {/* <span className="p-2 fos-m text-nowrap">خدماتي</span> */}
         </div>
-        <div></div>
-        {/* {!user && (
+        {ss?.user ? (
           <Link href={"/"} className="ms-auto me-2 Link">
             <img
               width={50}
               height={50}
               style={{ objectFit: "cover" }}
-              src="/public/images/afocado.webp"
+              src={ss.user.image}
               alt="drc"
               className="rounded-circle shadow"
             />
           </Link>
-        )} */}
+        ) : (
+          <Link href={"/"} className="ms-auto me-2 Link" onClick={signIn}>
+            <img
+              width={50}
+              height={50}
+              style={{ objectFit: "cover" }}
+              src={"/images/cat-1.webp"}
+              alt="drc"
+              className="rounded-circle shadow"
+            />
+          </Link>
+        )}
       </nav>
       <Offcanvas
         show={show}
@@ -87,7 +102,6 @@ const Navbar = () => {
       >
         <Offcanvas.Header closeButton>
           <Offcanvas.Title>القائمة</Offcanvas.Title>
-          <Offcanvas.Title>{ss?.user.name}</Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body className="flex gap-3 justify-content-start">
           <Container className="p-0 rounded border">
@@ -128,7 +142,7 @@ const Navbar = () => {
               </Accordion.Body>
             </Accordion> */}
 
-            {!user && (
+            {!ss?.user && (
               <Link
                 href="#"
                 className="w-100 Link hover flex-r p-3 "
@@ -140,22 +154,22 @@ const Navbar = () => {
                 تسجيل الدخول
               </Link>
             )}
-            {user && (
+            {ss && (
               <>
                 {" "}
-                <Link
+                {/* <Link
                   href={"/Users/" + user?.id}
                   className="hover Link flex-r p-3 border-top"
                   onClick={handleClose}
                 >
                   <BsPerson size={"20px"} className="me-2" />
                   حسابي
-                </Link>
+                </Link> */}
                 <Link
                   href="/#"
                   className="w-100 Link hover flex-r p-3 border-top"
                   onClick={() => {
-                    handleSignOut();
+                    signOut();
                   }}
                 >
                   <BiLogOut size={"20px"} className="me-2" />
