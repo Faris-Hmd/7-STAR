@@ -8,8 +8,6 @@ import Layout from "../component/Layout";
 import { AuthProvider } from "../context/authContext";
 import { SSRProvider } from "react-bootstrap";
 import { SessionProvider } from "next-auth/react";
-import Head from "next/head";
-import { Inter, Arya } from "@next/font/google";
 const internetUrl = "https://7-star.vercel.app";
 const localurl = " http://localhost:3005";
 export const currentUser = {
@@ -24,43 +22,18 @@ export let baseUrl =
 // if (process && process.env.NODE_ENV === "development") {
 //   baseUrl = localurl;
 // }
-const inter = Inter({ subsets: ["latin"] });
 
 function MyApp({ Component, pageProps: { session, ...pageProps } }) {
   // console.log(Component);
   return (
     <>
-      <Head>
-        <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossOrigin="true"
-        />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Cairo&family=Nunito&display=swap"
-          rel="stylesheet"
-        />
-        <link rel="manifest" href="/manifest.json" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Cairo&family=Nunito&display=swap"
-          rel="stylesheet"
-        />
-        <link
-          rel="shortcut icon"
-          type="image/x-icon"
-          href="/icons/DrAzzaIcon.ico"
-        />
-      </Head>
       <SessionProvider>
         <SSRProvider>
           <AuthProvider>
             <SessionProvider session={session}>
-              <div className={inter.className}>
-                <Layout>
-                  <Component {...pageProps} />
-                </Layout>
-              </div>
+              <Layout>
+                <Component {...pageProps} />
+              </Layout>
             </SessionProvider>
           </AuthProvider>
         </SSRProvider>
