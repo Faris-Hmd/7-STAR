@@ -5,7 +5,7 @@ body {
   padding: 0;
   margin: 0;
   scrollbar-width: thin;
-  /* font-family: var(--bs-body-font-family) !important; */
+  font-family: var(--bs-body-font-family) !important;
   font-family: "Nunito" !important;
   /* font-family: var(--bs-body-font-family); */
 }
