@@ -86,7 +86,7 @@ function Product(props) {
                       {product.cost} QAR
                     </span>
                   </Card.Subtitle>
-                  {props.admins.find(
+                  {props.admins?.find(
                     (admin) => currentUser?.email === admin?.email
                   ) && (
                     <Container className="p-2 ps-0">
