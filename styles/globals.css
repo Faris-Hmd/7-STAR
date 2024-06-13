@@ -5,10 +5,10 @@ body {
   padding: 0;
   margin: 0;
   scrollbar-width: thin;
-  font-family: var(--bs-body-font-family) !important;
+  /* font-family: var(--bs-body-font-family) !important; */
   font-family: "Nunito" !important;
+  /* font-family: var(--bs-body-font-family); */
 }
-
 
 .product--image {
   width: 100%;
@@ -52,7 +52,7 @@ a {
 * {
   box-sizing: border-box;
   scroll-behavior: smooth;
-  font-family: var(--bs-body-font-family) !important;
+  /* font-family: var(--bs-body-font-family) !important; */
 
   /* direction: rtl; */
 }

@@ -1,37 +1,23 @@
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
-import {
-  collection,
-  deleteDoc,
-  doc,
-  getDocs,
-  updateDoc,
-} from "firebase/firestore";
+import { deleteDoc, doc, updateDoc } from "firebase/firestore";
 
-import {
-  Button,
-  Card,
-  Carousel,
-  Col,
-  Container,
-  Form,
-  Row,
-} from "react-bootstrap";
-import { baseUrl } from "../_app";
+import { Button, Card, Carousel, Col, Container } from "react-bootstrap";
+import { baseUrl, currentUser } from "../_app";
 import PageLayout from "../../component/PageLayout";
 import Link from "next/link";
-import { BsCart, BsCart2, BsCartCheck, BsPencil } from "react-icons/bs";
+import { BsPencil } from "react-icons/bs";
 import { BiCategory, BiPaperPlane } from "react-icons/bi";
 import RatingBox from "../../component/RatingBox";
 import CartButton from "../../component/CartButton";
 import { getRating } from "../../lib/getRating";
 import { getProduct, getProductSameCat } from "../../lib/getProduct";
 import { getDocsIds } from "../../lib/getDocsIds";
-import { FaWhatsapp } from "react-icons/fa";
 import { db } from "../../firebase/firebase";
 import { toast } from "react-toastify";
 import { getUser } from "../../lib/getUser";
 import { admins } from "../../data/admins";
+import { getAdmins } from "../../lib/getAdmins";
 function Product(props) {
   const router = useRouter();
   const [product, setProduct] = useState(props.product || {});
@@ -100,7 +86,9 @@ function Product(props) {
                       {product.cost} QAR
                     </span>
                   </Card.Subtitle>
-                  {admins.find((user) => props.user?.email === user?.email) && (
+                  {props.admins.find(
+                    (admin) => currentUser?.email === admin?.email
+                  ) && (
                     <Container className="p-2 ps-0">
                       {product.offer ? (
                         <Button
@@ -293,6 +281,7 @@ export async function getStaticProps(context) {
   const product = await getProduct(context.params.productId);
   const productsBySameCat_ = await getProductSameCat(product.category);
   const getUserInfo = await getUser(product.userId);
+  const admins = await getAdmins();
   // console.log(productsBySameCat_);
   return {
     props: {
@@ -300,6 +289,7 @@ export async function getStaticProps(context) {
       product: product,
       productsBySameCat: productsBySameCat_,
       user: getUserInfo,
+      admins,
     },
   };
 }
