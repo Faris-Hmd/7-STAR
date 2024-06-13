@@ -13,7 +13,7 @@ const Layout = ({ children }) => {
       <ThemeProvider>
         <div className={`App`}>
           <Head>
-            {/* <link
+            <link
               rel="preconnect"
               href="https://fonts.gstatic.com"
               crossOrigin="true"
@@ -27,7 +27,7 @@ const Layout = ({ children }) => {
             <link
               href="https://fonts.googleapis.com/css2?family=Cairo&family=Nunito&display=swap"
               rel="stylesheet"
-            /> */}
+            />
             <link
               rel="shortcut icon"
               type="image/x-icon"
