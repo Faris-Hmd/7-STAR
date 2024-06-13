@@ -10,6 +10,11 @@ import { SSRProvider } from "react-bootstrap";
 import { SessionProvider } from "next-auth/react";
 const internetUrl = "https://7-star.vercel.app";
 const localurl = " http://localhost:3005";
+export const currentUser = {
+  displayName: "فارس حمد",
+  email: "farishmd93@gmail.com",
+  photoUrl: "/images/cat-1.webp",
+};
 export let baseUrl =
   process.env.NODE_ENV === "development" ? localurl : internetUrl;
 

@@ -7,19 +7,14 @@ import { baseUrl } from "./../_app";
 import { useEffect } from "react";
 import { BsThreeDotsVertical } from "react-icons/bs";
 import PageLayout from "../../component/PageLayout";
+import { getUsers } from "../../lib/getUsers";
 
 function Users() {
   const [users, setUsers] = useState([]);
   const [selectedUser, setSelectedUser] = useState({});
   const [showOptModal, setShowOptModal] = useState(false);
-  async function getUsers() {
-    const res = await fetch(baseUrl + "/api/Users");
-    const data = await res.json();
-    if (res.ok) {
-      setUsers(data);
-    } else {
-      alert(data.msg);
-    }
+  async function handleGetUsers() {
+    const g = await getUsers();
   }
 
   function handleShowOptModal(user) {
@@ -27,7 +22,7 @@ function Users() {
     setShowOptModal(true);
   }
   useEffect(() => {
-    getUsers();
+    handleGetUsers();
   }, []);
   return (
     <>

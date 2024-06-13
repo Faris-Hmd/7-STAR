@@ -125,7 +125,7 @@ const Navbar = () => {
 
             {!user && (
               <Link
-                href="/Login"
+                href="#"
                 className="w-100 Link hover flex-r p-3 "
                 onClick={() => {
                   signIn();

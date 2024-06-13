@@ -20,6 +20,13 @@ export default async function handler(req, res) {
     { url: "/images/cat-3.webp" },
     { url: "/images/cat-4.webp" },
   ];
+  const admins = [
+    {
+      email: "farishmd93@gmail.com",
+      role: "admin",
+    },
+  ];
+
   const users = [
     {
       userId: "1",
@@ -62,6 +69,7 @@ export default async function handler(req, res) {
 
   await genUsers();
   await genProducts();
+  await genAdmins();
 
   // const products = await getProducts();
 
@@ -114,6 +122,13 @@ export default async function handler(req, res) {
           category: categories[index % 3].value,
           userId: users[index % 3].userId,
         },
+      });
+    }
+  }
+  async function genAdmins() {
+    for (let index = 0; index < admins.length; index++) {
+      await addDoc(collection(db, "admins"), {
+        email: admins[index].email,
       });
     }
   }
