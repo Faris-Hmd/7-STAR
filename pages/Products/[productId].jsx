@@ -66,7 +66,7 @@ function Product(props) {
     });
   }
 
-  if (!product.publish && !isAdmin)
+  if (!product.publish && !session?.user.role === "admin")
     return (
       <div style={{ height: "75vh" }} className="flex">
         <BiError size={"50px"} />
@@ -96,7 +96,7 @@ function Product(props) {
                       {product.cost} QAR
                     </span>
                   </Card.Subtitle>
-                  {isAdmin && (
+                  {session?.user.role === "admin" && (
                     <Container className="p-2 ps-0">
                       {product.offer ? (
                         <Button
