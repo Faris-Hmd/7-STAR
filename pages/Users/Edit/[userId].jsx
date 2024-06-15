@@ -1,75 +1,22 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useState } from "react";
 import PageLayout from "../../../component/PageLayout";
 import FormLogic from "../../../component/FormLogic";
-import { useRouter } from "next/router";
-import { baseUrl } from "../../_app";
 import { userInfoFeilds } from "../../../data/feilds";
+import { getFireDoc } from "../../../lib/getFireData";
+import { getServerSession } from "next-auth";
+import { authOptions } from "../../api/auth/[...nextauth]";
 
-function EditUser() {
-  const userFeilds = [
-    {
-      name: "displayName",
-      placeholder: "اسم المستخدم",
-      type: "text",
-    },
-    {
-      name: "email",
-      placeholder: "البريد الالكتروني",
-      type: "email",
-    },
-    {
-      name: "password",
-      placeholder: "كلمة المرور",
-      type: "password",
-    },
-    {
-      name: "passwordConfirm",
-      placeholder: "تأكيد كلمة المرور ",
-      type: "password",
-    },
-    {
-      name: "role",
-      placeholder: "نوع الصلاحية",
-      type: "select",
-      options: [
-        { value: "ADMIN" },
-        { value: "SHOP_ADMIN" },
-        { value: "BLOG_ADMIN" },
-      ],
-    },
-  ];
-  const router = useRouter();
-  const [userData, setUserData] = useState({});
+function EditUser(props) {
+  const [userData, setUserData] = useState(props.user);
 
-  const [loading, setLoading] = useState(true);
-
-  const userId = router.query.userId;
-  async function getUserInfo() {
-    try {
-      const res = await fetch(baseUrl + "/api/Users/" + userId);
-      const data = await res.json();
-      if (res.ok) {
-        setLoading(false);
-        setUserData(data);
-
-        // console.log(data);
-      } else {
-        setLoading(false);
-        toast.error(data.msg);
-      }
-    } catch (error) {
-      setLoading(false);
-      toast.error("حصل خطأ في العملية");
-      console.log(error);
-    }
-  }
-
-  useEffect(() => {
-    router.query.userId && getUserInfo();
-  }, [router.query]);
   return (
-    <PageLayout title={"تعديل بيانات الحساب "} loading={loading} role={"ADMIN"}>
+    <PageLayout
+      title={"تعديل بيانات الحساب "}
+      loading={false}
+      role={"ADMIN"}
+      pageName={"بيانات الحساب"}
+    >
       <FormLogic
         data={userData}
         setData={setUserData}
@@ -78,10 +25,22 @@ function EditUser() {
         method={"PUT"}
         redirect={true}
         singleImage={true}
-        route={"/Users/" + userId}
+        route={"/Users/" + props.user.id}
       />
     </PageLayout>
   );
 }
 
 export default EditUser;
+export async function getServerSideProps(context) {
+  const session = await getServerSession(context.req, context.res, authOptions);
+
+  const userInfo = await getFireDoc("users", context.params.userId);
+  console.log("ssr for edit user", session?.user.email);
+
+  return {
+    props: {
+      user: userInfo,
+    },
+  };
+}

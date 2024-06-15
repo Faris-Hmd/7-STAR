@@ -74,7 +74,6 @@ export const userInfoFeilds = [
     name: "role",
     placeholder: "نوع المستخدم",
     type: "text",
-
     disabled: true,
   },
   { name: "bio", placeholder: "نبذة عني", type: "textarea" },

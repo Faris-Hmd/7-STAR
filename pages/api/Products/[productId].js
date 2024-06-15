@@ -47,8 +47,6 @@ export default async function handler(req, res) {
       // console.log(product);
       await updateDoc(doc(db, "products", product.id), {
         ...product,
-        autherId: "0dM4MUr7GMs0PcRWNNJv",
-        keywords: [product.name, product.category, product.cost],
       });
       res.status(200).json({ msg: "تم التعديل بنجاح", docId: product.id });
     }

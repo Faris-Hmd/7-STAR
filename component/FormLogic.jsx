@@ -45,7 +45,7 @@ function FormLogic({
   }
 
   useEffect(() => {
-    // data.images[0].url && setImgs(data.images);
+    // method === "PUT" && data?.images[0]?.url && setImgs(data.images);
   }, [data]);
 
   const handleChange = (event) => {
@@ -220,7 +220,7 @@ function FormLogic({
                         key={index}
                       >
                         <img
-                          style={{ objectFit: "cover", height: "100%" }}
+                          style={{ objectFit: "cover", height: "300px" }}
                           className="d-block w-100"
                           src={img.url}
                           alt="First slide"
@@ -269,10 +269,10 @@ function FormLogic({
             </Form>{" "}
             <>
               <Container className="flex-r space-btw">
-                {true && (
+                {method === "PUT" && (
                   <Col xs={12}>
-                    {/* <Button
-                      className="mt-1 shadow w-100 p-2 "
+                    <Button
+                      className="m shadow w-10  px-3 "
                       variant="danger"
                       onClick={() => {
                         setShowDeleteModal(true);
@@ -282,25 +282,24 @@ function FormLogic({
                       <span className="ms-2">
                         <BsTrashFill />
                       </span>
-                    </Button> */}
-
-                    <Button
-                      className="mt-2 shadow w-100 p-2 m w-100"
-                      variant="success"
-                      disabled={
-                        isUploading || data?.password !== data?.passwordConfirm
-                      }
-                      type="submit"
-                      form={formName}
-                    >
-                      انهاء
-                      <span className="ms-2">
-                        <BsCheckLg />
-                      </span>
                     </Button>
                   </Col>
                 )}
               </Container>
+              <Button
+                className="mt-2 shadow w-100  px-4 ms-2"
+                variant="success"
+                disabled={
+                  isUploading || data?.password !== data?.passwordConfirm
+                }
+                type="submit"
+                form={formName}
+              >
+                انهاء
+                <span className="ms-2">
+                  <BsCheckLg />
+                </span>
+              </Button>
             </>
           </Col>
         </Container>

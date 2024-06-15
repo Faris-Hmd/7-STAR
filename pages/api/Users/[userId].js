@@ -11,6 +11,7 @@ import {
   where,
 } from "firebase/firestore";
 import { db } from "../../../firebase/firebase";
+
 export default async function handler(req, res) {
   const { userId } = req.query;
   let querySnapShot;
@@ -19,7 +20,7 @@ export default async function handler(req, res) {
   switch (req.method) {
     case "GET":
       {
-        querySnapShot = await getDoc(doc(db, "Users", userId));
+        querySnapShot = await getDoc(doc(db, "users", userId));
         const user = { ...querySnapShot.data(), id: querySnapShot.id };
         console.log(userId);
         res.status(200).json(user);
@@ -57,7 +58,7 @@ export default async function handler(req, res) {
     case "PUT": {
       const user = req.body;
       console.log(user);
-      await updateDoc(doc(db, "Users", userId), {
+      await updateDoc(doc(db, "users", userId), {
         ...user,
       });
       res.status(200).json({ msg: "تم التعديل بنجاح", docId: userId });

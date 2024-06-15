@@ -1,8 +1,12 @@
 import NextAuth from "next-auth";
 import GooglepProvider from "next-auth/providers/google";
+import { getDataFromQuery, getFireDoc } from "../../../lib/getFireData";
+import { collection, getDocs, query, where } from "firebase/firestore";
+import { db } from "../../../firebase/firebase";
 
 export const authOptions = {
   // Configure one or more authentication providers
+  secret: process.env.AUTH_SECRET,
   providers: [
     GooglepProvider({
       clientId:
@@ -11,6 +15,22 @@ export const authOptions = {
     }),
     // ...add more providers here
   ],
+  callbacks: {
+    async session({ session, token, user }) {
+      const querySnapShot = await getDocs(
+        query(collection(db, "users"), where("email", "==", session.user.email))
+      );
+      const userInfo = getDataFromQuery(querySnapShot);
+      console.log("callback");
+      console.log(userInfo[0]);
+      return {
+        ...session,
+        user: {
+          ...userInfo[0],
+        },
+      };
+    },
+  },
 };
 
 export default NextAuth(authOptions);

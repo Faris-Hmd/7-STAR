@@ -26,7 +26,7 @@
     "lib/getStaticteis.js",
     "data/dates.js",
     "pages/Dashboard/[year].jsx",
-    "pages/Products/MyProducts.jsx"
+    "pages/Products/productEdit.jsx"
   ],
   "exclude": ["node_modules"]
 }
