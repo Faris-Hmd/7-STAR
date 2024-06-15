@@ -98,6 +98,7 @@ function Products(props) {
                           focusable="false"
                           style={{ objectFit: "cover" }}
                         />
+
                         <div className="card-body">
                           <p className="card-text">
                             هذه بطاقة أوسع مع نص داعم أدناه كمقدمة طبيعية لمحتوى
