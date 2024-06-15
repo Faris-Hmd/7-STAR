@@ -300,6 +300,7 @@ export async function getStaticProps(context) {
       user: getUserInfo,
       admins,
     },
+    revalidate: 10,
   };
 }
 

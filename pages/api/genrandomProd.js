@@ -121,6 +121,7 @@ export default async function handler(req, res) {
           images: [{ url: `${imgs[index % 4].url}` }],
           category: categories[index % 3].value,
           userId: users[index % 3].userId,
+          publish: false,
         },
       });
     }
