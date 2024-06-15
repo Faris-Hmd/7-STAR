@@ -1,10 +1,12 @@
 /** @format */
 /* @import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"); */
+@import url("https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@100..900&display=swap");
 html,
 body {
   padding: 0;
   margin: 0;
   scrollbar-width: thin;
+  font-family: "Noto Kufi Arabic" !important;
   /* font-family: var(--bs-body-font-family) !important; */
   /* font-family: "Nunito" !important; */
   /* font-family: var(--bs-body-font-family); */
