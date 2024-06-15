@@ -21,11 +21,12 @@ export const authOptions = {
         query(collection(db, "users"), where("email", "==", session.user.email))
       );
       const userInfo = getDataFromQuery(querySnapShot);
-      console.log("callback");
+      // console.log("callback");
       // console.log(userInfo[0]);
       return {
         ...session,
         user: {
+          ...user,
           ...userInfo[0],
         },
       };

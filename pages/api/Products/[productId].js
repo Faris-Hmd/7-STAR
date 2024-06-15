@@ -8,9 +8,12 @@ import {
 } from "firebase/firestore";
 import { db } from "../../../firebase/firebase";
 import { getProduct } from "../../../lib/getProduct";
+import { getServerSession } from "next-auth";
+import { authOptions } from "../auth/[...nextauth]";
 export default async function handler(req, res) {
   const { productId } = req.query;
-
+  const { data: session } = await getServerSession(req, res, authOptions);
+  console.log(session);
   let querySnapShot;
   // console.log(req.method);
 
@@ -28,6 +31,7 @@ export default async function handler(req, res) {
         console.log(product);
         querySnapShot = await addDoc(collection(db, "products"), {
           ...product,
+          // userId: session.user.id,
         });
         res
           .status(200)
