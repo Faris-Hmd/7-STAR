@@ -96,11 +96,16 @@ function Homepage(props) {
         <Col xs={12} md={6}>
           <h2 className="pt-3 pb-3 text-center">العروض المميزة</h2>
           <Container className="flex-r p-0 shadow">
-            <Carousel className="w-100 overflow-hidden rounded">
+            <Carousel
+              className="w-100 overflow-hidden rounded"
+              style={{ height: "300px" }}
+              slide={false}
+            >
               {props.products?.map((product, index) => {
                 return (
                   <Carousel.Item
                     key={index}
+                    style={{ maxHeight: "300px" }}
                     className="rounded overflow-hidden p-0 m-0 w-100"
                   >
                     <Link href={"/Products/" + product.id} className="link">
@@ -122,6 +127,7 @@ function Homepage(props) {
                         loading="lazy"
                         // height={"100%"}
                         width={"100%"}
+                        height={"300px"}
                         // className="d-block w-100 "
                         style={{ objectFit: "cover", height: "300px" }}
                         src={`${product.images[0].url}`}
