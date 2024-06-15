@@ -122,7 +122,7 @@ function Product(props) {
                         </Button>
                       )}
 
-                      {!product.publish ? (
+                      {!product?.publish ? (
                         <Button
                           size="sm"
                           variant="success"

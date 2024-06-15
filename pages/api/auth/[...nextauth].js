@@ -22,7 +22,7 @@ export const authOptions = {
       );
       const userInfo = getDataFromQuery(querySnapShot);
       console.log("callback");
-      console.log(userInfo[0]);
+      // console.log(userInfo[0]);
       return {
         ...session,
         user: {
