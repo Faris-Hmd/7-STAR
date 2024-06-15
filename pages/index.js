@@ -67,7 +67,7 @@ function Homepage(props) {
               <div className="me-auto">
                 <h1>سلام عليكم</h1>
                 <p>خدمات بيل قبل اتل تنلل نعا نعلان عناعلا تا </p>
-                <Form className="">
+                <Form className="" style={{ width: "80%" }}>
                   <InputGroup className="shadow-sm border rounded mb-2">
                     <Button
                       variant="success"
