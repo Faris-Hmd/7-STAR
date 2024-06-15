@@ -1,6 +1,10 @@
 import NextAuth from "next-auth";
 import GooglepProvider from "next-auth/providers/google";
-import { getDataFromQuery, getFireDoc } from "../../../lib/getFireData";
+import {
+  getDataFromQuery,
+  getFireDoc,
+  getFireDocs,
+} from "../../../lib/getFireData";
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { db } from "../../../firebase/firebase";
 
@@ -21,13 +25,18 @@ export const authOptions = {
         query(collection(db, "users"), where("email", "==", session.user.email))
       );
       const userInfo = getDataFromQuery(querySnapShot);
+      const admins = await getFireDocs("admins");
       // console.log("callback");
-      // console.log(userInfo[0]);
+      // console.log(admins);
+      const isAdmin = admins?.find(
+        (admin) => userInfo[0].email === admin?.email
+      );
       return {
         ...session,
         user: {
           ...user,
           ...userInfo[0],
+          role: isAdmin ? "admin" : "",
         },
       };
     },

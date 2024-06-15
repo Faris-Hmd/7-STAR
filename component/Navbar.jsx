@@ -1,23 +1,11 @@
 import styles from "../styles/Navbar.module.css";
 import { Button, Col, Container, Offcanvas } from "react-bootstrap";
-import { useState, useEffect } from "react";
-import { FaBars, FaUsersCog } from "react-icons/fa";
-import {
-  BsBag,
-  BsCart3,
-  BsGear,
-  BsList,
-  BsListOl,
-  BsPerson,
-  BsPlus,
-} from "react-icons/bs";
+import { useEffect, useState } from "react";
+import { FaBars } from "react-icons/fa";
+import { BsBag, BsGear, BsPerson, BsPlus } from "react-icons/bs";
 import { BiHome, BiLogIn, BiLogOut, BiNews, BiStats } from "react-icons/bi";
 import Link from "next/link";
-import { AuthContext } from "../context/authContext";
 import { useSession, signIn, signOut } from "next-auth/react";
-import Image from "next/image";
-import { collection, getDoc, getDocs, query, where } from "firebase/firestore";
-import { db } from "../firebase/firebase";
 
 const links = [
   {
@@ -129,13 +117,15 @@ const Navbar = () => {
                   <BsPerson size={"20px"} className="me-2" />
                   حسابي
                 </Link>
-                <Link
-                  href={"/Products/productsEdit"}
-                  className="w-100 Link hover flex-r p-3 border-top"
-                >
-                  <BsGear size={"20px"} className="me-2" />
-                  تعديل الخدمات
-                </Link>
+                {session.user.role === "admin" && (
+                  <Link
+                    href={"/Products/productsEdit"}
+                    className="w-100 Link hover flex-r p-3 border-top"
+                  >
+                    <BsGear size={"20px"} className="me-2" />
+                    تعديل الخدمات
+                  </Link>
+                )}
 
                 <Link
                   href="/Products/Add"
