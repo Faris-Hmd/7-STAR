@@ -113,7 +113,8 @@ function CartButton({ product, productId }) {
         <Button
           className="mb-1 shadow w-100"
           variant="success"
-          onClick={() => addToOrders(product)}
+          // onClick={() => addToOrders(product)}
+          href="/payment"
         >
           اطلب الان
           <span className="ms-2">{/* <BsFillCartCheckFill /> */}</span>

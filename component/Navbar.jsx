@@ -1,6 +1,6 @@
 import styles from "../styles/Navbar.module.css";
-import { Accordion, Button, Col, Container, Offcanvas } from "react-bootstrap";
-import { useContext, useState, useEffect } from "react";
+import { Button, Col, Container, Offcanvas } from "react-bootstrap";
+import { useState, useEffect } from "react";
 import { FaBars, FaUsersCog } from "react-icons/fa";
 import {
   BsBag,
@@ -16,6 +16,8 @@ import Link from "next/link";
 import { AuthContext } from "../context/authContext";
 import { useSession, signIn, signOut } from "next-auth/react";
 import Image from "next/image";
+import { collection, getDoc, getDocs, query, where } from "firebase/firestore";
+import { db } from "../firebase/firebase";
 
 const links = [
   {
@@ -23,38 +25,19 @@ const links = [
     href: "/",
     icon: <BiHome size={"20px"} className="me-3" />,
   },
-  // {
-  //   name: "لوحة التحكم",
-  //   href: "/Dashboard/2024",
-  //   icon: <BiStats size={"20px"} className="me-3" />,
-  // },
   {
     name: "الخدمات",
     href: "/Products",
     icon: <BsBag size={"20px"} className="me-3" />,
   },
-  {
-    name: "خدماتي",
-    href: "/Products/MyProducts",
-    icon: <BsBag size={"20px"} className="me-3" />,
-  },
-  {
-    name: "اضافة خدمة",
-    href: "/Products/Add",
-    icon: <BsPlus size={"20px"} className="me-3" />,
-  },
 ];
 
 const Navbar = () => {
-  const { data: ss } = useSession();
+  const { data: session, status } = useSession();
   const [show, setShow] = useState(false);
-  const { user, handleSignOut } = useContext(AuthContext);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  useEffect(() => {
-    console.log(ss?.user);
-  }, [ss]);
-  console.log(ss?.user);
+
   return (
     <>
       <nav className={styles.nav}>
@@ -70,16 +53,16 @@ const Navbar = () => {
           />
           {/* <span className="p-2 fos-m text-nowrap">خدماتي</span> */}
         </div>
-        {ss?.user ? (
+        {session?.user ? (
           <Link href={"/"} className="ms-auto me-2 Link">
             <span style={{ color: "white" }} className="me-2">
-              {ss.user.name}
+              {session.user.displayName}
             </span>
             <img
               width={50}
               height={50}
               style={{ objectFit: "cover" }}
-              src={ss.user.image}
+              src={session.user.photoUrl}
               alt="drc"
               className="rounded-circle shadow"
             />
@@ -125,27 +108,7 @@ const Navbar = () => {
             })}
           </Container>
           <Container className="p-0 overflow-hidden border rounded">
-            {/* <Accordion>
-              <Accordion.Header>
-                <BsGear size={"20px"} className="me-2" /> الاعدادت
-              </Accordion.Header>
-              <Accordion.Body className="p-1">
-                <Accordion.Item className="overflow-hidden">
-                  <Link href="/Users" className="hover Link flex-r p-3 ">
-                    <FaUsersCog size={"20px"} className="me-2" />
-                    المستخدمين
-                  </Link>
-                </Accordion.Item>
-                <Accordion.Item className="overflow-hidden">
-                  <Link href="/Users" className="hover Link flex-r p-3">
-                    <BiNews size={"20px"} className="me-2" />
-                    وسائل التواصل
-                  </Link>
-                </Accordion.Item>
-              </Accordion.Body>
-            </Accordion> */}
-
-            {!ss?.user && (
+            {!session?.user && (
               <Link
                 href="#"
                 className="w-100 Link hover flex-r p-3 "
@@ -157,19 +120,34 @@ const Navbar = () => {
                 تسجيل الدخول
               </Link>
             )}
-            {ss && (
+            {session && (
               <>
-                {" "}
-                {/* <Link
-                  href={"/Users/" + user?.id}
-                  className="hover Link flex-r p-3 border-top"
-                  onClick={handleClose}
+                <Link
+                  href={"/Users/1"}
+                  className="w-100 Link hover flex-r p-3 border-"
                 >
                   <BsPerson size={"20px"} className="me-2" />
                   حسابي
-                </Link> */}
+                </Link>
                 <Link
-                  href="/#"
+                  href={"/Products/productsEdit"}
+                  className="w-100 Link hover flex-r p-3 border-top"
+                >
+                  <BsGear size={"20px"} className="me-2" />
+                  تعديل الخدمات
+                </Link>
+
+                <Link
+                  href="/Products/Add"
+                  className="w-100 Link hover flex-r p-3 border-top"
+                >
+                  <BsPlus size={"20px"} className="me-2" />
+                  إضافة خدمة
+                </Link>
+                {!session?.user?.role && <></>}
+
+                <Link
+                  href={"#"}
                   className="w-100 Link hover flex-r p-3 border-top"
                   onClick={() => {
                     signOut();

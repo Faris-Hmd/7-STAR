@@ -4,10 +4,7 @@ import { Col, Container } from "react-bootstrap";
 function Footer() {
   return (
     <>
-      <hr className="mt-3" />
-
-      <Container className="p-1 flex-r bg-liner  ">
-        <Col></Col>
+      <Container className="p-1 flex-r bg-liner">
         <Col xs={12}>
           <small>
             <center>©2023 by Faris Hamad. created with Next.js</center>

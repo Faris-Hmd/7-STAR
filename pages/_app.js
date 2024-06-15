@@ -4,7 +4,6 @@ import "../styles/util.css";
 import "bootstrap/dist/css/bootstrap.rtl.min.css";
 import "react-toastify/dist/ReactToastify.css";
 import Layout from "../component/Layout";
-// import "bootstrap/dist/css/bootstrap.css";
 import { AuthProvider } from "../context/authContext";
 import { SSRProvider } from "react-bootstrap";
 import { SessionProvider } from "next-auth/react";
@@ -14,7 +13,9 @@ export const currentUser = {
   displayName: "فارس حمد",
   email: "farishmd93@gmail.com",
   photoUrl: "/images/cat-1.webp",
+  id: "1",
 };
+
 export let baseUrl =
   process.env.NODE_ENV === "development" ? localurl : internetUrl;
 

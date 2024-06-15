@@ -1,35 +1,17 @@
-import React, { useEffect, useState } from "react";
-import { Button, Col, Container } from "react-bootstrap";
-import { useRouter } from "next/router";
-import { baseUrl } from "../../_app";
-import SpinnerLoading from "../../../component/SpinnerLoading";
+import React, { useState } from "react";
+
 import FormLogic from "../../../component/FormLogic";
 import { productsFeilds } from "../../../data/feilds";
 import PageLayout from "../../../component/PageLayout";
+import { getFireDoc } from "../../../lib/getFireData";
 
-function EditProduct() {
-  const router = useRouter();
-  const [product, setProduct] = useState();
-  const [loading, setIsLoading] = useState(true);
-
-  function getProduct() {
-    fetch(baseUrl + "/api/Products/" + router.query.productId)
-      .then((res) => res.json())
-      .then((data) => {
-        setIsLoading(false);
-        setProduct(data);
-      });
-  }
-
-  useEffect(() => {
-    if (!router.query.productId) return;
-    getProduct();
-  }, [router.query]);
+function EditProduct(props) {
+  const [product, setProduct] = useState(props.product);
 
   return (
     <>
       <PageLayout
-        loading={loading}
+        loading={false}
         role={"SHOP_ADMIN"}
         title={"تعديل المنتج"}
         pageName={"تعديل الخدمة"}
@@ -50,3 +32,14 @@ function EditProduct() {
 }
 
 export default EditProduct;
+export async function getServerSideProps(context) {
+  const product = await getFireDoc("products", context.params.productId);
+  console.log(product);
+  console.log("ssr for edit products");
+
+  return {
+    props: {
+      product,
+    },
+  };
+}

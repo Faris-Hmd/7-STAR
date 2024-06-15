@@ -3,7 +3,6 @@ import { useState } from "react";
 import { Button, ButtonGroup, Form, Table } from "react-bootstrap";
 import { BiRefresh } from "react-icons/bi";
 import UserOpt from "../../component/UserOpt";
-import { baseUrl } from "./../_app";
 import { useEffect } from "react";
 import { BsThreeDotsVertical } from "react-icons/bs";
 import PageLayout from "../../component/PageLayout";

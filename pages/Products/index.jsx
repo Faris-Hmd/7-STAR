@@ -1,14 +1,11 @@
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
-import { Card, Col, Container } from "react-bootstrap";
+import { Col, Container } from "react-bootstrap";
 import { FillterForm } from "../../component/FillterForm";
 import { getRequest } from "../../helper/requests";
 import PageLayout from "../../component/PageLayout";
-import { BsPlusLg } from "react-icons/bs";
 import { getLocalStorge, setLocalStorge } from "../../helper/localStorge";
-import { collection, getDocs } from "firebase/firestore";
-import { db } from "../../firebase/firebase";
-// console.log(baseUrl);
+import { getFireDocs, getFireDocsQuery } from "../../lib/getFireData";
 export const IS_CART_IDS_VALID_LS_KEY = "isCartIdsValid";
 export const CART_PROD_IDS_LS_KEY = "cartProdIds";
 export const CART_PROD_LS_KEY = "cartProd";
@@ -19,21 +16,7 @@ function Products(props) {
     props.products || []
   );
   const [cartProducts, setCartProductsIds] = useState([]);
-  const [loading, setIsLoading] = useState(false);
 
-  async function getProducts() {
-    setIsLoading(true);
-    const { data, error } = await getRequest({
-      route: "Products?keyword=all",
-    });
-    if (data) {
-      setProduct(data);
-      setFillteredProducts(data);
-      setIsLoading(false);
-    } else if (error) {
-      console.log(error);
-    }
-  }
   async function getCartProducts() {
     if (getLocalStorge(IS_CART_IDS_VALID_LS_KEY)) {
       setCartProductsIds(getLocalStorge(CART_PROD_IDS_LS_KEY));
@@ -62,7 +45,7 @@ function Products(props) {
   return (
     <>
       <PageLayout
-        loading={loading}
+        loading={false}
         title={"الخدمات"}
         navComp={
           <Container className="flex-r p-0">
@@ -78,10 +61,12 @@ function Products(props) {
         role={"ALL"}
         pageName="الخدمات"
       >
-        {!loading && fillteredProducts.length > 0 ? (
+        {fillteredProducts.length > 0 ? (
           <ProductsContainer />
         ) : (
-          <h2 className="text-center h-100 full">لا توجد منتجات</h2>
+          <div style={{ minHeight: "65vh" }} className="flex">
+            <h2 className="text-center h-100 full">لا توجد منتجات</h2>
+          </div>
         )}
       </PageLayout>
     </>
@@ -90,43 +75,51 @@ function Products(props) {
   function ProductsContainer() {
     return (
       <Container className="flex-r p-0 p-relative">
-        {fillteredProducts.map((product, index) => {
-          const currentProduct = cartProducts.find(
-            (p) => p.productId === product.id
-          );
-          return (
-            <Col key={index} xs={6} lg={3}>
-              <Link href={"Products/" + product.id} className="Link">
-                <Card className="overflow-hidden product shadow-sm bg-sec">
-                  <Card.Img
-                    className="rounded-0"
-                    style={{ objectFit: "cover" }}
-                    loading="lazy"
-                    src={product.img}
-                    height={"150px"}
-                  />
-                  <Card.Body className="p-2">
-                    {" "}
-                    <Card.Title>
-                      <small>{product.name}</small>
-                    </Card.Title>
-                    {currentProduct && <div className="fav-star">0</div>}
-                    <Card.Subtitle className="mb-1 fs-6  text-muted">
-                      <small>
-                        {" "}
-                        {product?.category} |
-                        <span className="text-success text-bold fs-6  rounded ms-2">
-                          {product.cost} ج.س
-                        </span>
-                      </small>
-                    </Card.Subtitle>
-                    {/* <Card.Text>{product.breif}</Card.Text> */}
-                  </Card.Body>
-                </Card>
-              </Link>
-            </Col>
-          );
-        })}
+        {" "}
+        <div className="album py-3 bg-body-tertiary">
+          <div className="container">
+            <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+              {fillteredProducts.map((product, index) => {
+                // const currentProduct = cartProducts.find(
+                //   (p) => p.productId === product.id
+                // );
+                return (
+                  <div className="col">
+                    <div className="card shadow-sm">
+                      <Link href={"/Products/" + product.id} className="Link">
+                        <img
+                          className="bd-placeholder-img card-img-top object-cover"
+                          width="100%"
+                          height="225"
+                          src={product.images[0].url}
+                          role="img"
+                          aria-label="Placeholder: صورة مصغرة"
+                          preserveAspectRatio="xMidYMid slice"
+                          focusable="false"
+                          style={{ objectFit: "cover" }}
+                        />
+                        <div className="card-body">
+                          <p className="card-text">
+                            هذه بطاقة أوسع مع نص داعم أدناه كمقدمة طبيعية لمحتوى
+                            إضافي. هذا المحتوى أطول قليلاً.
+                          </p>
+                          <div className="d-flex justify-content-between align-items-center">
+                            <div className="text-success">
+                              QAR {product.cost}
+                            </div>
+                            <small className="text-body-secondary">
+                              {product?.category}
+                            </small>
+                          </div>
+                        </div>
+                      </Link>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </div>
       </Container>
     );
   }
@@ -136,40 +129,10 @@ export default Products;
 
 export async function getStaticProps() {
   console.log("ssg for Products");
-  // const { collection, getDocs } = await import {"firebase/firestore"};
-  const querySnapShot = await getDocs(collection(db, "products"));
-  const products = querySnapShot.docs.map((product) => {
-    return {
-      name: product.data().name,
-      cost: product.data().cost,
-      category: product?.data()?.category || "",
-      img: product?.data().images[0]?.url || "",
-      id: product.id,
-    };
-  });
+  const products = await getFireDocsQuery("products", "publish", "==", true);
+
   return {
     props: { products },
     revalidate: 10,
   };
 }
-
-/*
-   <Dropdown>
-                        <Dropdown.Toggle variant="g" className="ms-1">
-                          <BsThreeDotsVertical size={"18"} />
-                        </Dropdown.Toggle>
-                        <Dropdown.Menu className="ms-3">
-                          <Dropdown.Item href={"/Products/Edit/" + product.id}>
-                            تعديل
-                          </Dropdown.Item>
-                          <Dropdown.Item
-                            onClick={() => {
-                              setShowDeleteModal(true);
-                              setProductId(product.id);
-                            }}
-                          >
-                            حذف
-                          </Dropdown.Item>
-                        </Dropdown.Menu>
-                      </Dropdown>
-                      */

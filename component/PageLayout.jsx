@@ -11,8 +11,6 @@ export default function PageLayout({
   navComp,
   pageName,
 }) {
-  const { user } = useContext(AuthContext);
-
   if (loading) {
     return (
       <Container

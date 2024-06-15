@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import { Col, Container } from "react-bootstrap";
-
 import { productsFeilds } from "../../../data/feilds";
 import FormLogic from "../../../component/FormLogic";
 import PageLayout from "../../../component/PageLayout";

@@ -6,22 +6,33 @@ import { Button, Card, Carousel, Col, Container } from "react-bootstrap";
 import { baseUrl, currentUser } from "../_app";
 import PageLayout from "../../component/PageLayout";
 import Link from "next/link";
-import { BsPencil } from "react-icons/bs";
-import { BiCategory, BiPaperPlane } from "react-icons/bi";
+import {
+  BsEye,
+  BsEyeSlash,
+  BsPencil,
+  BsStar,
+  BsStarFill,
+  BsTrashFill,
+} from "react-icons/bs";
+import { BiCategory, BiError, BiPaperPlane } from "react-icons/bi";
 import RatingBox from "../../component/RatingBox";
 import CartButton from "../../component/CartButton";
 import { getRating } from "../../lib/getRating";
-import { getProduct, getProductSameCat } from "../../lib/getProduct";
+import { getProductSameCat } from "../../lib/getProduct";
 import { getDocsIds } from "../../lib/getDocsIds";
 import { db } from "../../firebase/firebase";
 import { toast } from "react-toastify";
 import { getUser } from "../../lib/getUser";
-import { getAdmins } from "../../lib/getAdmins";
+import { getFireDoc, getFireDocs } from "../../lib/getFireData";
+import { useSession } from "next-auth/react";
 function Product(props) {
   const router = useRouter();
   const [product, setProduct] = useState(props.product || {});
   const [isLoading, setIsLoading] = useState(false);
-
+  const { data: session } = useSession();
+  const isAdmin = props.admins?.find(
+    (admin) => session?.user.email === admin?.email
+  );
   async function getProduct(id) {
     setIsLoading(true);
     fetch(`${baseUrl}/api/Products/${router.query.productId}`)
@@ -40,9 +51,9 @@ function Product(props) {
       router.reload();
     });
   }
-  async function publish(id, isPublish) {
+  async function publish(id, publish) {
     await updateDoc(doc(db, "products", id), {
-      isPublish: isPublish,
+      publish,
     }).then(() => {
       toast.success("تم الاضافة بنجاح");
       router.reload();
@@ -55,13 +66,13 @@ function Product(props) {
     });
   }
 
-  useEffect(() => {
-    if (!router.query.productId) return;
-    // getProduct();
-  }, [router.query.productId]);
-
-  // useEffect(() => window.scrollTo(0, 0), []);
-
+  if (!product.publish && !isAdmin)
+    return (
+      <div style={{ height: "75vh" }} className="flex">
+        <BiError size={"50px"} />
+        <h2>لا يمكن عرض هذه الخدمة</h2>
+      </div>
+    );
   return (
     <PageLayout
       role={"ALL"}
@@ -75,9 +86,9 @@ function Product(props) {
       >
         <Col xs={12} md={7}>
           <Card className="shadow-sm mb-2">
-            <Card.Body>
+            <Card.Body className="p-0">
               <Container className="flex-r  p-0">
-                <Col xs={12}>
+                <Col xs={12} className="p-2">
                   <Card.Title>{product.name}</Card.Title>
                   <Card.Subtitle className="mb-1 text-muted">
                     <BiCategory /> {product.category} |
@@ -85,68 +96,67 @@ function Product(props) {
                       {product.cost} QAR
                     </span>
                   </Card.Subtitle>
-                  {props.admins?.find(
-                    (admin) => currentUser?.email === admin?.email
-                  ) && (
+                  {isAdmin && (
                     <Container className="p-2 ps-0">
                       {product.offer ? (
                         <Button
+                          size="sm"
                           variant="danger"
                           onClick={() => {
                             makeOffer(product.id, false);
                           }}
                           className="me-1"
                         >
-                          <small>ازالة التمييز</small>
+                          ازالة التمييز <BsStarFill className="ms-1" />
                         </Button>
                       ) : (
                         <Button
+                          size="sm"
                           variant="success"
                           onClick={() => {
                             makeOffer(product.id, true);
                           }}
                           className="me-1"
                         >
-                          <small>تمييز</small>
+                          تمييز <BsStar className="ms-1" />
                         </Button>
                       )}
-                      {!product.isPublish ? (
+
+                      {!product.publish ? (
                         <Button
+                          size="sm"
                           variant="success"
                           onClick={() => {
                             publish(product.id, true);
                           }}
                         >
                           نشر
-                          <BiPaperPlane className="ms-1" />{" "}
+                          <BsEye className="ms-1" />
                         </Button>
                       ) : (
                         <Button
+                          size="sm"
                           variant="danger"
                           onClick={() => {
                             publish(product.id, false);
                           }}
                         >
-                          <small>عدم النشر</small>
+                          عدم النشر <BsEyeSlash className="ms-1" />
                         </Button>
                       )}
-                      <Button
-                        variant="warning"
-                        className="ms-1"
-                        href={"Edit/" + product.id}
-                      >
-                        تعديل
-                        <BsPencil className="ms-2" />
-                      </Button>
-                      <Button
-                        className="ms-1"
-                        variant="danger"
-                        onClick={() => {
-                          deletePro(product.id);
-                        }}
-                      >
-                        حذف
-                      </Button>
+                      {currentUser.id === props.product.userId && (
+                        <>
+                          <Button
+                            size="sm"
+                            variant="secondary"
+                            className="ms-1"
+                            href={"Edit/" + product.id}
+                          >
+                            تعديل
+                            <BsPencil className="ms-2" />
+                          </Button>
+                        </>
+                      )}
                     </Container>
                   )}
                 </Col>
@@ -196,14 +206,14 @@ function Product(props) {
             productRating={
               props.rating ? props.rating : { likes: 0, dislikes: 0 }
             }
-          />{" "}
+          />
           <Container
             className="bg-sec mt-2 shadow-sm p-0 flex-r rounded border"
             style={{ width: "99%" }}
           >
             <Col xs={12} className="mt-2">
               <Container className="flex-r">
-                <Col xs={4}>
+                <Col xs={5}>
                   <img
                     src={props.user?.photoUrl}
                     width={"120"}
@@ -212,7 +222,7 @@ function Product(props) {
                     className="m-2 shadow"
                   />{" "}
                 </Col>
-                <Col xs={8}>
+                <Col xs={7}>
                   <div>
                     <p>{props.user?.displayName}</p>
                     <p>مطور تطبيقات ويب</p>
@@ -277,11 +287,11 @@ export default Product;
 
 export async function getStaticProps(context) {
   const rating = await getRating(context.params.productId);
-  const product = await getProduct(context.params.productId);
+  const product = await getFireDoc("products", context.params.productId);
   const productsBySameCat_ = await getProductSameCat(product.category);
   const getUserInfo = await getUser(product.userId);
-  const admins = await getAdmins();
-  // console.log(productsBySameCat_);
+  const admins = await getFireDocs("admins");
+  console.log(admins);
   return {
     props: {
       rating: rating,

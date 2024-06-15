@@ -208,7 +208,9 @@ a:hover {
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
 }
-
+.rounded-full {
+  border-radius: 50%;
+}
 .post-img {
   object-fit: fill;
 }
@@ -228,6 +230,7 @@ a:hover {
 }
 .offcanvas {
   max-width: 320px !important;
+  z-index: 99;
 }
 .nav-tabs .nav-link {
   color: #eee;

@@ -1,4 +1,3 @@
-import { collection, getDocs, query, where } from "firebase/firestore";
 import {
   Button,
   Card,
@@ -10,8 +9,8 @@ import {
   Row,
 } from "react-bootstrap";
 import { BiSearch } from "react-icons/bi";
-import "react-multi-carousel/lib/styles.css";
-import { db } from "../firebase/firebase";
+import { getFireDocsQuery } from "../lib/getFireData";
+import Link from "next/link";
 
 const posts = [
   {
@@ -92,43 +91,43 @@ function Homepage(props) {
           </Container>
         </Col>{" "}
       </Row>
+
       <Row className="m-1">
         <Col xs={12} md={6}>
           <h2 className="pt-3 pb-3 text-center">العروض المميزة</h2>
-          <Container className="flex-r p-0 shadow-lg ">
-            <Carousel
-              className="w-100 overflow-hidden rounded"
-              indicators={false}
-            >
-              {props.products?.map((post, index) => {
+          <Container className="flex-r p-0 shadow">
+            <Carousel className="w-100 overflow-hidden rounded">
+              {props.products?.map((product, index) => {
                 return (
                   <Carousel.Item
                     key={index}
-                    className="rounded overflow-hidden"
+                    className="rounded overflow-hidden p-0 m-0 w-100"
                   >
-                    <Carousel.Caption
-                      className="wave-2  p-0 ps-3 fs-5"
-                      style={{
-                        bottom: "0",
-                        right: "0",
-                        minWidth: "100%",
-                        textAlign: "right",
-                      }}
-                    >
-                      <span>
-                        {post.name}
-                        <pre className="text-success">{post.cost} QAR</pre>
-                      </span>
-                    </Carousel.Caption>
-                    <img
-                      loading="lazy"
-                      height={"300px"}
-                      width={"100%"}
-                      // className="d-block w-100 "
-                      style={{ objectFit: "cover" }}
-                      src={`${post.img}`}
-                      alt={`${index + 1} slide`}
-                    />
+                    <Link href={"/Products/" + product.id} className="link">
+                      <Carousel.Caption
+                        className="wave-2  p-0 ps-3 fs-5"
+                        style={{
+                          bottom: "0",
+                          right: "0",
+                          minWidth: "100%",
+                          textAlign: "right",
+                        }}
+                      >
+                        <span>
+                          {product.name}
+                          <pre className="text-success">{product.cost} QAR</pre>
+                        </span>
+                      </Carousel.Caption>
+                      <img
+                        loading="lazy"
+                        // height={"100%"}
+                        width={"100%"}
+                        // className="d-block w-100 "
+                        style={{ objectFit: "cover", height: "300px" }}
+                        src={`${product.images[0].url}`}
+                        alt={`${index + 1} slide`}
+                      />
+                    </Link>
                   </Carousel.Item>
                 );
               })}
@@ -138,15 +137,16 @@ function Homepage(props) {
         <Col xs={12} md={6}>
           <h2 className="pt-3 pb-3 text-center">الاكثر مبيعا</h2>
 
-          <Carousel
-            className="w-100 overflow-hidden rounded"
-            indicators={false}
-          >
+          <Carousel className="w-100 overflow-hidden rounded ">
             {posts.map((post, index) => {
               return (
-                <Carousel.Item key={index} className="rounded overflow-hidden">
+                <Carousel.Item
+                  key={index}
+                  className="rounded overflow-hidden "
+                  style={{ height: "300px" }}
+                >
                   <Carousel.Caption
-                    className="p-1 ps-3 blur fs-3"
+                    className="p-1 ps-3 blur fs-5"
                     style={{
                       bottom: "0",
                       right: "0",
@@ -160,9 +160,8 @@ function Homepage(props) {
                   </Carousel.Caption>
                   <img
                     loading="lazy"
-                    height={"300px"}
+                    height={"100%"}
                     width={"100%"}
-                    // className="d-block w-100 "
                     style={{ objectFit: "cover" }}
                     src={`/images/${post.cat}`}
                     alt={`${index + 1} slide`}
@@ -173,7 +172,6 @@ function Homepage(props) {
           </Carousel>
         </Col>
       </Row>
-      <Row>{/* <AppServices /> */}</Row>
       <Row className="mt-2 overflow-hidden m-2">
         <h2 className="pt-3 pb-3 text-center">نبذة عن خدمات</h2>
 
@@ -255,20 +253,9 @@ function Homepage(props) {
 
 export default Homepage;
 export async function getStaticProps() {
+  const products = await getFireDocsQuery("products", "offer", "==", true);
   console.log("ssg for home");
-  // const { collection, getDocs } = await import {"firebase/firestore"};
-  const querySnapShot = await getDocs(
-    query(collection(db, "products"), where("offer", "==", true))
-  );
-  const products = querySnapShot.docs.map((product) => {
-    return {
-      name: product.data().name,
-      cost: product.data().cost,
-      category: product?.data()?.category || "",
-      img: product?.data().images[0]?.url || "",
-      id: product.id,
-    };
-  });
+
   return {
     props: { products },
     revalidate: 10,
