@@ -7,7 +7,7 @@ import { useSession } from "next-auth/react";
 function AddProduct() {
   const { data: session, status } = useSession();
 
-  const [product, setProduct] = useState({ userId: session.user.id });
+  const [product, setProduct] = useState({ userId: session?.user.id });
 
   return (
     <PageLayout
