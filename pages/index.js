@@ -91,7 +91,430 @@ function Homepage(props) {
           </Container>
         </Col>{" "}
       </Row>
+      <section id="categories" className="categories py-5">
+            <div className="container">
+                <h2 className="text-center mb-5">Browse by Category</h2>
+                <div className="row justify-content-center gy-4">
+                    <div className="col-lg-4 col-md-6">
+                        <div className="card category-card">
+                            <div className="card-body card-icons text-center">
 
+                                <i
+                                    className="bi-heart-pulse-fill fs-1"></i>
+                                <h5 className="card-title">Health Services</h5>
+                                <p className="card-text">Explore top health service
+                                    providers.</p>
+                                <a href="#" className="btn btn-dark">View More</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="col-lg-4 col-md-6">
+                        <div className="card category-card">
+                            <div className="card-body card-icons text-center">
+                                <i
+                                    className="bi-bank2 fs-1"></i>
+                                <h5 className="card-title">Legal Services</h5>
+                                <p className="card-text">Find expert legal advice
+                                    and services.</p>
+                                <a href="#" className="btn btn-dark">View More</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="col-lg-4 col-md-6">
+                        <div className="card category-card">
+                            <div className="card-body card-icons text-center">
+                                <i className="bi-house-fill fs-1"></i>
+                                <h5 className="card-title">Real Estate</h5>
+                                <p className="card-text">Explore properties and real
+                                    estate services.</p>
+                                <a href="#" className="btn btn-dark">View More</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="col-lg-4 col-md-6">
+                        <div className="card category-card">
+                            <div className="card-body card-icons text-center">
+                                <i
+                                    className="bi-gear-fill fs-1"></i>
+                                <h5 className="card-title">Home Services</h5>
+                                <p className="card-text">Discover reliable home
+                                    services.</p>
+                                <a href="#" className="btn btn-dark">View More</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="col-lg-4 col-md-6">
+                        <div className="card category-card">
+                            <div className="card-body card-icons text-center">
+                                <i className="bi-car-front-fill fs-1"></i>
+                                <h5 className="card-title">Automotive</h5>
+                                <p className="card-text">Find automotive services
+                                    and repairs.</p>
+                                <button href="#" className="btn btn-light">View More</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="col-lg-4 col-md-6">
+                        <div className="card category-card">
+                            <div className="card-body card-icons text-center">
+                                <i
+                                    className="bi-people-fill fs-1"></i>
+                                <h5 className="card-title">Consultancy Services</h5>
+                                <p className="card-text">Consult with experts in
+                                    various fields.</p>
+                                <a href="#" className="btn btn-dark">View More</a>
+                            </div>
+                        </div>
+                    </div>
+                    {/* <!-- Add more categories here --> */}
+                </div>
+            </div>
+        </section>
+        <section id="why-choose-us" class="py-5">
+            <div class="container">
+                <h2 class="text-center mb-5">Why Choose Our Services?</h2>
+                <div class="row gx-4 justify-content-center">
+                    <div class="col-lg-4 mb-4">
+                        <div class="card border-0 shadow h-100">
+                            <div class="card-body text-center">
+                                <h5 class="card-title">Quality Services</h5>
+                                <p class="card-text">Connect with vetted service
+                                    providers offering high-quality
+                                    services.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 mb-4">
+                        <div class="card border-0 shadow h-100">
+                            <div class="card-body text-center">
+                                <h5 class="card-title">Convenience</h5>
+                                <p class="card-text">Easily find and compare
+                                    services in one place, saving time and
+                                    effort.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 mb-4">
+                        <div class="card border-0 shadow h-100">
+                            <div class="card-body text-center">
+                                <h5 class="card-title">Transparent Pricing</h5>
+                                <p class="card-text">Know upfront costs and
+                                    pricing details before choosing a
+                                    service.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="our-vision" class="bg-light py-5">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-6 mb-4">
+                        <h2 class="mb-4">Our Vision for Qatar 2030</h2>
+                        <p class="lead">At 7 Stars, we are committed to
+                            supporting Qatar's vision for 2030 by...</p>
+                        <p class="mb-4">Lorem ipsum dolor sit amet, consectetur
+                            adipiscing elit. Nulla convallis libero vitae sapien
+                            dictum, vel malesuada urna mattis.</p>
+                        <p class="mb-4">Sed sagittis ligula ut libero faucibus,
+                            non congue nunc scelerisque. Duis convallis auctor
+                            massa vitae ultrices.</p>
+                        <a href="#" class="btn btn-outline-dark">Learn More</a>
+                    </div>
+                    <div class="col-lg-6 mb-4">
+                        <img src="https://via.placeholder.com/600x400"
+                            class="img-fluid rounded shadow-lg"
+                            alt="Qatar 2030 Vision"/>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="video-section py-5 dark-qatar">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-md-6 ">
+                        <div class="embed-responsive embed-responsive-16by9">
+                            <iframe class="embed-responsive-item"
+                                src="https://www.youtube.com/embed/your-video-id"
+                                allowfullscreen></iframe>
+                        </div>
+                    </div>
+                    <div class="col-md-6 text-white">
+                        <h2>Our Vision</h2>
+                        <p>At 7 Stars, we aim to connect users with the best
+                            service providers in various fields, ensuring
+                            quality and satisfaction. Watch the video to learn
+                            more about our vision and how we strive to provide
+                            top-notch services to our clients.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="provider-info" class="provider-info py-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <img src="https://via.placeholder.com/600x400"
+                            class="img-fluid rounded shadow-lg" alt="Service Provider"/>
+                    </div>
+                    <div class="col-md-6">
+                        <h2 class="mb-4">For Service Providers and
+                            Businesses</h2>
+                        <p class="lead mb-4">Join 7 Stars to showcase your
+                            services and reach more clients in Qatar.</p>
+                        <ul class="list-unstyled mb-4">
+                            <li><i
+                                    class="fas fa-check-circle text-primary me-2"></i>
+                                Easy listing and management of services.</li>
+                            <li><i
+                                    class="fas fa-check-circle text-primary me-2"></i>
+                                Flexible subscription plans tailored to your
+                                needs.</li>
+                            <li><i
+                                    class="fas fa-check-circle text-primary me-2"></i>
+                                Promotional features to boost your
+                                visibility.</li>
+                            <li><i
+                                    class="fas fa-check-circle text-primary me-2"></i>
+                                Dedicated support team to assist you.</li>
+                        </ul>
+                        <h3 class="mb-3">How It Works</h3>
+                        <ul class="list-unstyled">
+                            <li><i
+                                    class="fas fa-angle-right text-primary me-2"></i>
+                                Create your profile and list your services.</li>
+                            <li><i
+                                    class="fas fa-angle-right text-primary me-2"></i>
+                                Choose a subscription plan that suits your
+                                business goals.</li>
+                            <li><i
+                                    class="fas fa-angle-right text-primary me-2"></i>
+                                Utilize promotional tools to attract more
+                                clients.</li>
+                            <li><i
+                                    class="fas fa-angle-right text-primary me-2"></i>
+                                Grow your business with our platform.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="testimonials py-5">
+            <div class="container">
+                <h2 class="text-center mb-4">What Our Clients Say</h2>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <blockquote class="blockquote mb-0">
+                                    <p>"7 Stars helped me find the perfect health service provider quickly and easily. Highly recommended!"</p>
+                                    <footer class="blockquote-footer">Sarah
+                                        Johnson, <cite
+                                            title="Source Title">Health Services
+                                            Client</cite></footer>
+                                </blockquote>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <blockquote class="blockquote mb-0">
+                                    <p>"The legal services I found through 7 Stars were top-notch. I couldn't be happier with the results."</p>
+                                    <footer class="blockquote-footer">Mohammed
+                                        Al-Thani, <cite
+                                            title="Source Title">Legal Services
+                                            Client</cite></footer>
+                                </blockquote>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <blockquote class="blockquote mb-0">
+                                    <p>"As a business owner, the business services offered here have been invaluable to my company's growth."</p>
+                                    <footer class="blockquote-footer">Fatima
+                                        Ahmed, <cite
+                                            title="Source Title">Business
+                                            Services Client</cite></footer>
+                                </blockquote>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="py-5 text-center">
+            <div class="container">
+                <h2 class="text-dark-qatar">Subscription Plans</h2>
+                <p class="lead">Choose the plan that suits your business
+                    needs</p>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="card mb-4 shadow-sm">
+                            <div class="card-header">
+                                <h4 class="my-0 fw-normal">Basic</h4>
+                            </div>
+                            <div class="card-body">
+                                <h1 class="card-title pricing-card-title">$50
+                                    <small class="text-muted">/ mo</small></h1>
+                                <ul class="list-unstyled mt-3 mb-4">
+                                    <li>10 service listings</li>
+                                    <li>Email support</li>
+                                    <li>Help center access</li>
+                                </ul>
+                                <button type="button"
+                                    class="w-100 btn btn-lg btn-outline-primary">Sign
+                                    up for free</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card mb-4 shadow-sm">
+                            <div class="card-header">
+                                <h4 class="my-0 fw-normal">Pro</h4>
+                            </div>
+                            <div class="card-body">
+                                <h1 class="card-title pricing-card-title">$100
+                                    <small class="text-muted">/ mo</small></h1>
+                                <ul class="list-unstyled mt-3 mb-4">
+                                    <li>50 service listings</li>
+                                    <li>Priority email support</li>
+                                    <li>Help center access</li>
+                                </ul>
+                                <button type="button"
+                                    class="w-100 btn btn-lg btn-primary">Get
+                                    started</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card mb-4 shadow-sm">
+                            <div class="card-header">
+                                <h4 class="my-0 fw-normal">Enterprise</h4>
+                            </div>
+                            <div class="card-body">
+                                <h1 class="card-title pricing-card-title">$200
+                                    <small class="text-muted">/ mo</small></h1>
+                                <ul class="list-unstyled mt-3 mb-4">
+                                    <li>Unlimited service listings</li>
+                                    <li>Phone and email support</li>
+                                    <li>Help center access</li>
+                                </ul>
+                                <button type="button"
+                                    class="w-100 btn btn-lg btn-primary">Contact
+                                    us</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="faq" class="faq-section">
+            <div class="container">
+                <h2 class="text-center mb-5">Frequently Asked Questions</h2>
+                <div class="accordion" id="accordionExample">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingOne">
+                            <button class="accordion-button" type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#collapseOne"
+                                aria-expanded="true"
+                                aria-controls="collapseOne">
+                                How can I list my services on 7 Stars?
+                            </button>
+                        </h2>
+                        <div id="collapseOne"
+                            class="accordion-collapse collapse show"
+                            aria-labelledby="headingOne"
+                            data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                You can list your services by signing up for an
+                                account and choosing a subscription plan that
+                                suits your needs. Visit our <a
+                                    href="#contact">Contact Us</a> section for
+                                more details.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingTwo">
+                            <button class="accordion-button collapsed"
+                                type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseTwo"
+                                aria-expanded="false"
+                                aria-controls="collapseTwo">
+                                How can I promote my services on 7 Stars?
+                            </button>
+                        </h2>
+                        <div id="collapseTwo"
+                            class="accordion-collapse collapse"
+                            aria-labelledby="headingTwo"
+                            data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                We offer promotional features as part of our
+                                subscription plans. Contact our support team to
+                                learn more about promoting your services.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingThree">
+                            <button class="accordion-button collapsed"
+                                type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseThree"
+                                aria-expanded="false"
+                                aria-controls="collapseThree">
+                                How can I contact customer support?
+                            </button>
+                        </h2>
+                        <div id="collapseThree"
+                            class="accordion-collapse collapse"
+                            aria-labelledby="headingThree"
+                            data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                You can reach our customer support team through
+                                our <a href="#contact">Contact Us</a> section or
+                                by emailing support@7stars.com.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="contact" class="contact-section py-5">
+            <div class="container">
+                <h2 class="text-center mb-5">Contact Us</h2>
+                <div class="row justify-content-center">
+                    <div class="col-md-8">
+                        <form class="contact-form">
+                            <div class="mb-3">
+                                <label for="name" class="form-label">Your
+                                    Name</label>
+                                <input type="text" class="form-control"
+                                    id="name" required/>
+                            </div>
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Your
+                                    Email</label>
+                                <input type="email" class="form-control"
+                                    id="email" required/>
+                            </div>
+                            <div class="mb-3">
+                                <label for="message" class="form-label">Your
+                                    Message</label>
+                                <textarea class="form-control" id="message"
+                                    rows="5" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-dark">Send
+                                Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
       <Row className="m-1">
         <Col xs={12} md={6}>
           <h2 className="pt-3 pb-3 text-center">العروض المميزة</h2>
