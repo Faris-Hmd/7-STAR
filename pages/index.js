@@ -61,7 +61,7 @@ function Homepage(props) {
   return (
     <Container className="m-0 p-0 w-100">
                   <div
-                className="hero-section d-flex flex-column align-items-center justify-content-center text-center">
+                className="hero-section d-flex flex-column align-items-center justify-content-center text-center greeting">
                 <h1 className="hero-text mb-4">احصل على أفضل خدمة تحتاجها في وقت
                     قصير</h1>
                 <div className="search-bar-container input-group">
