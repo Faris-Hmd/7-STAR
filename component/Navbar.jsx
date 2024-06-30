@@ -28,7 +28,57 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className={styles.nav}>
+                <nav class="navbar navbar-expand-lg" data-bs-theme="dark">
+                <div class="container">
+                    <button class="btn btn-outline-light" type="button"
+                        data-bs-toggle="offcanvas"
+                        data-bs-target="#offcanvasLogin"
+                        aria-controls="offcanvasLogin">
+                        <i class="bi bi-person"></i> Login
+                    </button>
+                    <a class="navbar-brand ms-auto" href="#">
+                        <img
+                            src="https://www.the7stars.co.uk/site/templates/assets/images/logo.svg"
+                            width="30" height="40"
+                            alt="Logo"
+                            class="d-inline-block align-text-center"/>
+                        سبعة نجوم
+                    </a>
+
+                    <button class="navbar-toggler" type="button"
+                        data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                        aria-controls="navbarNav" aria-expanded="false"
+                        aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav mb-2 mb-lg-0">
+                            <li class="nav-item">
+                                <a class="nav-link" aria-current="page"
+                                    href="#section1">Section 1</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#section2">Section
+                                    2</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#section3">Section
+                                    3</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#section4">Section
+                                    4</a>
+
+                            </li>
+                            <li class="nav-item"><a class="nav-link"
+                                    href="#why-7-stars">Why 7 Stars</a></li>
+                            <li class="nav-item"><a class="nav-link"
+                                    href="#categories">Categories</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+      {/* <nav className={styles.nav}>
         <Button variant="" onClick={handleShow} className="over ms-2">
           <FaBars style={{ color: "white" }} />
         </Button>
@@ -38,10 +88,18 @@ const Navbar = () => {
             src="/icons/7star.png"
             alt="drc"
             className="mb-2"
-          />
+          /> */}
           {/* <span className="p-2 fos-m text-nowrap">خدماتي</span> */}
-        </div>
-        {session?.user ? (
+        {/* </div>
+
+      </nav> */}
+      <Offcanvas
+        show={show}
+        onHide={handleClose}
+        placement="start"
+        className="rtl"
+      >
+                {/* {session?.user ? (
           <Link href={"/"} className="ms-auto me-2 Link">
             <span style={{ color: "white" }} className="me-2">
               {session.user.displayName}
@@ -66,14 +124,7 @@ const Navbar = () => {
               className="rounded-circle shadow"
             />
           </Link>
-        )}
-      </nav>
-      <Offcanvas
-        show={show}
-        onHide={handleClose}
-        placement="start"
-        className="rtl"
-      >
+        )} */}
         <Offcanvas.Header closeButton>
           <Offcanvas.Title>القائمة</Offcanvas.Title>
         </Offcanvas.Header>
