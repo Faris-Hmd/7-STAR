@@ -60,7 +60,53 @@ const posts = [
 function Homepage(props) {
   return (
     <Container className="m-0 p-0 w-100">
-      <Row className="greeting m-0">
+                  <div
+                class="hero-section d-flex flex-column align-items-center justify-content-center text-center">
+                <h1 class="hero-text mb-4">احصل على أفضل خدمة تحتاجها في وقت
+                    قصير</h1>
+                <div class="search-bar-container input-group">
+                    <input type="text" class="form-control search-bar"
+                        placeholder="Search..."/>
+                    <button class="btn btn-maroon" type="button">Search</button>
+                </div>
+
+                {/* <!-- Offcanvas Login Form --> */}
+                <div class="offcanvas offcanvas-end" tabindex="-1"
+                    id="offcanvasLogin"
+                    aria-labelledby="offcanvasLoginLabel">
+                    <div class="offcanvas-header">
+                        <h5 class="offcanvas-title"
+                            id="offcanvasLoginLabel">Login</h5>
+                        <button type="button" class="btn-close text-reset"
+                            data-bs-dismiss="offcanvas"
+                            aria-label="Close"></button>
+                    </div>
+                    <div class="offcanvas-body">
+                        <form>
+                            <div class="mb-3 me-auto">
+                                <label for="email"
+                                    class="form-label">Email
+                                    address</label>
+                                <input type="email" class="form-control"
+                                    id="email"
+                                    aria-describedby="emailHelp"/>
+                            </div>
+                            <div class="mb-3">
+                                <label for="password"
+                                    class="form-label">Password</label>
+                                <input type="password" class="form-control"
+                                    id="password"/>
+                            </div>
+                            <button type="submit"
+                                class="btn btn-maroon">Login</button>
+                            <button type="button"
+                                class="btn btn-outline-maroon">Login with
+                                Google</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+      {/* <Row className="greeting m-0">
         <Col className="h-100 m-0 p-0">
           <Container className="h-100 m-0 p-0">
             <Col xs={12} lg={5} className="flex blur ps-4 h-100">
@@ -89,8 +135,8 @@ function Homepage(props) {
               </div>
             </Col>
           </Container>
-        </Col>{" "}
-      </Row>
+        </Col>
+      </Row> */}
       <section id="categories" className="categories py-5">
             <div className="container">
                 <h2 className="text-center mb-5">Browse by Category</h2>
