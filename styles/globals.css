@@ -138,6 +138,7 @@ nav {
   grid-template-rows: 0.9fr 9.1fr;
   grid-template-areas: "nav" "main";
   scrollbar-width: thin;
+  min-height: 100vh;
 }
 
 .main {
@@ -149,7 +150,24 @@ nav {
   scroll-behavior: smooth;
   background-color: var(--prime-clr);
 }
+.footer {
+  margin-top: auto;
+  background-color: #333;
+}
 
+.footer h5 {
+  color: maroon;
+  
+}
+
+.footer p, .footer a{
+  color: white;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+  color: white;
+}
 /** ------------- TABLET VIEW ---------*/
 
 @media (min-width: 650px) {
