@@ -93,12 +93,12 @@ const Navbar = () => {
         {/* </div>
 
       </nav> */}
-      <Offcanvas
+      {/* <Offcanvas
         show={show}
         onHide={handleClose}
         placement="start"
         className="rtl"
-      >
+      > */}
                 {/* {session?.user ? (
           <Link href={"/"} className="ms-auto me-2 Link">
             <span style={{ color: "white" }} className="me-2">
@@ -125,7 +125,7 @@ const Navbar = () => {
             />
           </Link>
         )} */}
-        <Offcanvas.Header closeButton>
+        {/* <Offcanvas.Header closeButton>
           <Offcanvas.Title>القائمة</Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body className="flex gap-3 justify-content-start">
@@ -145,8 +145,8 @@ const Navbar = () => {
                 </Col>
               );
             })}
-          </Container>
-          <Container className="p-0 overflow-hidden border rounded">
+          </Container> */}
+          {/* <Container className="p-0 overflow-hidden border rounded">
             {!session?.user && (
               <Link
                 href="#"
@@ -199,9 +199,9 @@ const Navbar = () => {
                 </Link>
               </>
             )}
-          </Container>
-        </Offcanvas.Body>
-      </Offcanvas>
+          </Container> */}
+        {/* </Offcanvas.Body>
+      </Offcanvas> */}
     </>
   );
 };
