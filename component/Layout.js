@@ -29,14 +29,14 @@ const Layout = ({ children }) => {
           <div className="leftSide"></div>
           <Navbar />
           <main className="main">
-            <ToastContainer
+            {/* <ToastContainer
               limit={1}
               autoClose={1500}
               position={"top-center"}
               rtl
               closeOnClick
               hideProgressBar
-            />
+            /> */}
             {children}
           </main>
           <footer className="footer bg-dark text-white py-5">
