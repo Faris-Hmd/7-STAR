@@ -4,7 +4,7 @@ import { Col, Container } from "react-bootstrap";
 function Footer() {
   return (
     <>
-    <div className="container">
+    <Container>
                     <div className="row">
                         <div className="col-6 col-md-2 mb-3">
                             <h5>Section</h5>
@@ -93,7 +93,7 @@ function Footer() {
                                             xlink:href="#facebook" /></svg></a></li>
                         </ul>
                     </div>
-                </div>
+                </Container>
       {/* <Container className="p-1 flex-r bg-liner">
         <Col xs={12}>
           <small>
