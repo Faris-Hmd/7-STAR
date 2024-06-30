@@ -1,5 +1,5 @@
 import React from "react";
-import { Col, Container } from "react-bootstrap";
+import { Col, Container, Row } from "react-bootstrap";
 
 function Footer() {
   return (
@@ -95,11 +95,28 @@ function Footer() {
                     </div>
                 </Container> */}
       <Container className="p-1 flex-r bg-liner">
-        <Col xs={12}>
+        <Row>
+          <Col col-6 col-md-2 mb-3>
+          <h5>Section</h5>
+                            <ul className="nav flex-column">
+                                <li className="nav-item mb-2"><a href="#"
+                                        className="nav-link p-0">Home</a></li>
+                                <li className="nav-item mb-2"><a href="#"
+                                        className="nav-link p-0">Features</a></li>
+                                <li className="nav-item mb-2"><a href="#"
+                                        className="nav-link p-0">Pricing</a></li>
+                                <li className="nav-item mb-2"><a href="#"
+                                        className="nav-link p-0">FAQs</a></li>
+                                <li className="nav-item mb-2"><a href="#"
+                                        className="nav-link p-0">About</a></li>
+                            </ul>
+          </Col>
+        </Row>
+        {/* <Col xs={12}>
           <small>
             <center>©2023 by Faris Hamad. created with Next.js</center>
           </small>
-        </Col>
+        </Col> */}
       </Container>
     </>
   );
