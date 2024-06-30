@@ -236,7 +236,12 @@ nav {
 .search-bar:focus {
   box-shadow: none;
 }
-
+.hero-text {
+  color: white;
+  font-weight: 700;
+  z-index: 1;
+  font-size: 2.5rem;
+}
 
 @media (max-width: 768px) {
   .hero-section {

@@ -67,7 +67,9 @@ function Homepage(props) {
                 <div className="search-bar-container input-group">
                     <input type="text" className="form-control search-bar"
                         placeholder="Search..."/>
-                    <Button className="btn-maroon" type="button">Search</Button>
+                    {/* <Button className="btn-maroon" type="button">Search</Button> */}
+                    <a href="#" className="btn btn-maroon">Search</a>
+
                 </div>
 
                 {/* <!-- Offcanvas Login Form --> */}
