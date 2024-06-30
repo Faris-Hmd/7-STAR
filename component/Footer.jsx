@@ -94,7 +94,7 @@ function Footer() {
                         </ul>
                     </div>
                 </Container> */}
-      <Container className="p-1 flex-r">
+      <Container>
         <Row>
           <Col col-6 col-md-2 mb-3>
           <h5>Section</h5>
