@@ -161,7 +161,9 @@ function Footer() {
                         </Col>
                         <div
                         className="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top">
-                        <p>&copy; 2024 Company, Inc. All rights reserved.</p>
+                                            <center>©2023 by Faris Hamad. created with Next.js</center>
+
+                        {/* <p>&copy; 2024 Company, Inc. All rights reserved.</p>
                         <ul className="list-unstyled d-flex">
                             <li className="ms-3"><a className="link-body-emphasis"
                                     href="#"><svg className="bi" width="24"
@@ -176,7 +178,7 @@ function Footer() {
                                     href="#"><svg className="bi" width="24"
                                         height="24"><use
                                             xlink:href="#facebook" /></svg></a></li>
-                        </ul>
+                        </ul> */}
                     </div>
         </Row>
         {/* <Col xs={12}>
