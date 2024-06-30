@@ -28,51 +28,51 @@ const Navbar = () => {
 
   return (
     <>
-                <nav class="navbar navbar-expand-lg" data-bs-theme="dark">
-                <div class="container">
-                    <button class="btn btn-outline-light" type="button"
+                <nav className="navbar navbar-expand-lg" data-bs-theme="dark">
+                <div className="container">
+                    <button className="btn btn-outline-light" type="button"
                         data-bs-toggle="offcanvas"
                         data-bs-target="#offcanvasLogin"
                         aria-controls="offcanvasLogin">
-                        <i class="bi bi-person"></i> Login
+                        <i className="bi bi-person"></i> Login
                     </button>
-                    <a class="navbar-brand ms-auto" href="#">
+                    <a className="navbar-brand ms-auto" href="#">
                         <img
                             src="https://www.the7stars.co.uk/site/templates/assets/images/logo.svg"
                             width="30" height="40"
                             alt="Logo"
-                            class="d-inline-block align-text-center"/>
+                            className="d-inline-block align-text-center"/>
                         سبعة نجوم
                     </a>
 
-                    <button class="navbar-toggler" type="button"
+                    <button className="navbar-toggler" type="button"
                         data-bs-toggle="collapse" data-bs-target="#navbarNav"
                         aria-controls="navbarNav" aria-expanded="false"
                         aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
+                        <span className="navbar-toggler-icon"></span>
                     </button>
-                    <div class="collapse navbar-collapse" id="navbarNav">
-                        <ul class="navbar-nav mb-2 mb-lg-0">
-                            <li class="nav-item">
-                                <a class="nav-link" aria-current="page"
+                    <div className="collapse navbar-collapse" id="navbarNav">
+                        <ul className="navbar-nav mb-2 mb-lg-0">
+                            <li className="nav-item">
+                                <a className="nav-link" aria-current="page"
                                     href="#section1">Section 1</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#section2">Section
+                            <li className="nav-item">
+                                <a className="nav-link" href="#section2">Section
                                     2</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#section3">Section
+                            <li className="nav-item">
+                                <a className="nav-link" href="#section3">Section
                                     3</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#section4">Section
+                            <li className="nav-item">
+                                <a className="nav-link" href="#section4">Section
                                     4</a>
 
                             </li>
-                            <li class="nav-item"><a class="nav-link"
+                            <li className="nav-item"><a className="nav-link"
                                     href="#why-7-stars">Why 7 Stars</a></li>
-                            <li class="nav-item"><a class="nav-link"
+                            <li className="nav-item"><a className="nav-link"
                                     href="#categories">Categories</a></li>
                         </ul>
                     </div>
