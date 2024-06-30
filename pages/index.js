@@ -73,40 +73,7 @@ function Homepage(props) {
                 </div>
 
                 {/* <!-- Offcanvas Login Form --> */}
-                <div className="offcanvas offcanvas-end" tabindex="-1"
-                    id="offcanvasLogin"
-                    aria-labelledby="offcanvasLoginLabel">
-                    <div className="offcanvas-header">
-                        <h5 className="offcanvas-title"
-                            id="offcanvasLoginLabel">Login</h5>
-                        <button type="button" className="btn-close text-reset"
-                            data-bs-dismiss="offcanvas"
-                            aria-label="Close"></button>
-                    </div>
-                    <div className="offcanvas-body">
-                        <form>
-                            <div className="mb-3 me-auto">
-                                <label for="email"
-                                    className="form-label">Email
-                                    address</label>
-                                <input type="email" className="form-control"
-                                    id="email"
-                                    aria-describedby="emailHelp"/>
-                            </div>
-                            <div className="mb-3">
-                                <label for="password"
-                                    className="form-label">Password</label>
-                                <input type="password" className="form-control"
-                                    id="password"/>
-                            </div>
-                            <button type="submit"
-                                className="btn btn-maroon">Login</button>
-                            <button type="button"
-                                className="btn btn-outline-maroon">Login with
-                                Google</button>
-                        </form>
-                    </div>
-                </div>
+
             </div>
       {/* <Row className="greeting m-0">
         <Col className="h-100 m-0 p-0">
