@@ -147,18 +147,37 @@ function Footer() {
                                 <p>Monthly digest of what's new and exciting
                                     from us.</p>
                                 <div
-                                    class="d-flex flex-column flex-sm-row w-100 gap-2">
+                                    className="d-flex flex-column flex-sm-row w-100 gap-2">
                                     <label for="newsletter1"
-                                        class="visually-hidden">Email
+                                        className="visually-hidden">Email
                                         address</label>
                                     <input id="newsletter1" type="text"
-                                        class="form-control"
+                                        className="form-control"
                                         placeholder="Email address"/>
-                                    <button class="btn btn-primary"
+                                    <button className="btn btn-primary"
                                         type="button">Subscribe</button>
                                 </div>
                             </form>
                         </Col>
+                        <div
+                        className="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top">
+                        <p>&copy; 2024 Company, Inc. All rights reserved.</p>
+                        <ul className="list-unstyled d-flex">
+                            <li className="ms-3"><a className="link-body-emphasis"
+                                    href="#"><svg className="bi" width="24"
+                                        height="24"><use
+                                            xlink:href="#twitter" /></svg></a></li>
+
+                            <li className="ms-3"><a className="link-body-emphasis"
+                                    href="#"><svg className="bi" width="24"
+                                        height="24"><use
+                                            xlink:href="#instagram" /></svg></a></li>
+                            <li className="ms-3"><a className="link-body-emphasis"
+                                    href="#"><svg className="bi" width="24"
+                                        height="24"><use
+                                            xlink:href="#facebook" /></svg></a></li>
+                        </ul>
+                    </div>
         </Row>
         {/* <Col xs={12}>
           <small>
