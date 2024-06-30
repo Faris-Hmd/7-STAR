@@ -24,7 +24,7 @@ export default function PageLayout({
   // if (user?.role === role || role === "ALL" || user?.role === "ADMIN") {
   return (
     <Container className="p-0 m-0 w-100">
-      <Row className="bg-sec flex-r  shadow-sm border p-1 fs-3">
+      <Row className="flex-r  shadow-sm border p-1 fs-3">
         <Col xs={5}>
           <div className="p-2 fs-5 w-100">{pageName}</div>
         </Col>
