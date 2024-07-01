@@ -161,7 +161,7 @@ function Footer() {
                         </Col>
                         <div
                         className="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top">
-                                            <center>©2023 by Faris Hamad. created with Next.js</center>
+                                            <center>&copy; 2024 7 Stars, Inc. All rights reserved.</center>
 
                     </div>
         </Row>
