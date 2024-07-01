@@ -98,9 +98,9 @@ function Homepage(props) {
               <BiCategory />
             </Button>
           </InputGroup>
-          <Button href="/Products" className="dark-qatar border-0 ">
+          {/* <Button href="/Products" className="dark-qatar border-0 ">
             تصفح الخدمات
-          </Button>
+          </Button> */}
         </Form>
         {/* <Button className="btn-maroon" type="button">Search</Button> */}
 
@@ -646,7 +646,7 @@ function Homepage(props) {
           </div>
         </div>
       </section>
-      <Row className="m-1">
+      {/* <Row className="m-1">
         <Col xs={12} md={6}>
           <h2 className="pt-3 pb-3 text-center">العروض المميزة</h2>
           <Container className="flex-r p-0 shadow">
@@ -806,7 +806,7 @@ function Homepage(props) {
             );
           })}
         </Container>
-      </Row>
+      </Row> */}
     </Container>
   );
 }
