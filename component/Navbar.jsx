@@ -25,59 +25,105 @@ const Navbar = () => {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-
+  // console.log(session);
   return (
     <>
-                <nav className="navbar navbar-expand-lg" data-bs-theme="dark">
-                <div className="container">
-                    <button className="btn btn-outline-light" type="button"
-                        data-bs-toggle="offcanvas"
-                        data-bs-target="#offcanvasLogin"
-                        aria-controls="offcanvasLogin">
-                        <i className="bi bi-person"></i> Login
-                    </button>
-                    <a className="navbar-brand ms-auto" href="#">
-                        <img
-                            src="https://www.the7stars.co.uk/site/templates/assets/images/logo.svg"
-                            width="30" height="40"
-                            alt="Logo"
-                            className="d-inline-block align-text-center"/>
-                        سبعة نجوم
-                    </a>
-
-                    <button className="navbar-toggler" type="button"
-                        data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                        aria-controls="navbarNav" aria-expanded="false"
-                        aria-label="Toggle navigation">
-                        <span className="navbar-toggler-icon"></span>
-                    </button>
-                    <div className="collapse navbar-collapse" id="navbarNav">
-                        <ul className="navbar-nav mb-2 mb-lg-0">
-                            <li className="nav-item">
-                                <a className="nav-link" aria-current="page"
-                                    href="#section1">Section 1</a>
-                            </li>
-                            <li className="nav-item">
-                                <a className="nav-link" href="#section2">Section
-                                    2</a>
-                            </li>
-                            <li className="nav-item">
-                                <a className="nav-link" href="#section3">Section
-                                    3</a>
-                            </li>
-                            <li className="nav-item">
-                                <a className="nav-link" href="#section4">Section
-                                    4</a>
-
-                            </li>
-                            <li className="nav-item"><a className="nav-link"
-                                    href="#why-7-stars">Why 7 Stars</a></li>
-                            <li className="nav-item"><a className="nav-link"
-                                    href="#categories">Categories</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
+      <nav className="navbar navbar-expand-lg" data-bs-theme="dark">
+        <div className="container">
+          {!session?.user?.email ? (
+            <button
+              onClick={signIn}
+              className="btn btn-outline-light"
+              type="button"
+              data-bs-toggle="offcanvas"
+              data-bs-target="#offcanvasLogin"
+              aria-controls="offcanvasLogin"
+            >
+              <i className="bi bi-person">
+                <BsPerson />
+              </i>
+              Login
+            </button>
+          ) : (
+            <Link href={"/Users/" + session?.user?.id} className="Link">
+              <span style={{ color: "white" }}>
+                <img
+                  width={50}
+                  height={50}
+                  style={{ objectFit: "cover" }}
+                  alt="drc"
+                  className="rounded-circle shadow me-2"
+                  src={session?.user.photoUrl}
+                />
+                {session?.user?.displayName}{" "}
+              </span>
+            </Link>
+          )}
+          <span
+            className="navbar-brand ms-auto Link"
+            href="#"
+            style={{ color: "white", cursor: "pointer" }}
+          >
+            <img
+              src="https://www.the7stars.co.uk/site/templates/assets/images/logo.svg"
+              width="30"
+              height="40"
+              alt="Logo"
+              className="d-inline-block align-text-center"
+            />
+            سبعة نجوم
+          </span>
+          <Button variant="j" className="" href="/">
+            <BiHome size={20} />
+          </Button>
+          <button
+            className="navbar-toggler "
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+            style={{ color: "white" }}
+          >
+            <span className="navbar-toggler-icon"></span>
+          </button>
+          <div className="collapse navbar-collapse" id="navbarNav">
+            <ul className="navbar-nav mb-2 mb-lg-0">
+              <li className="nav-item">
+                <a className="nav-link" aria-current="page" href="#section1">
+                  Section 1
+                </a>
+              </li>
+              <li className="nav-item">
+                <a className="nav-link" href="#section2">
+                  Section 2
+                </a>
+              </li>
+              <li className="nav-item">
+                <a className="nav-link" href="#section3">
+                  Section 3
+                </a>
+              </li>
+              <li className="nav-item">
+                <a className="nav-link" href="#section4">
+                  Section 4
+                </a>
+              </li>
+              <li className="nav-item">
+                <a className="nav-link" href="#why-7-stars">
+                  Why 7 Stars
+                </a>
+              </li>
+              <li className="nav-item">
+                <a className="nav-link" href="#categories">
+                  Categories
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
       {/* <nav className={styles.nav}>
         <Button variant="" onClick={handleShow} className="over ms-2">
           <FaBars style={{ color: "white" }} />
@@ -89,8 +135,8 @@ const Navbar = () => {
             alt="drc"
             className="mb-2"
           /> */}
-          {/* <span className="p-2 fos-m text-nowrap">خدماتي</span> */}
-        {/* </div>
+      {/* <span className="p-2 fos-m text-nowrap">خدماتي</span> */}
+      {/* </div>
 
       </nav> */}
       {/* <Offcanvas
@@ -99,7 +145,7 @@ const Navbar = () => {
         placement="start"
         className="rtl"
       > */}
-                {/* {session?.user ? (
+      {/* {session?.user ? (
           <Link href={"/"} className="ms-auto me-2 Link">
             <span style={{ color: "white" }} className="me-2">
               {session.user.displayName}
@@ -125,7 +171,7 @@ const Navbar = () => {
             />
           </Link>
         )} */}
-        {/* <Offcanvas.Header closeButton>
+      {/* <Offcanvas.Header closeButton>
           <Offcanvas.Title>القائمة</Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body className="flex gap-3 justify-content-start">
@@ -146,7 +192,7 @@ const Navbar = () => {
               );
             })}
           </Container> */}
-          {/* <Container className="p-0 overflow-hidden border rounded">
+      {/* <Container className="p-0 overflow-hidden border rounded">
             {!session?.user && (
               <Link
                 href="#"
@@ -200,7 +246,7 @@ const Navbar = () => {
               </>
             )}
           </Container> */}
-        {/* </Offcanvas.Body>
+      {/* </Offcanvas.Body>
       </Offcanvas> */}
     </>
   );
