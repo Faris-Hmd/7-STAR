@@ -1,7 +1,7 @@
 /** @format */
 /* @import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"); */
 @import url("https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@100..900&display=swap");
-@import "~bootstrap-icons/font/bootstrap-icons";
+/* @import "~bootstrap-icons/font/bootstrap-icons"; */
 
 html,
 body {
@@ -14,7 +14,12 @@ body {
   /* font-family: var(--bs-body-font-family); */
 }
 .dark-qatar {
-  background-color: #800000; /* Darker shade of Qatar flag maroon */
+  background-color: #800000 !important;
+  color: #ffffff !important;
+  /* Darker shade of Qatar flag maroon */
+}
+.dark-qatar:hover {
+  color: #ddd !important;
 }
 .provider-info {
   /* padding: 80px 0; */
@@ -157,10 +162,10 @@ nav {
 
 .footer h5 {
   color: maroon;
-  
 }
 
-.footer p, .footer a{
+.footer p,
+.footer a {
   color: white;
 }
 
@@ -173,7 +178,7 @@ nav {
   background-color: maroon;
   color: white;
 }
-.btn-maroon:hover{
+.btn-maroon:hover {
   background-color: #990000;
   color: white;
 }
@@ -204,7 +209,8 @@ nav {
 
 .hero-section::before {
   content: "";
-  background: url('https://admin.expatica.com/qa/wp-content/uploads/sites/13/2023/11/arabic-businessmen-meeting.jpg') no-repeat center center/cover;
+  background: url("https://admin.expatica.com/qa/wp-content/uploads/sites/13/2023/11/arabic-businessmen-meeting.jpg")
+    no-repeat center center/cover;
   position: absolute;
   top: 0;
   left: 0;
@@ -245,16 +251,16 @@ nav {
 
 @media (max-width: 768px) {
   .hero-section {
-      height: 60vh;
+    height: 60vh;
   }
 
   .hero-section::before {
-      filter: blur(5px);
-      transform: scale(1.1);
+    filter: blur(5px);
+    transform: scale(1.1);
   }
 
   .search-bar-container {
-      width: 80%;
+    width: 80%;
   }
 }
 /** ------------- TABLET VIEW ---------*/
@@ -280,10 +286,10 @@ nav {
 .navbar {
   background-color: maroon;
 }
-.navbar a{
+.navbar a {
   color: white;
 }
-.navbar a:hover{
+.navbar a:hover {
   color: white;
   text-decoration: underline;
 }

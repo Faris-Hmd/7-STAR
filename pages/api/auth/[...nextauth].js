@@ -5,7 +5,7 @@ import {
   getFireDoc,
   getFireDocs,
 } from "../../../lib/getFireData";
-import { collection, getDocs, query, where } from "firebase/firestore";
+import { addDoc, collection, getDocs, query, where } from "firebase/firestore";
 import { db } from "../../../firebase/firebase";
 
 export const authOptions = {
@@ -24,6 +24,15 @@ export const authOptions = {
       const querySnapShot = await getDocs(
         query(collection(db, "users"), where("email", "==", session.user.email))
       );
+      if (!querySnapShot.empty) {
+        await addDoc(collection(db, "users"), {
+          displayName: "زائر",
+          email: "example@mail.com",
+          photoUrl: "/images/cat-1.webp",
+          userId:"5"
+
+        });
+      }
       const userInfo = getDataFromQuery(querySnapShot);
       const admins = await getFireDocs("admins");
       // console.log("callback");
