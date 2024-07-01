@@ -283,3 +283,7 @@ nav {
 .navbar a{
   color: white;
 }
+.navbar a:hover{
+  color: white;
+  text-decoration: underline;
+}
