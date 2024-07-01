@@ -32,7 +32,7 @@ const Navbar = () => {
         <div className="container">
           {!session?.user?.email ? (
             <button
-              onClick={signIn}
+              // onClick={signIn}
               className="btn btn-outline-light"
               type="button"
               data-bs-toggle="offcanvas"
@@ -73,9 +73,9 @@ const Navbar = () => {
             />
             سبعة نجوم
           </span>
-          <Button variant="j" className="" href="/">
+          {/* <Button variant="j" className="" href="/">
             <BiHome size={20} />
-          </Button>
+          </Button> */}
           <button
             className="navbar-toggler "
             type="button"
