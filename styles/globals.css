@@ -280,3 +280,6 @@ nav {
 .navbar {
   background-color: maroon;
 }
+.navbar a{
+  color: white;
+}
