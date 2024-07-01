@@ -142,7 +142,7 @@ nav {
 }
 
 .main {
-  padding-top: 65px;
+  /* padding-top: 65px; */
   min-width: 100%;
   overflow-x: hidden;
   grid-area: main;
