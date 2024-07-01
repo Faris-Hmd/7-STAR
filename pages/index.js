@@ -529,7 +529,7 @@ function Homepage(props) {
                 </div>
             </div>
         </section>
-      <Row className="m-1">
+      {/* <Row className="m-1">
         <Col xs={12} md={6}>
           <h2 className="pt-3 pb-3 text-center">العروض المميزة</h2>
           <Container className="flex-r p-0 shadow">
@@ -537,8 +537,8 @@ function Homepage(props) {
               className="w-100 overflow-hidden rounded"
               style={{ height: "300px" }}
               slide={false}
-            >
-              {props.products?.map((product, index) => {
+            > */}
+              {/* {props.products?.map((product, index) => {
                 return (
                   <Carousel.Item
                     key={index}
@@ -573,8 +573,8 @@ function Homepage(props) {
                     </Link>
                   </Carousel.Item>
                 );
-              })}
-            </Carousel>
+              })} */}
+            {/* </Carousel>
           </Container>
         </Col>
         <Col xs={12} md={6}>
@@ -689,7 +689,7 @@ function Homepage(props) {
             );
           })}
         </Container>
-      </Row>
+      </Row> */}
     </Container>
   );
 }
