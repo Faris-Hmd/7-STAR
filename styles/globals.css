@@ -147,7 +147,7 @@ nav {
 }
 
 .main {
-  /* padding-top: 65px; */
+  padding-top: 65px;
   min-width: 100%;
   overflow-x: hidden;
   grid-area: main;
@@ -292,4 +292,7 @@ nav {
 .navbar a:hover {
   color: white;
   text-decoration: underline;
+}
+.nav-link:hover {
+  color: #ccc !important;
 }
