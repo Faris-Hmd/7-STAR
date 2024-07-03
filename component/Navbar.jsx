@@ -25,27 +25,36 @@ const Navbar = () => {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  // console.log(session);
+  console.log(session);
   return (
     <>
-      <nav className="navbar navbar-expand-lg" data-bs-theme="dark">
+      <nav
+        className="navbar navbar-expand-lg w-100"
+        data-bs-theme="dark"
+        style={{ position: "fixed" }}
+      >
         <div className="container">
           {!session?.user?.email ? (
-            <button
-              // onClick={signIn}
-              className="btn btn-outline-light"
-              type="button"
+            <Link
+              onClick={signIn}
+              href={
+                "http://localhost:3005/api/auth/signin?callbackUrl=http%3A%2F%2Flocalhost%3A3005%2F"
+              }
+              className="btn btn-outline-light link"
               data-bs-toggle="offcanvas"
               data-bs-target="#offcanvasLogin"
               aria-controls="offcanvasLogin"
             >
-              <i className="bi bi-person">
+              <i className="bi bi-person me-1">
                 <BsPerson />
               </i>
-              Login
-            </button>
+              تسجيل
+            </Link>
           ) : (
-            <Link href={"/Users/" + session?.user?.id} className="Link">
+            <Link
+              href={"/Users/" + session?.user?.id}
+              className="Link nav-link"
+            >
               <span style={{ color: "white" }}>
                 <img
                   width={50}
@@ -53,9 +62,10 @@ const Navbar = () => {
                   style={{ objectFit: "cover" }}
                   alt="drc"
                   className="rounded-circle shadow me-2"
-                  src={session?.user.photoUrl}
+                  src={session?.user.image}
                 />
-                {session?.user?.displayName}{" "}
+
+                {session?.user?.name}
               </span>
             </Link>
           )}
@@ -73,11 +83,9 @@ const Navbar = () => {
             />
             سبعة نجوم
           </span>
-          {/* <Button variant="j" className="" href="/">
-            <BiHome size={20} />
-          </Button> */}
+
           <button
-            className="navbar-toggler "
+            className="navbar-toggler"
             type="button"
             data-bs-toggle="collapse"
             data-bs-target="#navbarNav"
@@ -85,39 +93,40 @@ const Navbar = () => {
             aria-expanded="false"
             aria-label="Toggle navigation"
             style={{ color: "white" }}
+            onClick={handleShow}
           >
             <span className="navbar-toggler-icon"></span>
           </button>
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav mb-2 mb-lg-0">
               <li className="nav-item">
-                <a className="nav-link" aria-current="page" href="#section1">
-                  Section 1
+                <a className="nav-link " aria-current="page" href="#section1">
+                  التصنيف الرابع
                 </a>
               </li>
               <li className="nav-item">
                 <a className="nav-link" href="#section2">
-                  Section 2
+                  التصنيف الثالث
                 </a>
               </li>
               <li className="nav-item">
                 <a className="nav-link" href="#section3">
-                  Section 3
+                  التصنيف الثاني
                 </a>
               </li>
               <li className="nav-item">
                 <a className="nav-link" href="#section4">
-                  Section 4
+                  التصنيف الاول
                 </a>
               </li>
               <li className="nav-item">
                 <a className="nav-link" href="#why-7-stars">
-                  Why 7 Stars
+                  لماذا تختارنا
                 </a>
               </li>
               <li className="nav-item">
                 <a className="nav-link" href="#categories">
-                  Categories
+                  التصنيفات
                 </a>
               </li>
             </ul>
@@ -134,21 +143,20 @@ const Navbar = () => {
             src="/icons/7star.png"
             alt="drc"
             className="mb-2"
-          /> */}
-      {/* <span className="p-2 fos-m text-nowrap">خدماتي</span> */}
-      {/* </div>
-
+          />
+          <span className="p-2 fos-m text-nowrap">خدماتي</span>
+        </div>
       </nav> */}
-      {/* <Offcanvas
+      <Offcanvas
         show={show}
         onHide={handleClose}
         placement="start"
         className="rtl"
-      > */}
-      {/* {session?.user ? (
+      >
+        {session ? (
           <Link href={"/"} className="ms-auto me-2 Link">
             <span style={{ color: "white" }} className="me-2">
-              {session.user.displayName}
+              {session.user.name}
             </span>
             <img
               width={50}
@@ -170,8 +178,8 @@ const Navbar = () => {
               className="rounded-circle shadow"
             />
           </Link>
-        )} */}
-      {/* <Offcanvas.Header closeButton>
+        )}
+        <Offcanvas.Header closeButton>
           <Offcanvas.Title>القائمة</Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body className="flex gap-3 justify-content-start">
@@ -191,8 +199,8 @@ const Navbar = () => {
                 </Col>
               );
             })}
-          </Container> */}
-      {/* <Container className="p-0 overflow-hidden border rounded">
+          </Container>
+          <Container className="p-0 overflow-hidden border rounded">
             {!session?.user && (
               <Link
                 href="#"
@@ -214,7 +222,7 @@ const Navbar = () => {
                   <BsPerson size={"20px"} className="me-2" />
                   حسابي
                 </Link>
-                {session.user.role === "admin" && (
+                {session?.user?.role === "admin" && (
                   <Link
                     href={"/Products/productsEdit"}
                     className="w-100 Link hover flex-r p-3 border-top"
@@ -245,9 +253,9 @@ const Navbar = () => {
                 </Link>
               </>
             )}
-          </Container> */}
-      {/* </Offcanvas.Body>
-      </Offcanvas> */}
+          </Container>
+        </Offcanvas.Body>
+      </Offcanvas>
     </>
   );
 };

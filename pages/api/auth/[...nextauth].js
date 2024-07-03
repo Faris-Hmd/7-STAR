@@ -21,30 +21,46 @@ export const authOptions = {
   ],
   callbacks: {
     async session({ session, token, user }) {
+      const admins = await getFireDocs("admins");
+      // console.log(admins);
+      const isAdmin = admins?.find(
+        (admin) => session.user.email === admin?.email
+      );
       const querySnapShot = await getDocs(
         query(collection(db, "users"), where("email", "==", session.user.email))
       );
-      if (!querySnapShot.empty) {
-        await addDoc(collection(db, "users"), {
-          displayName: "زائر",
-          email: "example@mail.com",
-          photoUrl: "/images/cat-1.webp",
-          userId:"5"
+      // console.log(session, "clb");
 
-        });
+      if (querySnapShot.empty) {
+        console.log(session, "empty clb");
+
+        let newUser = {
+          name: session.user.name,
+          email: session.user.email,
+          image: session.user.image,
+        };
+        const newU = await addDoc(collection(db, "users"), newUser);
+        return {
+          ...session,
+          user: {
+            ...session.user,
+            id: newU.id,
+            role: isAdmin ? "admin" : "",
+          },
+        };
       }
       const userInfo = getDataFromQuery(querySnapShot);
-      const admins = await getFireDocs("admins");
-      // console.log("callback");
-      // console.log(admins);
-      const isAdmin = admins?.find(
-        (admin) => userInfo[0].email === admin?.email
-      );
+      // // console.log("callback");
+      // // console.log(admins);
+      // const isAdmin = admins?.find(
+      //   (admin) => userInfo[0].email === admin?.email
+      // );
+
       return {
         ...session,
         user: {
-          ...user,
-          ...userInfo[0],
+          ...session.user,
+          id: userInfo[0].id,
           role: isAdmin ? "admin" : "",
         },
       };

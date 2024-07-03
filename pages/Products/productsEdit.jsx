@@ -55,7 +55,7 @@ function MyProducts(props) {
             <Col key={index} xs={6} lg={3}>
               <Link
                 href={"/Products/" + product.id}
-                className="Link p-relative"
+                className="Link p-relative flex-r "
               >
                 {product?.publish ? (
                   <div
@@ -81,9 +81,9 @@ function MyProducts(props) {
                   </div>
                 )}
 
-                <Card className="overflow-hidden product shadow-sm bg-sec">
+                <Card className="overflow-hidden product shadow-sm bg-sec w-100">
                   <Card.Img
-                    className="rounded-0"
+                    className="rounded-0 "
                     style={{ objectFit: "cover" }}
                     loading="lazy"
                     src={product.images[0].url}
@@ -97,7 +97,6 @@ function MyProducts(props) {
                     {currentProduct && <div className="fav-star">0</div>}
                     <Card.Subtitle className="mb-1 fs-6  text-muted">
                       <small>
-                        {" "}
                         {product.category} |
                         <span className="text-success text-bold fs-6  rounded ms-2">
                           {product.cost} ج.س

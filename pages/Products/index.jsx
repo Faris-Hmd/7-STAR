@@ -100,6 +100,7 @@ function Products(props) {
                         />
 
                         <div className="card-body">
+                          <p>{product?.name}</p>
                           <p className="card-text">
                             هذه بطاقة أوسع مع نص داعم أدناه كمقدمة طبيعية لمحتوى
                             إضافي. هذا المحتوى أطول قليلاً.

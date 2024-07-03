@@ -64,8 +64,8 @@ function Homepage(props) {
         <h1 className="hero-text mb-4">
           احصل على أفضل خدمة تحتاجها في أقل وقت
         </h1>
-        <Form className="mt-1">
-          <InputGroup className="shadow-sm border-0  mb-2 ">
+        <Form className=" m-3 mt-1">
+          <InputGroup className="shadow-sm border-0  mb-1 ">
             <Button variant="success" className="bg-sec text-muted border-0">
               <BiSearch /> <span className="ms-1">|</span>
             </Button>
