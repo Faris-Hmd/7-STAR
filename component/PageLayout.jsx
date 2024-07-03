@@ -25,10 +25,10 @@ export default function PageLayout({
   return (
     <Container className="p-0 m-0 w-100">
       <Row className="bg-sec flex-r  shadow-sm border p-1 fs-3">
-        <Col xs={5}>
+        <Col xs={6}>
           <div className="p-2 fs-5 w-100">{pageName}</div>
         </Col>
-        <Col xs={7} className="flex-r">
+        <Col xs={6} className="flex-r">
           {navComp}
         </Col>
       </Row>
