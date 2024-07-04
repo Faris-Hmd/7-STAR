@@ -115,18 +115,33 @@ const Navbar = () => {
           <Collapse in={collapesState} id="navbarNav" className="w-100">
             <div class="collapse navbar-collapse p-2 w-100" id="navbarNav">
               <ul class="navbar-nav ms-aut -0 p-3">
-                <li class="nav-item">
+                <li
+                  class="nav-item"
+                  onClick={() => {
+                    setCollapesState(false);
+                  }}
+                >
                   <Link class="nav-link" aria-current="page" href="/">
                     الرئيسية
                   </Link>
                 </li>
-                <li class="nav-item">
+                <li
+                  class="nav-item"
+                  onClick={() => {
+                    setCollapesState(false);
+                  }}
+                >
                   <Link class="nav-link" href="/Products">
                     الخدمات
                   </Link>
                 </li>
                 {session?.user?.role === "admin" && (
-                  <li class="nav-item">
+                  <li
+                    class="nav-item"
+                    onClick={() => {
+                      setCollapesState(false);
+                    }}
+                  >
                     <Link class="nav-link" href="/Products/productsEdit">
                       تعديل الخدمات
                     </Link>
@@ -140,12 +155,22 @@ const Navbar = () => {
                   </li>
                 )}
 
-                <li class="nav-item">
+                <li
+                  class="nav-item"
+                  onClick={() => {
+                    setCollapesState(false);
+                  }}
+                >
                   <a class="nav-link" href="#why-7-stars">
                     لماذا تختارنا
                   </a>
                 </li>
-                <li class="nav-item">
+                <li
+                  class="nav-item"
+                  onClick={() => {
+                    setCollapesState(false);
+                  }}
+                >
                   <a class="nav-link ms-2" href="#" onClick={signOut}>
                     <BiLogOut size={"20px"} className="me-2" />
                     تسجيل الخروج
