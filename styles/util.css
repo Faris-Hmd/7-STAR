@@ -19,7 +19,7 @@
   background: linear-gradient(
     160deg,
     rgba(16, 12, 10, 0.2) 0%,
-    rgba(29, 184, 0, 0.2) 100%
+    rgba(128, 0, 0, 0.2) 100%
   );
 }
 a:hover {
@@ -231,6 +231,7 @@ a:hover {
 .offcanvas {
   max-width: 320px !important;
   z-index: 99;
+  margin-top: 67px;
 }
 .nav-tabs .nav-link {
   color: #eee;
@@ -293,4 +294,42 @@ a:hover {
 }
 .Toastify__toast {
   font-family: var(--bs-body-font-family) !important;
+}
+/* styles.css */
+.navbar {
+  background-color: maroon;
+}
+.navbar-toggler-icon {
+  color: #eee !important;
+}
+
+/* .navbar .navbar-brand, .navbar .nav-link {
+    color: white;
+}
+
+.navbar .nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+}
+
+.navbar .nav-link.active, .navbar .nav-link:focus {
+    border-bottom: 2px solid white;
+} */
+
+.btn-maroon {
+  background-color: maroon;
+  color: white;
+}
+*/ .btn-outline-maroon {
+  border-color: maroon;
+  color: maroon;
+}
+
+/* /* .btn-outline-maroon:hover {
+    background-color: maroon;
+    color: white;
+} */
+
+.offcanvas {
+  background-color: #f8f9fa;
 }

@@ -30,6 +30,7 @@ const Layout = ({ children }) => {
           <Navbar />
           <main className="main">
             <ToastContainer
+              style={{ zIndex: 99999 }}
               limit={1}
               autoClose={1500}
               position={"top-center"}
@@ -40,9 +41,7 @@ const Layout = ({ children }) => {
             {children}
           </main>
           <footer className="footer bg-dark text-white py-5">
-          
-
-            <Footer /> 
+            <Footer />
           </footer>
         </div>
       </ThemeProvider>

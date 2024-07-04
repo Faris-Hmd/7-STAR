@@ -1,5 +1,5 @@
 import styles from "../styles/Navbar.module.css";
-import { Button, Col, Container, Offcanvas } from "react-bootstrap";
+import { Button, Col, Collapse, Container, Offcanvas } from "react-bootstrap";
 import { useEffect, useState } from "react";
 import { FaBars } from "react-icons/fa";
 import { BsBag, BsGear, BsPerson, BsPlus } from "react-icons/bs";
@@ -23,9 +23,27 @@ const links = [
 const Navbar = () => {
   const { data: session, status } = useSession();
   const [show, setShow] = useState(false);
+  const [collapesState, setCollapesState] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  console.log(session);
+  const [isMobile, setIsMobile] = useState(false);
+
+  //choose the screen size
+  const handleResize = () => {
+    if (window.innerWidth < 720) {
+      setIsMobile(true);
+      setCollapesState(false);
+    } else {
+      setIsMobile(false);
+      setCollapesState(true);
+    }
+  };
+
+  // create an event listener
+  useEffect(() => {
+    window.addEventListener("resize", handleResize);
+  });
+  // console.log(session);
   return (
     <>
       <nav
@@ -34,16 +52,12 @@ const Navbar = () => {
         style={{ position: "fixed" }}
       >
         <div className="container">
-          {!session?.user?.email ? (
+          {!session?.user ? (
             <Link
               onClick={signIn}
-              href={
-                "http://localhost:3005/api/auth/signin?callbackUrl=http%3A%2F%2Flocalhost%3A3005%2F"
-              }
-              className="btn btn-outline-light link"
-              data-bs-toggle="offcanvas"
-              data-bs-target="#offcanvasLogin"
-              aria-controls="offcanvasLogin"
+              href={"#"}
+              className="btn btn-outline-light link me-2"
+              style={{ width: "130px" }}
             >
               <i className="bi bi-person me-1">
                 <BsPerson />
@@ -54,6 +68,7 @@ const Navbar = () => {
             <Link
               href={"/Users/" + session?.user?.id}
               className="Link nav-link"
+              style={{ width: "200px" }}
             >
               <span style={{ color: "white" }}>
                 <img
@@ -69,9 +84,9 @@ const Navbar = () => {
               </span>
             </Link>
           )}
-          <span
-            className="navbar-brand ms-auto Link"
-            href="#"
+          <Link
+            className="navbar-brand ms-auto Link nav-link"
+            href="/"
             style={{ color: "white", cursor: "pointer" }}
           >
             <img
@@ -79,11 +94,10 @@ const Navbar = () => {
               width="30"
               height="40"
               alt="Logo"
-              className="d-inline-block align-text-center"
+              className="d-inline-block align-text-center me-auto"
             />
             سبعة نجوم
-          </span>
-
+          </Link>
           <button
             className="navbar-toggler"
             type="button"
@@ -93,60 +107,57 @@ const Navbar = () => {
             aria-expanded="false"
             aria-label="Toggle navigation"
             style={{ color: "white" }}
-            onClick={handleShow}
+            onClick={() => {
+              setCollapesState((prev) => !prev);
+            }}
           >
             <span className="navbar-toggler-icon"></span>
           </button>
-          <div className="collapse navbar-collapse" id="navbarNav">
-            <ul className="navbar-nav mb-2 mb-lg-0">
-              <li className="nav-item">
-                <a className="nav-link " aria-current="page" href="#section1">
-                  التصنيف الرابع
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="#section2">
-                  التصنيف الثالث
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="#section3">
-                  التصنيف الثاني
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="#section4">
-                  التصنيف الاول
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="#why-7-stars">
-                  لماذا تختارنا
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="#categories">
-                  التصنيفات
-                </a>
-              </li>
-            </ul>
-          </div>
+
+          <Collapse in={collapesState} id="navbarNav" className="w-100">
+            <div class="collapse navbar-collapse p-2 w-100" id="navbarNav">
+              <ul class="navbar-nav ms-aut -0 p-3">
+                <li class="nav-item">
+                  <Link class="nav-link" aria-current="page" href="/">
+                    الرئيسية
+                  </Link>
+                </li>
+                <li class="nav-item">
+                  <Link class="nav-link" href="/Products">
+                    الخدمات
+                  </Link>
+                </li>
+                {session?.user?.role === "admin" && (
+                  <li class="nav-item">
+                    <Link class="nav-link" href="/Products/productsEdit">
+                      تعديل الخدمات
+                    </Link>
+                  </li>
+                )}
+                {session?.user && (
+                  <li class="nav-item">
+                    <Link class="nav-link" href="/Products/Add">
+                      اضافة خدمة
+                    </Link>
+                  </li>
+                )}
+
+                <li class="nav-item">
+                  <a class="nav-link" href="#why-7-stars">
+                    لماذا تختارنا
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link ms-2" href="#" onClick={signOut}>
+                    <BiLogOut size={"20px"} className="me-2" />
+                    تسجيل الخروج
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </Collapse>
         </div>
       </nav>
-      {/* <nav className={styles.nav}>
-        <Button variant="" onClick={handleShow} className="over ms-2">
-          <FaBars style={{ color: "white" }} />
-        </Button>
-        <div className={styles.logo}>
-          <img
-            width={"100px"}
-            src="/icons/7star.png"
-            alt="drc"
-            className="mb-2"
-          />
-          <span className="p-2 fos-m text-nowrap">خدماتي</span>
-        </div>
-      </nav> */}
       <Offcanvas
         show={show}
         onHide={handleClose}

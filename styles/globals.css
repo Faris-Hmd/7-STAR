@@ -266,6 +266,9 @@ nav {
 /** ------------- TABLET VIEW ---------*/
 
 @media (min-width: 650px) {
+  .main {
+    padding-top: 90px;
+  }
   /* .App {
     grid-template-columns: 1fr;
     grid-template-rows: 0.5fr 9.5fr;

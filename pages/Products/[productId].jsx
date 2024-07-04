@@ -144,7 +144,7 @@ function Product(props) {
                           عدم النشر <BsEyeSlash className="ms-1" />
                         </Button>
                       )}
-                      {currentUser.id === props.product.userId && (
+                      {session?.user?.id === props.product.userId && (
                         <>
                           <Button
                             size="sm"
@@ -215,7 +215,7 @@ function Product(props) {
               <Container className="flex-r">
                 <Col xs={5}>
                   <img
-                    src={props.user?.photoUrl}
+                    src={props.user?.image}
                     width={"120"}
                     height={"120"}
                     style={{ borderRadius: "50%" }}
@@ -224,9 +224,9 @@ function Product(props) {
                 </Col>
                 <Col xs={7}>
                   <div>
-                    <p>{props.user?.displayName}</p>
+                    <p>{props.user?.name}</p>
                     <p>مطور تطبيقات ويب</p>
-                    <p>{product?.userId}</p>
+                    {/* <p>{product?.userId}</p> */}
                   </div>
                 </Col>
               </Container>
@@ -252,7 +252,7 @@ function Product(props) {
                           className="rounded-0"
                           style={{ objectFit: "cover" }}
                           loading="lazy"
-                          src={product.images[0].url}
+                          src={product?.images[0]?.url}
                           height={"150px"}
                         />
                         <Card.Body className="p-2">
@@ -291,7 +291,7 @@ export async function getStaticProps(context) {
   const productsBySameCat_ = await getProductSameCat(product.category);
   const getUserInfo = await getUser(product.userId);
   const admins = await getFireDocs("admins");
-  console.log(admins);
+  console.log(getUserInfo);
   return {
     props: {
       rating: rating,

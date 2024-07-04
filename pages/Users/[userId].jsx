@@ -25,19 +25,19 @@ function MyAccount(props) {
           <Button
             variant=""
             style={{ position: "absolute", top: "5px", left: "5px" }}
-            href={"/Users/Edit/" + props.user.id}
+            href={"#"}
           >
             <BsPencil size={"25px"} />
           </Button>
           <img
             class="d-block mx-auto mb-4 rounded-full shadow"
-            src={props.user.photoUrl}
+            src={props.user.image}
             alt=""
             width="80"
             height="80"
           />
           <h1 class="display-5 fw-bold text-body-emphasis">
-            {props.user.displayName}
+            {props.user.name}
           </h1>
           <div class="col-lg-6 mx-auto">
             <p class="lead mb-4">
@@ -48,7 +48,8 @@ function MyAccount(props) {
             <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
               <button
                 type="button"
-                class="btn btn-primary btn-lg px-4 gap-3 btn-success"
+                class="btn btn-primary btn-lg px-4 gap-3 btn-danger border-0"
+                style={{ background: "maroon" }}
               >
                 تواصل معي
               </button>
@@ -56,7 +57,7 @@ function MyAccount(props) {
           </div>
         </div>
       </>
-      <h2 className="p-2 text-c ms-3">خدماتي</h2>{" "}
+      <h2 className="p-2 text-c ms-3">خدماتي</h2>
       <Container className="flex-r p-0 p-relative">
         <div className="album py-3 bg-body-tertiary">
           <div className="container">
@@ -70,7 +71,7 @@ function MyAccount(props) {
                           className="bd-placeholder-img card-img-top object-cover"
                           width="100%"
                           height="225"
-                          src={product.images[0].url}
+                          src={product?.image}
                           role="img"
                           aria-label="Placeholder: صورة مصغرة"
                           preserveAspectRatio="xMidYMid slice"

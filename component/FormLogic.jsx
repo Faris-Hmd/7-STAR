@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { useRouter } from "next/router";
-import { baseUrl } from "../pages/_app";
 import FormUI from "./FormUI";
 import { getLocalStorge } from "../helper/localStorge";
 import {
@@ -17,6 +16,8 @@ import { deleteRequest } from "../helper/requests";
 import { BsCameraFill, BsCheckLg, BsTrashFill } from "react-icons/bs";
 import { addDoc, collection } from "firebase/firestore";
 import { db } from "../firebase/firebase";
+import { put } from "@vercel/blob";
+import { useSession } from "next-auth/react";
 
 function FormLogic({
   feilds,
@@ -28,6 +29,8 @@ function FormLogic({
   route,
   singleImage,
 }) {
+  const { data: sesssion, status } = useSession();
+  console.log(sesssion);
   const router = useRouter();
   const [images, setImgs] = useState([]);
   const [imagesURL, setImagesURL] = useState([]);
@@ -98,39 +101,54 @@ function FormLogic({
     const { storage } = await import("../firebase/firebase");
     setImagesURL([]);
     images.forEach((img) => {
-      // console.log(img);
-      if (img.imageFile) {
-        const imgRef = ref(storage, img.name);
-        const uploadTask = uploadBytesResumable(imgRef, img.file);
-        uploadTask.on(
-          "state_changed",
-          (snapshot) => {
-            const progress =
-              (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-            // console.log("Upload is " + progress + "% done");
-          },
-          (error) => {
-            toast.error("حصل خطأ في العملية");
-            setIsUploading(false);
-            // Handle unsuccessful uploads
-          },
-          () => {
-            // Handle successful uploads on complete
-            getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-              console.log("File available at", downloadURL);
-              setImagesURL((prevImgs) => [...prevImgs, { url: downloadURL }]);
-            });
-          }
-        );
+      console.log(img);
+      if (img.name) {
+        async function uploadimg() {
+          console.log(img);
+          const newBlob = await put("test", img.file, {
+            access: "public",
+            token: process.env.BLOB_READ_WRITE_TOKEN,
+            // handleUploadUrl: "/api/avatar/upload",
+          });
+          console.log(newBlob);
+        }
+        uploadimg();
       } else {
         setImagesURL((prevImgs) => [...prevImgs, { url: img.url }]);
       }
+      // if (img.imageFile) {
+
+      //   const imgRef = ref(storage, img.name);
+      //   const uploadTask = uploadBytesResumable(imgRef, img.file);
+      //   uploadTask.on(
+      //     "state_changed",
+      //     (snapshot) => {
+      //       const progress =
+      //         (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+      //       // console.log("Upload is " + progress + "% done");
+      //     },
+      //     (error) => {
+      //       toast.error("حصل خطأ في العملية");
+      //       setIsUploading(false);
+      //       // Handle unsuccessful uploads
+      //     },
+      //     () => {
+      //       // Handle successful uploads on complete
+      //       getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+      //         console.log("File available at", downloadURL);
+      //         setImagesURL((prevImgs) => [...prevImgs, { url: downloadURL }]);
+      //       });
+      //     }
+      //   );
+      // } else {
+      //   setImagesURL((prevImgs) => [...prevImgs, { url: img.url }]);
+      // }
     });
   };
   //////////////////////////////////////////////////////////////////////////////////////////////
   const uploadData = async () => {
     try {
-      console.log("upload");
+      console.log(data, "upload");
 
       const res = await fetch("/api/" + route, {
         method: method,
@@ -141,6 +159,7 @@ function FormLogic({
         body: JSON.stringify({
           ...data,
           images: imagesURL,
+          userId: sesssion.user.id,
         }),
       });
 
@@ -151,10 +170,10 @@ function FormLogic({
         setImagesURL([]);
         toast.success(data.msg);
         // localStorage.removeItem("artAddForm");
-        redirect &&
-          setTimeout(() => {
-            router.push("/" + formName + "/" + data.docId);
-          }, 1500);
+        // redirect &&
+        //   setTimeout(() => {
+        //     router.push("/" + formName + "/" + data.docId);
+        //   }, 1500);
       } else {
         const { msg } = await res.json();
         setIsUploading(false);
@@ -272,14 +291,14 @@ function FormLogic({
                 {method === "PUT" && (
                   <Col xs={12}>
                     <Button
-                      className="m shadow w-10  px-3 "
+                      className="m shadow   px-3 "
                       variant="danger"
                       onClick={() => {
                         setShowDeleteModal(true);
                       }}
                     >
                       حذف
-                      <span className="ms-2">
+                      <span className="">
                         <BsTrashFill />
                       </span>
                     </Button>
@@ -287,7 +306,7 @@ function FormLogic({
                 )}
               </Container>
               <Button
-                className="mt-2 shadow w-100  px-4 ms-2"
+                className="mt-2 shadow w-100"
                 variant="success"
                 disabled={
                   isUploading || data?.password !== data?.passwordConfirm

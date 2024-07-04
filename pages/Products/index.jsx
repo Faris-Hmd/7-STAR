@@ -91,7 +91,7 @@ function Products(props) {
                           className="bd-placeholder-img card-img-top object-cover"
                           width="100%"
                           height="225"
-                          src={product.images[0].url}
+                          src={product.images[0]?.url}
                           role="img"
                           aria-label="Placeholder: صورة مصغرة"
                           preserveAspectRatio="xMidYMid slice"

@@ -86,7 +86,7 @@ function MyProducts(props) {
                     className="rounded-0 "
                     style={{ objectFit: "cover" }}
                     loading="lazy"
-                    src={product.images[0].url}
+                    src={product.images[0]?.url}
                     height={"150px"}
                   />
                   <Card.Body className="p-2">

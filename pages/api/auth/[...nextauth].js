@@ -5,7 +5,15 @@ import {
   getFireDoc,
   getFireDocs,
 } from "../../../lib/getFireData";
-import { addDoc, collection, getDocs, query, where } from "firebase/firestore";
+import {
+  addDoc,
+  collection,
+  doc,
+  getDocs,
+  query,
+  updateDoc,
+  where,
+} from "firebase/firestore";
 import { db } from "../../../firebase/firebase";
 
 export const authOptions = {
@@ -50,12 +58,10 @@ export const authOptions = {
         };
       }
       const userInfo = getDataFromQuery(querySnapShot);
-      // // console.log("callback");
-      // // console.log(admins);
-      // const isAdmin = admins?.find(
-      //   (admin) => userInfo[0].email === admin?.email
-      // );
-
+      await updateDoc(doc(db, "users", userInfo[0].id), {
+        ...session.user,
+      });
+      console.log(userInfo[0].id);
       return {
         ...session,
         user: {

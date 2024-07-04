@@ -8,8 +8,6 @@ import {
 } from "firebase/firestore";
 import { db } from "../../../firebase/firebase";
 import { getProduct } from "../../../lib/getProduct";
-import { getServerSession } from "next-auth";
-import { authOptions } from "../auth/[...nextauth]";
 export default async function handler(req, res) {
   const { productId } = req.query;
   // const { data: session } = await getServerSession(req, res, authOptions);
@@ -28,7 +26,7 @@ export default async function handler(req, res) {
     case "POST":
       {
         const product = req.body;
-        console.log(product);
+        console.log(product, "from api");
         querySnapShot = await addDoc(collection(db, "products"), {
           ...product,
           // userId: session.user.id,
@@ -48,6 +46,8 @@ export default async function handler(req, res) {
 
     case "PUT": {
       const product = req.body;
+      console.log(product, "from api");
+
       // console.log(product);
       await updateDoc(doc(db, "products", product.id), {
         ...product,
