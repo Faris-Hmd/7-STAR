@@ -68,20 +68,18 @@ const Navbar = () => {
             <Link
               href={"/Users/" + session?.user?.id}
               className="Link nav-link"
-              style={{ width: "200px" }}
             >
-              <span style={{ color: "white" }}>
+              <div style={{ color: "white", width: "150px" }}>
                 <img
                   width={50}
                   height={50}
                   style={{ objectFit: "cover" }}
                   alt="drc"
-                  className="rounded-circle shadow me-2"
+                  className="rounded-circle shadow me-3"
                   src={session?.user.image}
                 />
-
                 {session?.user?.name}
-              </span>
+              </div>
             </Link>
           )}
           <Link
