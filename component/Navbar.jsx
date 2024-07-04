@@ -148,7 +148,12 @@ const Navbar = () => {
                   </li>
                 )}
                 {session?.user && (
-                  <li class="nav-item">
+                  <li
+                    class="nav-item"
+                    onClick={() => {
+                      setCollapesState(false);
+                    }}
+                  >
                     <Link class="nav-link" href="/Products/Add">
                       اضافة خدمة
                     </Link>
