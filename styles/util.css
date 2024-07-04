@@ -289,9 +289,7 @@ a:hover {
     0 0
   );
 }
-.clip {
-  /* clip-path: polygon(30% 50%, 100% 0%, 0% 100%, 0 0); */
-}
+
 .Toastify__toast {
   font-family: var(--bs-body-font-family) !important;
 }
@@ -320,7 +318,7 @@ a:hover {
   background-color: maroon;
   color: white;
 }
-*/ .btn-outline-maroon {
+.btn-outline-maroon {
   border-color: maroon;
   color: maroon;
 }
