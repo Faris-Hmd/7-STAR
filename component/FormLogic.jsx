@@ -102,48 +102,47 @@ function FormLogic({
     setImagesURL([]);
     images.forEach((img) => {
       console.log(img);
-      if (img.name) {
-        async function uploadimg() {
-          console.log(img);
-          const newBlob = await put("test", img.file, {
-            access: "public",
-            token: process.env.BLOB_READ_WRITE_TOKEN,
-            handleUploadUrl: "/api/imgupload",
-            // handleUploadUrl: "/api/avatar/upload",
-          });
-          console.log(newBlob);
-        }
-        uploadimg();
-      } else {
-        setImagesURL((prevImgs) => [...prevImgs, { url: img.url }]);
-      }
-      // if (img.imageFile) {
-
-      //   const imgRef = ref(storage, img.name);
-      //   const uploadTask = uploadBytesResumable(imgRef, img.file);
-      //   uploadTask.on(
-      //     "state_changed",
-      //     (snapshot) => {
-      //       const progress =
-      //         (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-      //       // console.log("Upload is " + progress + "% done");
-      //     },
-      //     (error) => {
-      //       toast.error("حصل خطأ في العملية");
-      //       setIsUploading(false);
-      //       // Handle unsuccessful uploads
-      //     },
-      //     () => {
-      //       // Handle successful uploads on complete
-      //       getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-      //         console.log("File available at", downloadURL);
-      //         setImagesURL((prevImgs) => [...prevImgs, { url: downloadURL }]);
-      //       });
-      //     }
-      //   );
+      // if (img.name) {
+      //   async function uploadimg() {
+      //     console.log(img);
+      //     const newBlob = await put("test", img.file, {
+      //       access: "public",
+      //       token: process.env.BLOB_READ_WRITE_TOKEN,
+      //       handleUploadUrl: "/api/imgupload",
+      //       // handleUploadUrl: "/api/avatar/upload",
+      //     });
+      //     console.log(newBlob);
+      //   }
+      //   uploadimg();
       // } else {
       //   setImagesURL((prevImgs) => [...prevImgs, { url: img.url }]);
       // }
+      if (img.imageFile) {
+        const imgRef = ref(storage, img.name);
+        const uploadTask = uploadBytesResumable(imgRef, img.file);
+        uploadTask.on(
+          "state_changed",
+          (snapshot) => {
+            const progress =
+              (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+            // console.log("Upload is " + progress + "% done");
+          },
+          (error) => {
+            toast.error("حصل خطأ في العملية");
+            setIsUploading(false);
+            // Handle unsuccessful uploads
+          },
+          () => {
+            // Handle successful uploads on complete
+            getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+              console.log("File available at", downloadURL);
+              setImagesURL((prevImgs) => [...prevImgs, { url: downloadURL }]);
+            });
+          }
+        );
+      } else {
+        setImagesURL((prevImgs) => [...prevImgs, { url: img.url }]);
+      }
     });
   };
   //////////////////////////////////////////////////////////////////////////////////////////////
