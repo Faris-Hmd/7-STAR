@@ -68,10 +68,10 @@ const Navbar = () => {
               href={"/Users/" + session?.user?.id}
               className="Link nav-link"
             >
-              <div style={{ color: "white", width: "150px" }}>
+              <div style={{ color: "white" }}>
                 <img
-                  width={50}
-                  height={50}
+                  width={40}
+                  height={40}
                   style={{ objectFit: "cover" }}
                   alt="drc"
                   className="rounded-circle shadow me-3"
@@ -126,7 +126,7 @@ const Navbar = () => {
                     isMobile && setCollapesState(false);
                   }}
                 >
-                  <a class="nav-link" aria-current="page" href="#/">
+                  <a class="nav-link" aria-current="page" href="/#">
                     الرئيسية
                   </a>
                 </li>
