@@ -1,9 +1,17 @@
 import styles from "../styles/Navbar.module.css";
 import { Button, Col, Collapse, Container, Offcanvas } from "react-bootstrap";
 import { useEffect, useState } from "react";
-import { FaBars } from "react-icons/fa";
+import { FaAngleDown, FaAngleUp, FaBars } from "react-icons/fa";
 import { BsBag, BsGear, BsPerson, BsPlus } from "react-icons/bs";
-import { BiHome, BiLogIn, BiLogOut, BiNews, BiStats } from "react-icons/bi";
+import {
+  BiDownArrow,
+  BiDownArrowAlt,
+  BiHome,
+  BiLogIn,
+  BiLogOut,
+  BiNews,
+  BiStats,
+} from "react-icons/bi";
 import Link from "next/link";
 import { useSession, signIn, signOut } from "next-auth/react";
 
@@ -49,22 +57,13 @@ const Navbar = () => {
       <nav
         className="navbar navbar-expand-lg w-100"
         data-bs-theme="dark"
-        style={{ position: "fixed" }}
+        style={{ position: "fixed", zIndex: "10" }}
       >
         <div className="container">
-          {!session?.user ? (
-            <Link
-              onClick={signIn}
-              href={"#"}
-              className="btn btn-outline-light link me-2"
-              style={{ width: "130px" }}
-            >
-              <i className="bi bi-person me-1">
-                <BsPerson />
-              </i>
-              تسجيل
-            </Link>
-          ) : (
+          <Button variant="l" style={{ color: "white" }} onClick={handleShow}>
+            <FaBars size="23px" />
+          </Button>
+          {session?.user && (
             <Link
               href={"/Users/" + session?.user?.id}
               className="Link nav-link"
@@ -78,7 +77,7 @@ const Navbar = () => {
                   className="rounded-circle shadow me-3"
                   src={session?.user.image}
                 />
-                {session?.user?.name}
+                {/* {session?.user?.name} */}
               </div>
             </Link>
           )}
@@ -97,19 +96,25 @@ const Navbar = () => {
             سبعة نجوم
           </Link>
           <button
-            className="navbar-toggler"
+            className="navbar-toggler border-0"
             type="button"
             data-bs-toggle="collapse"
             data-bs-target="#navbarNav"
             aria-controls="navbarNav"
             aria-expanded="false"
             aria-label="Toggle navigation"
-            style={{ color: "white" }}
+            style={{ color: "white", outline: "none" }}
             onClick={() => {
               setCollapesState((prev) => !prev);
             }}
           >
-            <span className="navbar-toggler-icon"></span>
+            <span className="navbar-toggler-ico">
+              {collapesState ? (
+                <FaAngleUp size={25} />
+              ) : (
+                <FaAngleDown size={25} />
+              )}
+            </span>
           </button>
 
           <Collapse in={collapesState} id="navbarNav" className="w-100">
@@ -118,67 +123,63 @@ const Navbar = () => {
                 <li
                   class="nav-item"
                   onClick={() => {
-                    setCollapesState(false);
+                    isMobile && setCollapesState(false);
                   }}
                 >
-                  <Link class="nav-link" aria-current="page" href="/">
+                  <a class="nav-link" aria-current="page" href="#/">
                     الرئيسية
-                  </Link>
-                </li>
-                <li
-                  class="nav-item"
-                  onClick={() => {
-                    setCollapesState(false);
-                  }}
-                >
-                  <Link class="nav-link" href="/Products">
-                    الخدمات
-                  </Link>
-                </li>
-                {session?.user?.role === "admin" && (
-                  <li
-                    class="nav-item"
-                    onClick={() => {
-                      setCollapesState(false);
-                    }}
-                  >
-                    <Link class="nav-link" href="/Products/productsEdit">
-                      تعديل الخدمات
-                    </Link>
-                  </li>
-                )}
-                {session?.user && (
-                  <li
-                    class="nav-item"
-                    onClick={() => {
-                      setCollapesState(false);
-                    }}
-                  >
-                    <Link class="nav-link" href="/Products/Add">
-                      اضافة خدمة
-                    </Link>
-                  </li>
-                )}
-
-                <li
-                  class="nav-item"
-                  onClick={() => {
-                    setCollapesState(false);
-                  }}
-                >
-                  <a class="nav-link" href="#why-7-stars">
-                    لماذا تختارنا
                   </a>
                 </li>
                 <li
                   class="nav-item"
                   onClick={() => {
-                    setCollapesState(false);
+                    isMobile && setCollapesState(false);
                   }}
                 >
-                  <a class="nav-link ms-2" href="#" onClick={signOut}>
-                    <BiLogOut size={"20px"} className="me-2" />
-                    تسجيل الخروج
+                  <a class="nav-link" href="#categories">
+                    التصنيفات
+                  </a>
+                </li>
+                <li
+                  class="nav-item"
+                  onClick={() => {
+                    isMobile && setCollapesState(false);
+                  }}
+                >
+                  <a class="nav-link" href="#our-vision">
+                    رؤيتنا
+                  </a>
+                </li>
+
+                <li
+                  class="nav-item"
+                  onClick={() => {
+                    isMobile && setCollapesState(false);
+                  }}
+                >
+                  <a class="nav-link" href="#what-clients-say">
+                    رأى عملائنا
+                  </a>
+                </li>
+
+                <li
+                  class="nav-item"
+                  onClick={() => {
+                    isMobile && setCollapesState(false);
+                  }}
+                >
+                  <a class="nav-link" href="#contact">
+                    تواصل معنا
+                  </a>
+                </li>
+                <li
+                  class="nav-item"
+                  onClick={() => {
+                    isMobile && setCollapesState(false);
+                  }}
+                >
+                  <a class="nav-link" href="#why-choose-us">
+                    لماذا تختارنا
                   </a>
                 </li>
               </ul>
@@ -192,32 +193,6 @@ const Navbar = () => {
         placement="start"
         className="rtl"
       >
-        {session ? (
-          <Link href={"/"} className="ms-auto me-2 Link">
-            <span style={{ color: "white" }} className="me-2">
-              {session.user.name}
-            </span>
-            <img
-              width={50}
-              height={50}
-              style={{ objectFit: "cover" }}
-              src={session.user.photoUrl}
-              alt="drc"
-              className="rounded-circle shadow"
-            />
-          </Link>
-        ) : (
-          <Link href={"/"} className="ms-auto me-2 Link" onClick={signIn}>
-            <img
-              width={50}
-              height={50}
-              style={{ objectFit: "cover" }}
-              src={"/images/cat-1.webp"}
-              alt="drc"
-              className="rounded-circle shadow"
-            />
-          </Link>
-        )}
         <Offcanvas.Header closeButton>
           <Offcanvas.Title>القائمة</Offcanvas.Title>
         </Offcanvas.Header>

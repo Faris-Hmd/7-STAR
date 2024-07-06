@@ -26,7 +26,7 @@ export default async function handler(req, res) {
     case "POST":
       {
         const product = req.body;
-        console.log(product, "from api");
+        // console.log(product, "from api");
         querySnapShot = await addDoc(collection(db, "products"), {
           ...product,
           // userId: session.user.id,

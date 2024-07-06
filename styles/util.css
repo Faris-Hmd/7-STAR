@@ -231,7 +231,6 @@ a:hover {
 .offcanvas {
   max-width: 320px !important;
   z-index: 99;
-  margin-top: 67px;
 }
 .nav-tabs .nav-link {
   color: #eee;

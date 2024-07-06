@@ -34,8 +34,8 @@ function EditProduct(props) {
 export default EditProduct;
 export async function getServerSideProps(context) {
   const product = await getFireDoc("products", context.params.productId);
-  console.log(product);
-  console.log("ssr for edit products");
+  // console.log(product);
+  // console.log("ssr for edit products");
 
   return {
     props: {

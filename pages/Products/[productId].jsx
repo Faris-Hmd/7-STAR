@@ -291,7 +291,7 @@ export async function getStaticProps(context) {
   const productsBySameCat_ = await getProductSameCat(product.category);
   const getUserInfo = await getUser(product.userId);
   const admins = await getFireDocs("admins");
-  console.log(getUserInfo);
+  // console.log(getUserInfo);
   return {
     props: {
       rating: rating,

@@ -60,14 +60,17 @@ const posts = [
 function Homepage(props) {
   return (
     <Container className="m-0 p-0 w-100">
-      <div className="hero-section d-flex flex-column align-items-center justify-content-center text-center greeting">
+      <div
+        id="/"
+        className="hero-section d-flex flex-column align-items-center justify-content-center text-center greeting"
+      >
         <h1 className="hero-text mb-4">
           احصل على أفضل خدمة تحتاجها في أقل وقت
         </h1>
         <Form className=" m-3 mt-1">
           <InputGroup className="shadow-sm border-0  mb-1 ">
-            <Button variant="success" className="bg-sec text-muted border-0">
-              <BiSearch /> <span className="ms-1">|</span>
+            <Button variant="success" className="bg-sec text-muted border-0 ">
+              <BiSearch className="" /> <span className="ms-1">|</span>
             </Button>
             <Form.Control
               type="text"
@@ -106,38 +109,8 @@ function Homepage(props) {
 
         {/* <!-- Offcanvas Login Form --> */}
       </div>
-      {/* <Row className="greeting m-0">
-        <Col className="h-100 m-0 p-0">
-          <Container className="h-100 m-0 p-0">
-            <Col xs={12} lg={5} className="flex blur ps-4 h-100">
-              <div className="me-auto">
-                <h1>سلام عليكم</h1>
-                <p>خدمات بيل قبل اتل تنلل نعا نعلان عناعلا تا </p>
-                <Form className="" style={{ width: "80%" }}>
-                  <InputGroup className="shadow-sm border rounded mb-2">
-                    <Button
-                      variant="success"
-                      className="bg-sec text-muted border-0"
-                    >
-                      <BiSearch /> <span className="ms-1">|</span>
-                    </Button>
-                    <Form.Control
-                      type="text"
-                      name="keyword"
-                      placeholder="البحث عن خدمة"
-                      className="p-2 rounded-0 border-0"
-                    />
-                  </InputGroup>
-                </Form>
-                <Button href="/Products" variant="success">
-                  تصفح
-                </Button>
-              </div>
-            </Col>
-          </Container>
-        </Col>
-      </Row> */}
-      <section id="categories" className="categories py-5">
+
+      <section id="categories" className="categories py-3">
         <div className="container">
           <h2 className="text-center mb-5">Browse by Category</h2>
           <div className="row justify-content-center gy-4">
@@ -379,7 +352,7 @@ function Homepage(props) {
           </div>
         </div>
       </section>
-      <section className="testimonials py-5">
+      <section className="testimonials py-5" id="what-clients-say">
         <div className="container">
           <h2 className="text-center mb-4">What Our Clients Say</h2>
           <div className="row">
@@ -590,7 +563,7 @@ function Homepage(props) {
                 data-bs-parent="#accordionExample"
               >
                 <div className="accordion-body">
-                  You can reach our customer support team through our{" "}
+                  You can reach our customer support team through our
                   <a href="#contact">Contact Us</a> section or by emailing
                   support@7stars.com.
                 </div>

@@ -143,11 +143,12 @@ nav {
   grid-template-rows: 0.9fr 9.1fr;
   grid-template-areas: "nav" "main";
   scrollbar-width: thin;
-  min-height: 100vh;
+  /* min-height: 100vh; */
+  /* margin-top: 90px; */
 }
 
 .main {
-  padding-top: 65px;
+  margin-top: 65px;
   min-width: 100%;
   overflow-x: hidden;
   grid-area: main;
@@ -267,7 +268,7 @@ nav {
 
 @media (min-width: 650px) {
   .main {
-    padding-top: 90px;
+    margin-top: 90px;
   }
   /* .App {
     grid-template-columns: 1fr;

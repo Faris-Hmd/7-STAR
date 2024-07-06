@@ -99,7 +99,7 @@ function MyProducts(props) {
                       <small>
                         {product.category} |
                         <span className="text-success text-bold fs-6  rounded ms-2">
-                          {product.cost} ج.س
+                          {product.cost} QAR
                         </span>
                       </small>
                     </Card.Subtitle>
