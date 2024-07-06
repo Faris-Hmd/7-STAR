@@ -13,6 +13,9 @@
     "analyze:browser": "cross-env BUNDLE_ANALYZE=browser next build"
   },
   "dependencies": {
+    "@mantine/carousel": "^7.11.1",
+    "@mantine/core": "^7.11.1",
+    "@mantine/hooks": "^7.11.1",
     "@next/font": "^13.1.1",
     "@vercel/blob": "^0.23.4",
     "axios": "^1.2.2",
@@ -21,6 +24,7 @@
     "bootstrap-icons": "^1.11.3",
     "chart.js": "^4.2.1",
     "cors": "^2.8.5",
+    "embla-carousel-react": "^8.1.6",
     "file-saver": "^2.0.5",
     "firebase": "^9.11.0",
     "formik": "^2.2.9",
@@ -42,6 +46,9 @@
     "@next/bundle-analyzer": "^13.2.3",
     "cross-env": "^7.0.3",
     "eslint": "8.25.0",
-    "eslint-config-next": "12.3.1"
+    "eslint-config-next": "12.3.1",
+    "postcss": "^8.4.39",
+    "postcss-preset-mantine": "^1.15.0",
+    "postcss-simple-vars": "^7.0.1"
   }
 }

@@ -11,6 +11,7 @@ import {
 import { BiCategory, BiSearch } from "react-icons/bi";
 import { getFireDocsQuery } from "../lib/getFireData";
 import Link from "next/link";
+// import { CardsCarousel } from "../component/cardCarousels/carosel";
 
 const posts = [
   {
@@ -109,7 +110,7 @@ function Homepage(props) {
 
         {/* <!-- Offcanvas Login Form --> */}
       </div>
-
+      {/* <CardsCarousel /> */}
       <section id="categories" className="categories py-3">
         <div className="container">
           <h2 className="text-center mb-5">Browse by Category</h2>

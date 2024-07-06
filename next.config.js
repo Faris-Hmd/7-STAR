@@ -7,7 +7,7 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   images: {
-    domains: ["firebasestorage.googleapis.com"],
+    domains: ["firebasestorage.googleapis.com", "https://77-star.vercel.app"],
   },
 };
 // const withBundleAnalyzer = require("@next/bundle-analyzer")({

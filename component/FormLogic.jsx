@@ -14,9 +14,6 @@ import {
 } from "react-bootstrap";
 import { deleteRequest } from "../helper/requests";
 import { BsCameraFill, BsCheckLg, BsTrashFill } from "react-icons/bs";
-import { addDoc, collection } from "firebase/firestore";
-import { db } from "../firebase/firebase";
-import { put } from "@vercel/blob";
 import { useSession } from "next-auth/react";
 
 function FormLogic({
@@ -48,7 +45,7 @@ function FormLogic({
   }
 
   useEffect(() => {
-    // method === "PUT" && data?.images[0]?.url && setImgs(data.images);
+    method === "PUT" && data?.images[0]?.url && setImgs(data.images);
   }, [data]);
 
   const handleChange = (event) => {
@@ -102,22 +99,7 @@ function FormLogic({
     setImagesURL([]);
     images.forEach((img) => {
       console.log(img);
-      // if (img.name) {
-      //   async function uploadimg() {
-      //     console.log(img);
-      //     const newBlob = await put("test", img.file, {
-      //       access: "public",
-      //       token: process.env.BLOB_READ_WRITE_TOKEN,
-      //       handleUploadUrl: "/api/imgupload",
-      //       // handleUploadUrl: "/api/avatar/upload",
-      //     });
-      //     console.log(newBlob);
-      //   }
-      //   uploadimg();
-      // } else {
-      //   setImagesURL((prevImgs) => [...prevImgs, { url: img.url }]);
-      // }
-      if (img.imageFile) {
+      if (img.file) {
         const imgRef = ref(storage, img.name);
         const uploadTask = uploadBytesResumable(imgRef, img.file);
         uploadTask.on(

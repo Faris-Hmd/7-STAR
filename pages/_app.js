@@ -1,4 +1,13 @@
 /** @format */
+// core styles are required for all packages
+// import "@mantine/core/styles.css";
+
+// other css files are required only if
+// you are using components from the corresponding package
+// import '@mantine/dates/styles.css';
+// import '@mantine/dropzone/styles.css';
+// import '@mantine/code-highlight/styles.css';
+// ...
 import "../styles/globals.css";
 import "../styles/util.css";
 import "bootstrap/dist/css/bootstrap.rtl.min.css";
@@ -8,6 +17,7 @@ import { AuthProvider } from "../context/authContext";
 import { SSRProvider } from "react-bootstrap";
 import { SessionProvider } from "next-auth/react";
 import { ToastContainer } from "react-toastify";
+// import { createTheme, MantineProvider } from "@mantine/core";
 const internetUrl = "https://7-star.vercel.app";
 const localurl = " http://localhost:3005";
 export const currentUser = {
@@ -33,6 +43,7 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }) {
         <SSRProvider>
           <AuthProvider>
             <SessionProvider session={session}>
+              {/* <MantineProvider> */}
               <Layout>
                 <ToastContainer
                   style={{ zIndex: 9999999 }}
@@ -45,6 +56,7 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }) {
                 />
                 <Component {...pageProps} />
               </Layout>
+              {/* </MantineProvider> */}
             </SessionProvider>
           </AuthProvider>
         </SSRProvider>
