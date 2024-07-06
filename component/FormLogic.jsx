@@ -108,6 +108,7 @@ function FormLogic({
           const newBlob = await put("test", img.file, {
             access: "public",
             token: process.env.BLOB_READ_WRITE_TOKEN,
+            handleUploadUrl: "/api/imgupload",
             // handleUploadUrl: "/api/avatar/upload",
           });
           console.log(newBlob);

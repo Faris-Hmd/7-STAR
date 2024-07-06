@@ -136,9 +136,9 @@ const Navbar = () => {
                     isMobile && setCollapesState(false);
                   }}
                 >
-                  <a class="nav-link" href="#categories">
+                  <Link class="nav-link" href="/#categories">
                     التصنيفات
-                  </a>
+                  </Link>
                 </li>
                 <li
                   class="nav-item"
@@ -146,9 +146,9 @@ const Navbar = () => {
                     isMobile && setCollapesState(false);
                   }}
                 >
-                  <a class="nav-link" href="#our-vision">
+                  <Link class="nav-link" href="/#our-vision">
                     رؤيتنا
-                  </a>
+                  </Link>
                 </li>
 
                 <li
@@ -157,9 +157,9 @@ const Navbar = () => {
                     isMobile && setCollapesState(false);
                   }}
                 >
-                  <a class="nav-link" href="#what-clients-say">
+                  <Link class="nav-link" href="/#what-clients-say">
                     رأى عملائنا
-                  </a>
+                  </Link>
                 </li>
 
                 <li
@@ -168,9 +168,9 @@ const Navbar = () => {
                     isMobile && setCollapesState(false);
                   }}
                 >
-                  <a class="nav-link" href="#contact">
+                  <Link class="nav-link" href="/#contact">
                     تواصل معنا
-                  </a>
+                  </Link>
                 </li>
                 <li
                   class="nav-item"
@@ -178,9 +178,9 @@ const Navbar = () => {
                     isMobile && setCollapesState(false);
                   }}
                 >
-                  <a class="nav-link" href="#why-choose-us">
+                  <Link class="nav-link" href="/#why-choose-us">
                     لماذا تختارنا
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>
