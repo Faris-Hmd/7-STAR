@@ -4,7 +4,6 @@ import { ThemeProvider } from "react-bootstrap";
 // import ButtomNav from "./ButtomNav";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
-import { ToastContainer } from "react-toastify";
 
 /** @format */
 const Layout = ({ children }) => {
@@ -28,18 +27,7 @@ const Layout = ({ children }) => {
           <div className="rightSide"></div>
           <div className="leftSide"></div>
           <Navbar />
-          <main className="main">
-            <ToastContainer
-              style={{ zIndex: 99999 }}
-              limit={1}
-              autoClose={1500}
-              position={"top-center"}
-              rtl
-              closeOnClick
-              hideProgressBar
-            />
-            {children}
-          </main>
+          <main className="main">{children}</main>
           <footer className="footer bg-dark text-white py-5">
             <Footer />
           </footer>
