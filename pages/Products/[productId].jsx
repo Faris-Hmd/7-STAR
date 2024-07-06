@@ -25,6 +25,7 @@ import { toast } from "react-toastify";
 import { getUser } from "../../lib/getUser";
 import { getFireDoc, getFireDocs } from "../../lib/getFireData";
 import { useSession } from "next-auth/react";
+import { UserInfoIcons } from "../../component/userInfo/userInfo";
 function Product(props) {
   const router = useRouter();
   const [product, setProduct] = useState(props.product || {});
@@ -207,6 +208,7 @@ function Product(props) {
               props.rating ? props.rating : { likes: 0, dislikes: 0 }
             }
           />
+          {/* <UserInfoIcons avatarUrl={props?.user?.image} /> */}
           <Container
             className="bg-sec mt-2 shadow-sm p-0 flex-r rounded border"
             style={{ width: "99%" }}
