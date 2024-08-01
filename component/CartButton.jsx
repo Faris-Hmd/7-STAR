@@ -97,7 +97,7 @@ function CartButton({ product, productId }) {
   }
   useEffect(() => {
     if (!productId) return;
-    checkIsInCart();
+    // checkIsInCart();
   }, [productId]);
 
   useEffect(() => {

@@ -60,7 +60,7 @@ function RatingBox({ productRating, productId }) {
   }
 
   useEffect(() => {
-    getMyrating();
+    // getMyrating();
   }, []);
 
   return (
