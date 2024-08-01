@@ -25,7 +25,7 @@ import { toast } from "react-toastify";
 import { getUser } from "../../lib/getUser";
 import { getFireDoc, getFireDocs } from "../../lib/getFireData";
 import { useSession } from "next-auth/react";
-import { UserInfoIcons } from "../../component/userInfo/userInfo";
+// import { UserInfoIcons } from "../../component/userInfo/userInfo";
 function Product(props) {
   const router = useRouter();
   const [product, setProduct] = useState(props.product || {});
