@@ -50,6 +50,7 @@ const Navbar = () => {
   // create an event listener
   useEffect(() => {
     window.addEventListener("resize", handleResize);
+    console.log(session?.user);
   });
   // console.log(session);
   return (

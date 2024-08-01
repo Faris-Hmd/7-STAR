@@ -38,7 +38,7 @@ function Products(props) {
   useEffect(() => {
     window.scrollTo(0, 0);
     // getProducts();
-    getCartProducts();
+    // getCartProducts();
   }, []);
   // console.log(dates);
 
