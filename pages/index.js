@@ -130,7 +130,7 @@ function Homepage(props) {
                     href="/Products?q=خدمات قانونية"
                     className="btn btn-dark"
                   >
-                    View More
+                    عرض المزيد
                   </Link>
                 </div>
               </div>
