@@ -11,6 +11,8 @@ import {
 import { BiCategory, BiSearch } from "react-icons/bi";
 import { getFireDocsQuery } from "../lib/getFireData";
 import Link from "next/link";
+import { useState } from "react";
+import { useRouter } from "next/router";
 // import { CardsCarousel } from "../component/cardCarousels/carosel";
 
 const posts = [
@@ -59,6 +61,9 @@ const posts = [
 ];
 
 function Homepage(props) {
+  const [keyword, setKeyword] = useState("");
+  const router = useRouter();
+
   return (
     <Container className="m-0 p-0 w-100">
       <div
@@ -68,9 +73,19 @@ function Homepage(props) {
         <h1 className="hero-text mb-4">
           احصل على أفضل خدمة تحتاجها في أقل وقت
         </h1>
-        <Form className=" m-3 mt-1">
+        <Form
+          className=" m-3 mt-1"
+          onSubmit={(e) => {
+            e.preventDefault();
+            router.push("/Products?k=" + keyword);
+          }}
+        >
           <InputGroup className="shadow-sm border-0  mb-1 ">
-            <Button variant="success" className="bg-sec text-muted border-0 ">
+            <Button
+              href={`/Products?k=${keyword}`}
+              variant="success"
+              className="bg-sec text-muted border-0 "
+            >
               <BiSearch className="" /> <span className="ms-1">|</span>
             </Button>
             <Form.Control
@@ -79,53 +94,27 @@ function Homepage(props) {
               placeholder="البحث عن خدمة"
               className="p-2 border-0"
               onChange={(e) => setKeyword(e.target.value)}
-              // value={keyword}
+              value={keyword}
             />
-            {/* {keyword !== "" && (
-                <Button
-                  className="border-0 bg-sec text-muted"
-                  // variant="outline-secondary"
-                  onClick={() => {
-                    setKeyword("");
-                  }}
-                >
-                  x
-                </Button>
-              )} */}
-            <Button
-              className="border-0 bg-sec text-muted"
-              // variant="outline-secondary"
-              // onClick={() => {
-              //   setfillterModalShow(true);
-              // }}
-            >
-              <BiCategory />
-            </Button>
           </InputGroup>
-          {/* <Button href="/Products" className="dark-qatar border-0 ">
-            تصفح الخدمات
-          </Button> */}
         </Form>
-        {/* <Button className="btn-maroon" type="button">Search</Button> */}
 
         {/* <!-- Offcanvas Login Form --> */}
       </div>
       {/* <CardsCarousel /> */}
       <section id="categories" className="categories py-3">
         <div className="container">
-          <h2 className="text-center mb-5">Browse by Category</h2>
+          <h2 className="text-center mb-5">تصفح حسب الفئة</h2>
           <div className="row justify-content-center gy-4">
             <div className="col-lg-4 col-md-6">
               <div className="card category-card">
                 <div className="card-body card-icons text-center">
                   <i className="bi-heart-pulse-fill fs-1"></i>
-                  <h5 className="card-title">Health Services</h5>
-                  <p className="card-text">
-                    Explore top health service providers.
-                  </p>
-                  <a href="#" className="btn btn-dark">
-                    View More
-                  </a>
+                  <h5 className="card-title">خدمات صحية</h5>
+                  <p className="card-text">اكتشف أفضل مقدمي الخدمات الصحية.</p>
+                  <Link href="/Products?q=خدمات صحية" className="btn btn-dark">
+                    عرض المزيد
+                  </Link>
                 </div>
               </div>
             </div>
@@ -133,13 +122,16 @@ function Homepage(props) {
               <div className="card category-card">
                 <div className="card-body card-icons text-center">
                   <i className="bi-bank2 fs-1"></i>
-                  <h5 className="card-title">Legal Services</h5>
+                  <h5 className="card-title">خدمات قانونية</h5>
                   <p className="card-text">
-                    Find expert legal advice and services.
+                    ابحث عن المشورة والخدمات القانونية المتخصصة.
                   </p>
-                  <a href="#" className="btn btn-dark">
+                  <Link
+                    href="/Products?q=خدمات قانونية"
+                    className="btn btn-dark"
+                  >
                     View More
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -147,13 +139,13 @@ function Homepage(props) {
               <div className="card category-card">
                 <div className="card-body card-icons text-center">
                   <i className="bi-house-fill fs-1"></i>
-                  <h5 className="card-title">Real Estate</h5>
+                  <h5 className="card-title">العقارات</h5>
                   <p className="card-text">
-                    Explore properties and real estate services.
+                    استكشف العقارات والخدمات العقارية.
                   </p>
-                  <a href="#" className="btn btn-dark">
-                    View More
-                  </a>
+                  <Link href="/Products?q=العقارات" className="btn btn-dark">
+                    عرض المزيد
+                  </Link>
                 </div>
               </div>
             </div>
@@ -161,11 +153,14 @@ function Homepage(props) {
               <div className="card category-card">
                 <div className="card-body card-icons text-center">
                   <i className="bi-gear-fill fs-1"></i>
-                  <h5 className="card-title">Home Services</h5>
-                  <p className="card-text">Discover reliable home services.</p>
-                  <a href="#" className="btn btn-dark">
-                    View More
-                  </a>
+                  <h5 className="card-title">الخدمات المنزلية</h5>
+                  <p className="card-text">اكتشف خدمات منزلية موثوقة</p>
+                  <Link
+                    href="/Products?q=الخدمات المنزلية"
+                    className="btn btn-dark"
+                  >
+                    عرض المزيد
+                  </Link>
                 </div>
               </div>
             </div>
@@ -173,13 +168,11 @@ function Homepage(props) {
               <div className="card category-card">
                 <div className="card-body card-icons text-center">
                   <i className="bi-car-front-fill fs-1"></i>
-                  <h5 className="card-title">Automotive</h5>
-                  <p className="card-text">
-                    Find automotive services and repairs.
-                  </p>
-                  <button href="#" className="btn btn-light">
-                    View More
-                  </button>
+                  <h5 className="card-title">السيارات</h5>
+                  <p className="card-text">ابحث عن خدمات وإصلاحات السيارات.</p>
+                  <Link href="/Products?q=السيارات" className="btn btn-dark">
+                    عرض المزيد
+                  </Link>
                 </div>
               </div>
             </div>
@@ -187,13 +180,16 @@ function Homepage(props) {
               <div className="card category-card">
                 <div className="card-body card-icons text-center">
                   <i className="bi-people-fill fs-1"></i>
-                  <h5 className="card-title">Consultancy Services</h5>
+                  <h5 className="card-title">خدمات استشارية</h5>
                   <p className="card-text">
-                    Consult with experts in various fields.
+                    استشارة الخبراء في مختلف المجالات.
                   </p>
-                  <a href="#" className="btn btn-dark">
-                    View More
-                  </a>
+                  <Link
+                    href="/Products?q=خدمات استشارية"
+                    className="btn btn-dark"
+                  >
+                    عرض المزيد
+                  </Link>
                 </div>
               </div>
             </div>
@@ -203,15 +199,15 @@ function Homepage(props) {
       </section>
       <section id="why-choose-us" className="py-5">
         <div className="container">
-          <h2 className="text-center mb-5">Why Choose Our Services?</h2>
+          <h2 className="text-center mb-5">لماذا تختار خدماتنا؟</h2>
           <div className="row gx-4 justify-content-center">
             <div className="col-lg-4 mb-4">
               <div className="card border-0 shadow h-100">
                 <div className="card-body text-center">
-                  <h5 className="card-title">Quality Services</h5>
+                  <h5 className="card-title">خدمات ذات جودة عالية</h5>
                   <p className="card-text">
-                    Connect with vetted service providers offering high-quality
-                    services.
+                    تواصل مع مقدمي الخدمات المعتمدين الذين يقدمون خدمات عالية
+                    الجودة.
                   </p>
                 </div>
               </div>
@@ -219,10 +215,10 @@ function Homepage(props) {
             <div className="col-lg-4 mb-4">
               <div className="card border-0 shadow h-100">
                 <div className="card-body text-center">
-                  <h5 className="card-title">Convenience</h5>
+                  <h5 className="card-title">راحة</h5>
                   <p className="card-text">
-                    Easily find and compare services in one place, saving time
-                    and effort.
+                    يمكنك بسهولة العثور على الخدمات ومقارنتها في مكان واحد، مما
+                    يوفر الوقت والجهد.
                   </p>
                 </div>
               </div>
@@ -230,10 +226,9 @@ function Homepage(props) {
             <div className="col-lg-4 mb-4">
               <div className="card border-0 shadow h-100">
                 <div className="card-body text-center">
-                  <h5 className="card-title">Transparent Pricing</h5>
+                  <h5 className="card-title">تسعير واضح</h5>
                   <p className="card-text">
-                    Know upfront costs and pricing details before choosing a
-                    service.
+                    تعرف على التكاليف الأولية وتفاصيل التسعير قبل اختيار الخدمة.
                   </p>
                 </div>
               </div>
@@ -245,18 +240,17 @@ function Homepage(props) {
         <div className="container">
           <div className="row align-items-center">
             <div className="col-lg-6 mb-4">
-              <h2 className="mb-4">Our Vision for Qatar 2030</h2>
+              <h2 className="mb-4">رؤيتنا لقطر 2030</h2>
               <p className="lead">
-                At 7 Stars, we are committed to supporting Qatar's vision for
-                2030 by...
+                في شركة 7 نجوم، نحن ملتزمون بدعم رؤية قطر 2030 من خلال...
               </p>
               <p className="mb-4">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla
-                convallis libero vitae sapien dictum, vel malesuada urna mattis.
+                العميل مهم جدًا، العميل سيتبعه العميل. لا يوجد شيء اسمه وادي
+                الحياة الحر، أو جرة العقارات.
               </p>
               <p className="mb-4">
-                Sed sagittis ligula ut libero faucibus, non congue nunc
-                scelerisque. Duis convallis auctor massa vitae ultrices.
+                ولكن مع وجود مفاتيح الأسهم كبطاقة مرور مجانية، لا تقم بواجبك
+                المنزلي الآن. مؤلف كتلة حياة الواديين.
               </p>
               <a href="#" className="btn btn-outline-dark">
                 Learn More
@@ -285,12 +279,11 @@ function Homepage(props) {
               </div>
             </div>
             <div className="col-md-6 text-white">
-              <h2>Our Vision</h2>
+              <h2>رؤيتنا</h2>
               <p>
-                At 7 Stars, we aim to connect users with the best service
-                providers in various fields, ensuring quality and satisfaction.
-                Watch the video to learn more about our vision and how we strive
-                to provide top-notch services to our clients.
+                في 7 ستارز، نهدف إلى ربط المستخدمين بأفضل مقدمي الخدمات في مختلف
+                المجالات، وضمان الجودة والرضا. شاهد الفيديو لمعرفة المزيد عن
+                رؤيتنا وكيف نسعى جاهدين لتقديم خدمات من الدرجة الأولى لعملائنا.
               </p>
             </div>
           </div>
@@ -307,46 +300,46 @@ function Homepage(props) {
               />
             </div>
             <div className="col-md-6">
-              <h2 className="mb-4">For Service Providers and Businesses</h2>
+              <h2 className="mb-4">لمقدمي الخدمات والشركات</h2>
               <p className="lead mb-4">
-                Join 7 Stars to showcase your services and reach more clients in
-                Qatar.
+                انضم إلى 7 نجوم لعرض خدماتك والوصول إلى المزيد من العملاء في
+                قطر.
               </p>
               <ul className="list-unstyled mb-4">
                 <li>
                   <i className="fas fa-check-circle text-primary me-2"></i>
-                  Easy listing and management of services.
+                  إدراج وإدارة الخدمات بسهولة.
                 </li>
                 <li>
                   <i className="fas fa-check-circle text-primary me-2"></i>
-                  Flexible subscription plans tailored to your needs.
+                  خطط اشتراك مرنة مصممة خصيصًا لتلبية احتياجاتك.
                 </li>
                 <li>
                   <i className="fas fa-check-circle text-primary me-2"></i>
-                  Promotional features to boost your visibility.
+                  ميزات ترويجية لتعزيز ظهورك.
                 </li>
                 <li>
                   <i className="fas fa-check-circle text-primary me-2"></i>
-                  Dedicated support team to assist you.
+                  فريق دعم متخصص لمساعدتك.
                 </li>
               </ul>
-              <h3 className="mb-3">How It Works</h3>
+              <h3 className="mb-3">كيف تعمل</h3>
               <ul className="list-unstyled">
                 <li>
                   <i className="fas fa-angle-right text-primary me-2"></i>
-                  Create your profile and list your services.
+                  قم بإنشاء ملفك الشخصي وإدراج خدماتك.
                 </li>
                 <li>
                   <i className="fas fa-angle-right text-primary me-2"></i>
-                  Choose a subscription plan that suits your business goals.
+                  اختر خطة الاشتراك التي تناسب أهداف عملك.
                 </li>
                 <li>
                   <i className="fas fa-angle-right text-primary me-2"></i>
-                  Utilize promotional tools to attract more clients.
+                  استخدم الأدوات الترويجية لجذب المزيد من العملاء.
                 </li>
                 <li>
                   <i className="fas fa-angle-right text-primary me-2"></i>
-                  Grow your business with our platform.
+                  قم بتنمية أعمالك مع منصتنا.
                 </li>
               </ul>
             </div>
@@ -355,19 +348,19 @@ function Homepage(props) {
       </section>
       <section className="testimonials py-5" id="what-clients-say">
         <div className="container">
-          <h2 className="text-center mb-4">What Our Clients Say</h2>
+          <h2 className="text-center mb-4">ماذا يقول عملاؤنا</h2>
           <div className="row">
             <div className="col-md-4">
               <div className="card">
                 <div className="card-body">
                   <blockquote className="blockquote mb-0">
                     <p>
-                      "7 Stars helped me find the perfect health service
-                      provider quickly and easily. Highly recommended!"
+                      "ساعدني 7 نجوم في العثور على مقدم الخدمة الصحية المثالي
+                      بسرعة وسهولة. أوصي به بشدة!"
                     </p>
                     <footer className="blockquote-footer">
-                      Sarah Johnson,{" "}
-                      <cite title="Source Title">Health Services Client</cite>
+                      سارة جونسون، عميلة خدمات صحية,{" "}
+                      <cite title="Source Title">عميلة خدمات صحية</cite>
                     </footer>
                   </blockquote>
                 </div>
@@ -378,12 +371,12 @@ function Homepage(props) {
                 <div className="card-body">
                   <blockquote className="blockquote mb-0">
                     <p>
-                      "The legal services I found through 7 Stars were
-                      top-notch. I couldn't be happier with the results."
+                      "كانت الخدمات القانونية التي وجدتها من خلال 7 Stars من
+                      الدرجة الأولى. لا يمكنني أن أكون أكثر سعادة بالنتائج."
                     </p>
                     <footer className="blockquote-footer">
-                      Mohammed Al-Thani,{" "}
-                      <cite title="Source Title">Legal Services Client</cite>
+                      محمد آل ثاني,{" "}
+                      <cite title="Source Title">عميل الخدمات القانونية</cite>
                     </footer>
                   </blockquote>
                 </div>
@@ -394,12 +387,12 @@ function Homepage(props) {
                 <div className="card-body">
                   <blockquote className="blockquote mb-0">
                     <p>
-                      "As a business owner, the business services offered here
-                      have been invaluable to my company's growth."
+                      "باعتباري صاحب عمل، كانت الخدمات التجارية المقدمة هنا ذات
+                      قيمة لا تقدر بثمن لنمو شركتي."
                     </p>
                     <footer className="blockquote-footer">
-                      Fatima Ahmed,{" "}
-                      <cite title="Source Title">Business Services Client</cite>
+                      فاطمة أحمد،,{" "}
+                      <cite title="Source Title"> عميلة خدمات الأعمال</cite>
                     </footer>
                   </blockquote>
                 </div>
@@ -410,29 +403,29 @@ function Homepage(props) {
       </section>
       <section className="py-5 text-center">
         <div className="container">
-          <h2 className="text-dark-qatar">Subscription Plans</h2>
-          <p className="lead">Choose the plan that suits your business needs</p>
+          <h2 className="text-dark-qatar">خطط الاشتراك</h2>
+          <p className="lead">اختر الخطة التي تناسب احتياجات عملك</p>
           <div className="row">
             <div className="col-md-4">
               <div className="card mb-4 shadow-sm">
                 <div className="card-header">
-                  <h4 className="my-0 fw-normal">Basic</h4>
+                  <h4 className="my-0 fw-normal">أساسي</h4>
                 </div>
                 <div className="card-body">
                   <h1 className="card-title pricing-card-title">
                     $50
-                    <small className="text-muted">/ mo</small>
+                    <small className="text-muted">/ شهر</small>
                   </h1>
                   <ul className="list-unstyled mt-3 mb-4">
-                    <li>10 service listings</li>
-                    <li>Email support</li>
-                    <li>Help center access</li>
+                    <li>10 قوائم الخدمات</li>
+                    <li>دعم البريد الإلكتروني</li>
+                    <li>الوصول إلى مركز المساعدة</li>
                   </ul>
                   <button
                     type="button"
                     className="w-100 btn btn-lg btn-outline-primary"
                   >
-                    Sign up for free
+                    سجل مجانا
                   </button>
                 </div>
               </div>
@@ -440,23 +433,23 @@ function Homepage(props) {
             <div className="col-md-4">
               <div className="card mb-4 shadow-sm">
                 <div className="card-header">
-                  <h4 className="my-0 fw-normal">Pro</h4>
+                  <h4 className="my-0 fw-normal">طليعة</h4>
                 </div>
                 <div className="card-body">
                   <h1 className="card-title pricing-card-title">
                     $100
-                    <small className="text-muted">/ mo</small>
+                    <small className="text-muted">/ شهر</small>
                   </h1>
                   <ul className="list-unstyled mt-3 mb-4">
-                    <li>50 service listings</li>
-                    <li>Priority email support</li>
-                    <li>Help center access</li>
+                    <li>50 قائمة خدمات</li>
+                    <li>دعم البريد الإلكتروني ذو الأولوية</li>
+                    <li>الوصول إلى مركز المساعدة</li>
                   </ul>
                   <button
                     type="button"
                     className="w-100 btn btn-lg btn-primary"
                   >
-                    Get started
+                    البدء
                   </button>
                 </div>
               </div>
@@ -464,23 +457,23 @@ function Homepage(props) {
             <div className="col-md-4">
               <div className="card mb-4 shadow-sm">
                 <div className="card-header">
-                  <h4 className="my-0 fw-normal">Enterprise</h4>
+                  <h4 className="my-0 fw-normal">الشركات</h4>
                 </div>
                 <div className="card-body">
                   <h1 className="card-title pricing-card-title">
                     $200
-                    <small className="text-muted">/ mo</small>
+                    <small className="text-muted">/ شهر</small>
                   </h1>
                   <ul className="list-unstyled mt-3 mb-4">
-                    <li>Unlimited service listings</li>
-                    <li>Phone and email support</li>
-                    <li>Help center access</li>
+                    <li>قوائم خدمات غير محدودة</li>
+                    <li>الدعم عبر الهاتف والبريد الإلكتروني</li>
+                    <li>الوصول إلى مركز المساعدة</li>
                   </ul>
                   <button
                     type="button"
                     className="w-100 btn btn-lg btn-primary"
                   >
-                    Contact us
+                    اتصل بنا
                   </button>
                 </div>
               </div>
@@ -490,7 +483,7 @@ function Homepage(props) {
       </section>
       <section id="faq" className="faq-section">
         <div className="container">
-          <h2 className="text-center mb-5">Frequently Asked Questions</h2>
+          <h2 className="text-center mb-5">أسئلة مكررة</h2>
           <div className="accordion" id="accordionExample">
             <div className="accordion-item">
               <h2 className="accordion-header" id="headingOne">
@@ -502,7 +495,7 @@ function Homepage(props) {
                   aria-expanded="true"
                   aria-controls="collapseOne"
                 >
-                  How can I list my services on 7 Stars?
+                  كيف يمكنني ادراج خدماتي على 7 نجوم؟
                 </button>
               </h2>
               <div
@@ -512,9 +505,9 @@ function Homepage(props) {
                 data-bs-parent="#accordionExample"
               >
                 <div className="accordion-body">
-                  You can list your services by signing up for an account and
-                  choosing a subscription plan that suits your needs. Visit our{" "}
-                  <a href="#contact">Contact Us</a> section for more details.
+                  يمكنك إدراج خدماتك من خلال التسجيل للحصول على حساب واختيار خطة
+                  الاشتراك التي تناسب احتياجاتك. تفضل بزيارة قسم اتصل بنا للحصول
+                  على مزيد من التفاصيل. <a href="#contact">تواصل معنا</a>{" "}
                 </div>
               </div>
             </div>
@@ -528,7 +521,7 @@ function Homepage(props) {
                   aria-expanded="false"
                   aria-controls="collapseTwo"
                 >
-                  How can I promote my services on 7 Stars?
+                  كيف يمكنني الترويج لحدماتي على 7 نجوم؟
                 </button>
               </h2>
               <div
@@ -554,7 +547,7 @@ function Homepage(props) {
                   aria-expanded="false"
                   aria-controls="collapseThree"
                 >
-                  How can I contact customer support?
+                  كيف يمكنيي التواصل مع العملاء؟
                 </button>
               </h2>
               <div
@@ -575,13 +568,13 @@ function Homepage(props) {
       </section>
       <section id="contact" className="contact-section py-5">
         <div className="container">
-          <h2 className="text-center mb-5">Contact Us</h2>
+          <h2 className="text-center mb-5">اتصل بنا</h2>
           <div className="row justify-content-center">
             <div className="col-md-8">
               <form className="contact-form">
                 <div className="mb-3">
                   <label for="name" className="form-label">
-                    Your Name
+                    اسمك
                   </label>
                   <input
                     type="text"
@@ -592,7 +585,7 @@ function Homepage(props) {
                 </div>
                 <div className="mb-3">
                   <label for="email" className="form-label">
-                    Your Email
+                    بريدك الالكتروني
                   </label>
                   <input
                     type="email"
@@ -603,7 +596,7 @@ function Homepage(props) {
                 </div>
                 <div className="mb-3">
                   <label for="message" className="form-label">
-                    Your Message
+                    رسالتك
                   </label>
                   <textarea
                     className="form-control"
@@ -613,7 +606,7 @@ function Homepage(props) {
                   ></textarea>
                 </div>
                 <button type="submit" className="btn btn-dark">
-                  Send Message
+                  ارسال رسالة
                 </button>
               </form>
             </div>

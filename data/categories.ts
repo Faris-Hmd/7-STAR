@@ -2,12 +2,18 @@ import { Categories } from "../types/types";
 
 export const categories: Categories = [
   {
-    value: "التصنيف الاول",
+    value: "خدمات صحية",
   },
   {
-    value: "نقصان الوزن",
+    value: "خدمات قانونية",
   },
   {
-    value: "فاتح للشهية",
+    value: "العقارات",
+  },
+  {
+    value: "الخدمات المنزلية",
+  },
+  {
+    value: "خدمات استشارية",
   },
 ];

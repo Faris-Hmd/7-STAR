@@ -2,12 +2,23 @@ import { useEffect, useState } from "react";
 import { Button, Form, InputGroup, Modal } from "react-bootstrap";
 import { BiCategory, BiSearch } from "react-icons/bi";
 import { categories } from "../data/categories";
+import { useSearchParams } from "next/navigation";
 export function FillterForm({ data, setFillterdData, fillterBy }) {
+  const searchParams = useSearchParams();
   const [fillterModalShow, setfillterModalShow] = useState(false);
-  const [keyword, setKeyword] = useState("");
-  const [category, setCategory] = useState("ALL");
-
+  const [keyword, setKeyword] = useState(
+    searchParams.get("k") ? searchParams.get("k") : ""
+  );
+  const [category, setCategory] = useState(
+    searchParams.get("q") ? searchParams.get("q") : "ALL"
+  );
+  console.log(searchParams.get("q"));
   useEffect(() => {
+    if (searchParams.get("k")) setKeyword(searchParams.get("k"));
+    if (searchParams.get("q")) setCategory(searchParams.get("q"));
+  }, [searchParams.get("k"), searchParams.get("q")]);
+  useEffect(() => {
+    console.log(keyword);
     if (keyword === "") {
       setFillterdData(data);
       return;

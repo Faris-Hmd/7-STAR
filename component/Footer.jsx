@@ -97,117 +97,88 @@ function Footer() {
       <Container>
         <Row>
           <Col className="col-6 col-md-2 mb-3">
-            <h5>Section</h5>
+            <h5>الاقسام</h5>
             <ul className="nav flex-column">
               <li className="nav-item mb-2">
                 <a href="#" className="nav-link p-0">
-                  Home
+                  الررئيسة
                 </a>
               </li>
               <li className="nav-item mb-2">
                 <a href="#" className="nav-link p-0">
-                  Features
+                  الاحدث
                 </a>
               </li>
               <li className="nav-item mb-2">
                 <a href="#" className="nav-link p-0">
-                  Pricing
+                  التسعير
                 </a>
               </li>
               <li className="nav-item mb-2">
                 <a href="#" className="nav-link p-0">
-                  FAQs
+                  الاسئلة الشائعة
                 </a>
               </li>
               <li className="nav-item mb-2">
                 <a href="#" className="nav-link p-0">
-                  About
+                  عنا
                 </a>
               </li>
             </ul>
           </Col>
           <Col className="col-6 col-md-2 mb-3">
-            <h5>Section</h5>
+            <h5>الاقسام</h5>
             <ul className="nav flex-column">
               <li className="nav-item mb-2">
                 <a href="#" className="nav-link p-0">
-                  Home
+                  الررئيسة
                 </a>
               </li>
               <li className="nav-item mb-2">
                 <a href="#" className="nav-link p-0">
-                  Features
+                  الاحدث
                 </a>
               </li>
               <li className="nav-item mb-2">
                 <a href="#" className="nav-link p-0">
-                  Pricing
+                  التسعير
                 </a>
               </li>
               <li className="nav-item mb-2">
                 <a href="#" className="nav-link p-0">
-                  FAQs
+                  الاسئلة الشائعة
                 </a>
               </li>
               <li className="nav-item mb-2">
                 <a href="#" className="nav-link p-0">
-                  About
-                </a>
-              </li>
-            </ul>
-          </Col>
-          <Col className="col-6 col-md-2 mb-3">
-            <h5>Section</h5>
-            <ul className="nav flex-column">
-              <li className="nav-item mb-2">
-                <a href="#" className="nav-link p-0">
-                  Home
-                </a>
-              </li>
-              <li className="nav-item mb-2">
-                <a href="#" className="nav-link p-0">
-                  Features
-                </a>
-              </li>
-              <li className="nav-item mb-2">
-                <a href="#" className="nav-link p-0">
-                  Pricing
-                </a>
-              </li>
-              <li className="nav-item mb-2">
-                <a href="#" className="nav-link p-0">
-                  FAQs
-                </a>
-              </li>
-              <li className="nav-item mb-2">
-                <a href="#" className="nav-link p-0">
-                  About
+                  عنا
                 </a>
               </li>
             </ul>
           </Col>
           <Col className="col-md-5 offset-md-1 mb-3">
             <form>
-              <h5>Subscribe to our newsletter</h5>
-              <p>Monthly digest of what's new and exciting from us.</p>
+              <h5>اشترك في نشرتنا الإخبارية</h5>
+              <p>ملخص شهري لكل ما هو جديد ومثير منا.</p>
               <div className="d-flex flex-column flex-sm-row w-100 gap-2">
                 <label for="newsletter1" className="visually-hidden">
-                  Email address
+                  عنوان بريدك الالكتروني
                 </label>
                 <input
                   id="newsletter1"
                   type="text"
                   className="form-control"
-                  placeholder="Email address"
+                  placeholder="                  عنوان بريدك الالكتروني
+"
                 />
                 <button className="btn btn-primary" type="button">
-                  Subscribe
+                  أشتراك
                 </button>
               </div>
             </form>
           </Col>
           <div className="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top">
-            <center>&copy; 2024 7 Stars, Inc. All rights reserved.</center>
+            <center> © 2024 7 Stars, Inc. جميع الحقوق محفوظة.</center>
           </div>
         </Row>
         {/* <Col xs={12}>
